@@ -1,0 +1,798 @@
+\chapter{Gruppi ciclici}
+
+
+Un gruppo $G$ si dice \textbf{ciclico} se:
+
+\begin{equation}
+	\exists g \in G : \forall x \in G \quad x=g^k \quad \text{con } k \in \Z
+\end{equation}
+
+L'elemento $g$ si dice \textbf{generatore} del gruppo $G$ e si scrive:
+
+\begin{equation}
+	G = \gen{g}
+\end{equation}
+
+Si pongono tre problemi:
+
+\begin{enumerate}
+	\item classificare i gruppi ciclici (ovvero elencarli tutti a meno di isomorfismi)
+	\item quanti sono e come sono fatti i sottogruppi di un gruppo ciclico?
+	\item in quanti modi posso scegliere i generatori di un gruppo ciclico?
+\end{enumerate}
+
+\section[Classificazione dei gruppi ciclici]{Classificazione dei gruppi ciclici\footnote{\cite[29 settembre 2020]{lucchini}}}
+
+\begin{teorema}
+	\label{thr:Ciclici_isomorfismi_con_z}
+	Se $G$ è un gruppo ciclico, allora $G \isomorfo \Z$ oppure $G \isomorfo \Z/m\Z$.
+\end{teorema}
+\begin{dimostrazione}
+	Chiamiamo $g$ il generatore del gruppo ciclico $G$. Consideriamo la funzione:
+	
+	\begin{align}
+		\varphi : (\Z, +) &\longrightarrow G \\
+		t &\longmapsto g^t
+	\end{align}
+
+	$\varphi$ è un omomorfismo perché:
+	
+	\begin{equation}
+		\varphi(t_1 + t_2) = g^{t^1 + t^2} = g^{t_1} \dot g^{t_2} = \varphi(t_1) \dot \varphi(t_2)
+	\end{equation}
+
+	Ovvero $\varphi$ è compatibile con le operazioni interne: la somma in $\Z$ in e il prodotto in $G$.
+	
+	$\varphi$ è suriettivo: deriva dalla definizione di gruppo ciclico. Quindi è un epimorfismo. Il gruppo $G$ si ottiene come \emph{immagine epimorfa} del gruppo degli interi.
+	
+	Per il corollario al teorema fondamentale degli omomorfisci \textbf{riferimento} quando abbiamo un omomorfismo suriettivo, allora l'immagine ($G$) è isomorfa al gruppo quoziente del dominio sopra il nucleo:
+	
+	\begin{equation}
+		G \isomorfo \Z/\ker \varphi
+	\end{equation}
+
+	Studiamo allora $\ker \varphi$: abbiamo due casi.
+	
+	\textbf{Caso 1: } $\ker \varphi = \{0\}$, ovvero $\varphi$ è iniettivo.
+	
+	Quindi $G \isomorfo \Z$, infatti se $G = \gen{g}$ abbiamo:
+	
+	\begin{gather}
+		g^1 = 1 \longleftrightarrow t = 0 \\
+		g^{t_1} = g^{t_2} \longleftrightarrow t_1 = t_2
+	\end{gather}
+
+	\textbf{Caso 2: } $\ker \varphi \ne \{0\}$
+	
+	Quindi:
+	
+	\begin{equation}
+		\exists m \ne 0 \land m \in \Z \taleche \varphi(m) = g^m = 1
+	\end{equation}
+
+	Se $m \in \ker \varphi$ allora anche $-m \in \ker \varphi$. Infatti il nucleo è un sottogruppo di $\Z$, quindi se un sottogruppo contiene $m$ allora contiene anche $-m$.  Dimostrazione veloce:
+	
+	\begin{equation}
+		g^m = 1 \Longrightarrow g^{-m} = (g^m)^{-1} = 1^{-1} = 1
+	\end{equation}
+
+	Quindi possiamo considerare $m$ un numero positivo:
+
+	\begin{equation}
+		\exists m \ne 0 \land m \in \N \taleche \varphi(m) = g^m = 1
+	\end{equation}
+
+	Ora usiamo la proprietà del minimo dei naturali e scegliamo $m$ come il minimo intero positivo tale che $g^m = 1$; cerchiamo di capire quali sono gli altri interi positivi che appartengono a $\ker \varphi$: sia $t \in \ker \varphi$ e facciamo la divisione per $m$:
+	
+	\begin{equation}
+		t = qm + r \quad \text{con } 0 \le r < m
+	\end{equation}
+
+	Si ha che:
+	
+	\begin{equation}
+		1 = g^t = g^{qm + r} = g^{qm} \cdot g^r = (g^m)^q \cdot g^r = 1^q \cdot g^r = 1 \cdot g^r = g^r
+	\end{equation}
+
+	Quindi $g^r = 1$. Ma $r$ è un intero non negativo minore di $m$, quindi per non contraddire la scelta di minimalità risulta:
+	
+	\begin{equation}
+		r = 0
+	\end{equation}
+
+	Quindi $t$ è un multiplo di $m$, ovvero:
+	
+	\begin{equation}
+		t \in m\Z
+	\end{equation}
+
+	Quindi ogni elemento di $\ker \varphi$ è una potenza di $\Z$:
+	
+	\begin{equation}
+		\ker \varphi = m\Z
+	\end{equation}
+
+	Quindi $G$ è isomorfo a $\Z/m\Z$:
+	
+	\begin{equation}
+		G \isomorfo \Z/m\Z
+	\end{equation}
+
+\end{dimostrazione}
+
+Quindi quando abbiamo un gruppo ciclico $G$ abbiamo due possibilità:
+
+\begin{enumerate}
+	\item $G \isomorfo \Z \Longrightarrow$ gruppo ciclico infinito;
+	\item $G \isomorfo \Z/m\Z \Longrightarrow$ gruppo ciclico finito: $G = \{1, g, \dots, g^{m-1}\}$.
+\end{enumerate}
+
+\section[Sottogruppo generato da un elemento]{Sottogruppo generato da un elemento\footnote{\cite[1 ottobre 2021]{lucchini}}}
+
+Dato un generico gruppo $G$, consideriamo un elemento $x \in G$. Definiamo:
+
+\begin{equation}
+	\gen{x} = \{x^m \taleche m \in \Z\}
+\end{equation}
+
+Questo è il più piccolo sottogruppo ciclico di $G$ che contiene $x$.
+
+Chiamiamo \textbf{ordine di $x$} l'ordine del sottogruppo generato da $x$:
+
+\begin{equation}
+	\ordine{x} = \ordine{\gen{x}}
+\end{equation}
+
+Per il teorema~\ref{thr:Ciclici_isomorfismi_con_z} sappiamo che:
+
+\begin{equation}
+	x = 
+	\begin{cases}
+		\infty \Leftrightarrow \gen{x} \isomorfo \Z \Leftrightarrow x^m = 1 \leftrightarrow m = 0 \\
+		m \Leftrightarrow \gen{x} \isomorfo \Z/m\Z \Leftrightarrow m \text{ più piccolo intero positivo t.c. } x^m = 1 
+	\end{cases}
+\end{equation}
+
+\begin{teorema}
+	\label{thr:Ciclici_ordine_elementi}
+	Dati $G = \gen{g}$ e $t \in \Z$ con $t \ne 0$, allora:
+	\footnote{Non è necessario che $G$ sia ciclico, in quanto è comunque ciclico il suo sottogruppo $\gen{g}$.}
+	
+	\begin{equation}
+		\ordine{g^t} = 
+		\begin{cases}
+			\infty & \text{se } \ordine{g} = \infty \\
+			\dfrac{m}{\MCD{m}{t}} & \text{se } \ordine{g} = m
+		\end{cases}
+	\end{equation} 
+\end{teorema}
+\begin{dimostrazione}
+	\textbf{Caso 1:} $\ordine{g} = \infty$:
+	
+	Per calcolare l'ordine di $g^t$ verifichiamo per quali valori di $r$ risulta:
+	
+	\begin{equation}
+		(g^t)^r = 1 \Longrightarrow g^{tr} = 1 \Longrightarrow tr = 0
+	\end{equation}
+
+	Ma $t \ne 0$ per ipotesi, quindi $r = 0$ per la legge dell'annullamento del prodotto. Abbiamo quindi che:
+	
+	\begin{equation}
+		(g^t)^r = 1 \Longleftrightarrow r = 0
+	\end{equation}
+
+	Quindi:
+	
+	\begin{equation}
+		\ordine{g^t} = \infty
+	\end{equation}
+
+	\textbf{Caso 2:} $\ordine{g} = m$:
+	
+	Come nel caso 1 cerchiamo i valori di $r$ tali che:
+	
+	\begin{equation}
+		(g^t)^r = 1 \Longrightarrow g^{tr} = 1 \Longrightarrow m|tr
+	\end{equation}
+
+	Chiamiamo $d$ il MCD tra $m$ e $t$:
+	
+	\begin{equation}
+		d = \MCD{m}{t} \Longrightarrow
+		\begin{cases}
+			m = d m_1 \\
+			t = d t_1 \\
+			\MCD{m_1}{t_1} = 1 &\text{coprimi}
+		\end{cases}
+	\end{equation}
+
+	Quindi:
+	
+	\begin{equation}
+		m|tr \Longrightarrow dm_1 | dt_1r \Longrightarrow m_1|t_1r
+	\end{equation}
+
+	Ma $t_1$ non ha alcun divisore di $m_1$, quindi:
+	
+	\begin{equation}
+		m_1|r
+	\end{equation}
+
+	Quindi:
+	
+	\begin{equation}
+		\ordine{g^t} = m_1 = \dfrac{m}{d} = \dfrac{m}{\MCD{m}{t}}
+	\end{equation}
+
+	\textbf{NB: } $t = 0 \Longrightarrow g^t = 1 \Longrightarrow \ordine{g^t} = 1$.
+\end{dimostrazione}
+
+\begin{esercizio}
+	Dato
+	
+	\begin{equation}
+		x = (13)(245) \in S_5
+	\end{equation}
+	
+	Qual è l'ordine di $x$? Quali sono gli ordini di $x^2$ e di $x^4$?	
+\end{esercizio}
+\begin{dimostrazione}
+	Cerchiamo il valore di $t$ tale che:
+	
+	\begin{gather}
+		x^t = 1 \\
+		((13)(245))^t = 1 \\
+		(13)^t(245)^t = 1
+	\end{gather}
+
+	Posso fare quest'ultimo passaggio perché i due cicli sono disgiunti, quindi commutano.
+	
+	\begin{gather}
+		\begin{cases}
+			(13)^t = 1 &\longrightarrow \ordine{(13)} = 2 \longrightarrow 2|t \\
+			(245)^t= 1 &\longrightarrow \ordine{(245)}= 3 \longrightarrow 3|t
+		\end{cases}	\\
+		\Longrightarrow 6|t
+		\Longrightarrow \ordine{x} = 6
+	\end{gather}
+
+	Per l'ordine di $x^2$ applichiamo il teorema:
+	
+	\begin{equation}
+		\ordine{x^2} = \dfrac{\ordine{x}}{\MCD{\ordine{x}}{2}} = \dfrac{6}{\MCD{6}{2}} = \dfrac{6}{2} = 3
+	\end{equation}
+
+	Infatti:
+	
+	\begin{equation}
+		(13)^2(245)^2 = (245)^2 \longrightarrow \ordine{(245)^2} = 3
+	\end{equation}
+
+	Anche per l'ordine di $x^4$ applichiamo il teorema:
+	
+	\begin{equation}
+		\ordine{x^4} = \dfrac{\ordine{x}}{\MCD{\ordine{x}}{4}} = \dfrac{6}{\MCD{6}{4}} = \dfrac{6}{2} = 3
+	\end{equation}
+\end{dimostrazione}
+
+\section[Studiare i sottogruppi di un gruppo ciclico]{Studiare i sottogruppi di un gruppo ciclico\footnote{\cite[1 ottobre 2021]{lucchini}}}
+
+\begin{teorema}
+	Se $G$ è ciclico e $H \le G$, allora $H$ è ciclico.
+\end{teorema}
+\begin{dimostrazione}
+	Il sottogruppo 1 è ciclico.
+	
+	Prendiamo un sottogruppo $H \ne 1$. Chiamiamo $g$ il generatore di $G$.
+	
+	Se $H \ne 1$ allora:
+	
+	\begin{gather}
+		\exists h \ne 1, h \in H \\
+		\exists m \in \Z, m \ne 0 \taleche h = g^m \in H
+	\end{gather}
+
+	Ma se $g^m \in H$ anche $(g^m)^{-1} \in H$ perché $H$ è un sottogruppo. Quindi posso supporre $m$ intero positivo. Uso allora la proprietà del minimo e scelgo $m$ come il minimo per cui $g^m \in H$.
+	
+	Prendo ora un altro elemento $\bar{h} \in H$:
+	
+	\begin{equation}
+		\exists t \taleche \bar{h} = g^t
+	\end{equation}
+
+	Diviso $t$ per $m$:
+	
+	\begin{gather}
+		t = mq + r \text{ con } 0 \le r < m \\
+		\bar{h} = g^{mq + r} = (g^m)^q \cdot g^r \\
+		g^r = (g^m)^{-q} \cdot \bar{h}
+	\end{gather}
+
+	Ma $g^m \in H$, quindi anche $(g^m)^{-q} \in H$, inoltre $\bar{h} \in H$, quindi anche $g^r \in H$.
+	
+	Ma $r < m$, mentre $m$ era il più piccolo intero positivo tale che $g^m \in H$.
+	
+	Quindi:
+	
+	\begin{gather}
+		r = 0 \\
+		m|t \forall \bar{h} = g^t \in H \\
+		\bar{h} \in \gen{g^m} \\
+		H = \gen{g^m}
+	\end{gather}
+\end{dimostrazione}
+
+\section{Quanti sono i sottogruppi di un gruppo ciclico?}
+
+Definiamo la funzione $\alpha$:
+
+\begin{gather}
+	\alpha: \N \longrightarrow \{H \taleche H \le G = \gen{g}\} \\
+	m \longmapsto \gen{g^m}
+\end{gather}
+
+$\alpha$ è suriettiva perché ogni sottogruppo si scrive come $H = \gen{g^m}$. Si aggiunge il sottogruppo identico $1 = \gen{g^0}$.
+
+\begin{teorema}
+	Se $\ordine{g} = \infty$ allora i sottogruppi di $G = \gen{g}$ sono in corrispondenza biiettiva con i naturali.
+\end{teorema}
+\begin{dimostrazione}
+	Discutiamo l'iniettività di $\alpha$:
+	
+	\begin{align}
+		\gen{g^{m_1}} = \gen{g^{m_2}} &\Longrightarrow \gen{g^{m_1}} \le \gen{g^{m_2}} \\
+		&\Longrightarrow g^{m_1} = (g^{m_2})^{t_2}
+	\end{align}
+
+	Ma poiché $\ordine{g} = \infty$, allora:
+	
+	\begin{equation}
+		m_1 = m_2 t_2 \Longrightarrow m_2 | m_1
+	\end{equation}
+
+	Abbiamo anche l'inclusione opposta da cui ricaviamo che $m_1 | m_2$.
+	
+	Quindi $m_1 = m_2$.
+\end{dimostrazione}
+
+Dato un gruppo ciclico $G = \gen{g}$ e un suo sottogruppo $H = \gen{g^m}$, anche $G/H$ è un sottogruppo di G, quindi è ciclico. Qual è l'ordine di tale sottogruppo? E' la più piccola potenza di $g$ in $H$, ovvero $m$:
+\footnote{Sono molto perplesso su questa osservazione. Potrei essere d'accordo nel dire che il gruppo quoziente è isomorfo ad un sottogruppo, ma poi come vado a giustificare tutto il resto?}
+
+\begin{equation}
+	\ordine{G/H} = m
+\end{equation}
+
+\begin{teorema}
+	\label{thr:ciclici_finiti_sottogruppi}
+	Se $\ordine{g} = n$ allora i sottogruppi di $G = \gen{g}$ sono in corrispondenza biiettiva con i divisori di $n$.
+\end{teorema}
+\begin{dimostrazione}
+	Consideriamo un generico $H \le G$. Allora esiste un intero positivo $m$ tale che $H = \gen{g^m}$ ed $m$ è il più piccolo intero positivo tale che $g^m \in H$.
+	
+	C'è un legame tra $m$ e $n$?
+	
+	Dividiamo $n$ per $m$:
+	
+	\begin{gather}
+		n = mq + r \quad 0 \le r < m \\
+		1 = g^n = g^{mq+r} = g^{mq} \cdot g^r \\
+		\Longrightarrow g^r = (g^{mq})^{-1}
+	\end{gather}
+
+	Ma se $g^m \in H$, anche $g^{mq} \in H$ e anche $(g^{mq})^{-1} \in H$. Quindi:
+	
+	\begin{equation}
+		g^r \in H \Longrightarrow r = 0 \Longrightarrow m|n
+	\end{equation}
+
+	Facciamo meglio la mappa:
+	
+	\begin{align}
+		\text{divisori di }n &\longrightarrow \text{sottogruppi di }G \\
+		m &\longmapsto \gen{g^m}
+	\end{align}
+
+	Anche questa mappa è suriettiva. Ma è anche iniettiva?
+	
+	\begin{align}
+		\ordine{\gen{g^m}} &= \ordine{g^m} & \text{per definizione di ordine} \\
+		&= \dfrac{\ordine{g}}{\MCD{\ordine{g}}{m}} & \text{per teorema~\ref{thr:Ciclici_ordine_elementi}} \\
+		&= \dfrac{n}{m}
+	\end{align}
+
+	Quindi la mappa è iniettiva (figura~\ref{fig:Ciclici_divisori_di_n}).
+		
+\end{dimostrazione}
+
+\begin{figure}[tp]
+	\centering
+	\tikz {
+		\node (a) at (0,2) {$G = \gen{g}$};
+		\node (b) at (0,0) {$H = \gen{g^m}$};
+		\node at (2,2) {ordine $n$};
+		\node at (2,0) {ordine $\dfrac{n}{m}$};
+		\draw (a) edge[-] (b);
+		\draw[decorate,decoration={brace,raise=100pt}] (a) -- (b) node[pos=.5,right=103pt,black]{$\indice{G}{H} = m$};
+	}
+	\caption{Sottogruppo di un gruppo ciclico}
+	\label{fig:Ciclici_divisori_di_n}
+\end{figure}
+
+Di conseguenza, se un gruppo ciclico è finito, non esistono due sottogruppi con uguale ordine.
+
+\section{Quante scelte abbiamo per i generatori?}
+
+Ovvero, dato $G = \gen{g}$, prendiamo un generico $g^k \in G$: è vero che $\gen{g^k} = G$?
+
+\textbf{NB: } $\gen{g^k} = \gen{g^{-k}}$: se $g^k$ è un generatore, anche $g^{-k}$ è generatore dello stesso gruppo, quindi mi posso occupare dei soli positivi.
+
+\begin{teorema}
+	\label{thr:generatori_gruppi_ciclici_infiniti}
+	Se $G = \gen{g}$ e $\ordine{g} = \infty$, allora $\{g, g^{-1}\}$ sono gli unici generatori.
+\end{teorema}
+\begin{dimostrazione}
+	Dal momento che $\alpha$ è iniettiva, si ha:
+	
+	\begin{equation}
+		\gen{g^m} = G \Longrightarrow m = 1
+	\end{equation} 
+
+	A questo aggiungo anche l'inverso, con $m = -1$.
+\end{dimostrazione}
+
+Visto che $G=\gen{g}$ con $\ordine{g} = \infty$ risulta $G \isomorfo \Z$, allora 1 e -1 sono gli unici generatori di $\Z$.
+
+\begin{teorema}
+	\label{thr:generatori_gruppi_ciclici_finiti}
+	Se $G = \gen{g}$ e $\ordine{g} = n$, allora i generatori di $G$ sono tutti e soli i $G^k$ con $1 \le k < n$ e $\MCD{k}{n} = 1$ (coprimi).
+\end{teorema}
+\begin{dimostrazione}
+	Quando $\gen{g^k} = G$?
+	
+	\begin{align}
+		\gen{g^k} = G &\Longrightarrow \ordine{g^k} = \ordine{G} \\
+		&\Longrightarrow \dfrac{n}{\MCD{n}{k}} = n \\
+		&\Longrightarrow \MCD{n}{k} = 1
+	\end{align}
+\end{dimostrazione}
+
+Chiamiamo $\varphi(n)$ la \textbf{funzione di Eulero}, che restituisce il numero di coprimi di $n$ tra gli interi positivi minori di $n$.
+
+\textbf{Il numero di generatori di $G$ con $\ordine{G} = n$ è $\varphi(n)$.}
+
+\begin{esercizio}
+	Dato $G = \gen{g}$ con $\ordine{G} = 20$. Quali sono i sottogruppi? Quali i generatori?
+\end{esercizio}
+\begin{soluzione}
+	I sottogruppi sono in corrispondenza con i divisori dell'ordine del gruppo.
+	
+	I generatori di ogni sottogruppo sono le potenze coprime con l'ordine del sottogruppo.
+	
+	L'ordine dei sottogruppi è dato dall'ordine del gruppo diviso per la potenza dei generatori.
+	
+	\begin{center}		
+		\begin{tabular}{cccc}
+			$\gen{g}$ & ordine 20 & $\varphi(20) = 8$ & $g, g^3, g^7, g^9, g^{11}, g^{13}, g^{17}, g^{19}$ \\
+			$\gen{g^2}$ & ordine 10 & $\varphi(10) = 4$ & $g^2, g^6, g^{14}, g^{18}$ \\
+			$\gen{g^4}$ & ordine 5 & $\varphi(5) = 4$ & $g^4, g^8, g^{12}, g^{16}$ \\
+			$\gen{g^5}$ & ordine 4 & $\varphi(4) = 2$ & $g^5, g^{15}$ \\
+			$\gen{g^{10}}$ & ordine 2 & $\varphi(2) = 1$ & $g^{10}$ \\
+			$\gen{g^{20}}$ & ordine 1 & $\varphi(1) = 1$ & $g^{20} = 1$ \\
+			\bottomrule
+			& & 20 &
+		\end{tabular}
+	\end{center}
+
+	Ad ogni elemento di $G$ abbiamo associato il sottogruppo che genera.
+\end{soluzione}
+
+\section{Piccola sintesi}
+
+Dato un gruppo ciclico $C_n$ di ordine $n$:
+
+\begin{itemize}
+	\item le potenze divisori dell'ordine $n$ corrispondono ai sottogruppi;
+	\item le potenze coprime dell'ordine $n$ corrispondono ai generatori.
+\end{itemize}
+
+Consideriamo $C_{12}$:
+
+\begin{center}
+	\begin{tabular}{cccc}
+		\toprule
+		$g^1$ & divisore e coprimo & sottogruppo = $C_{12}$ & generatore \\
+		\midrule
+		$g^2$ & divisore & sottogruppo & \\
+		\midrule
+		$g^3$ & divisore & sottogruppo & \\
+		\midrule
+		$g^4$ & divisore & sottogruppo & \\
+		\midrule
+		$g^5$ & coprimo & & generatore \\
+		\midrule
+		$g^6$ & divisore & sottogruppo & \\
+		\midrule
+		$g^7$ & coprimo & & generatore \\
+		\midrule
+		$g^8$ & & & \\
+		\midrule
+		$g^9$ & & & \\
+		\midrule
+		$g^{10}$ & & & \\
+		\midrule
+		$g^{11}$ & coprimo & & \\
+		\midrule
+		$g^{12}$ & divisore & sottogruppo = 1 & \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+
+Sottogruppi:
+
+\begin{center}
+	\begin{tabular}{cccc}
+		\toprule
+		Sottogruppo & ordine & numero generatori & lista generatori \\
+		\midrule
+		$\gen{g} = C_{12}$ & 12 & $\varphi(12) = 4$ & $g, g^5, g^7, g^{11}$ \\
+		$\gen{g^2}$ & 6 & $\varphi(6) = 2$ & $g^2, g^{2 \cdot 5} = g^{10}$ \\
+		$\gen{g^3}$ & 4 & $\varphi(4) = 2$ & $g^3, g^{3 \cdot 3} = g^9$ \\
+		$\gen{g^4}$ & 3 & $\varphi(3) = 2$ & $g^4, g^{4 \cdot 2} = g^8$ \\
+		$\gen{g^6}$ & 2 & $\varphi(2) = 1$ & $g^6$ \\
+		$\gen{g^{12}} = 1$ & 1 & $\varphi(1) = 1$ & $g^{12} = 1$ \\
+		\bottomrule 
+	\end{tabular}
+\end{center}
+
+\section{Gruppi privi di sottogruppi non banali}
+
+\begin{teorema}
+	I gruppi privi di sottogruppi non banali sono ciclici e di ordine primo.
+\end{teorema}
+\begin{dimostrazione}
+	Prendiamo un elemento $g \in G$ con $g \ne 1$.
+	
+	Consideriamo $H = \gen{g}$: è un sottogruppo di $G$, non può essere il sottogruppo identico, quindi non può che coincidere con il gruppo $G$. Quindi:
+	
+	\begin{equation}
+		G = H = \gen{g}
+	\end{equation}
+
+	Quindi $G$ è un gruppo ciclico.
+	
+	Se $\ordine{G} = \infty$ allora ha infiniti sottogruppi, che non è accettabile. Quindi $G$ deve avere ordine finito.
+	
+	Se $\ordine{G} = m$, allora i sottogruppi sono in corrispondenza con i divisori di $m$. Ma noi vogliamo solo 2 sottogruppi, quindi $m$ deve essere un numero primo.
+\end{dimostrazione}
+
+\section{Esponente}
+
+Sia dato un gruppo $G$ finito.
+
+Definiamo \textbf{esponente} di $G$ ($\exp(G)$) il più piccolo intero positivo $m$ tale che:
+
+\begin{equation}
+	g^m = 1 \,\, \forall g \in G	
+\end{equation}
+ 
+Ovvero:
+
+\begin{equation}
+	\ordine{g} \text{ divide } \exp(G) \,\, \forall g \in G
+\end{equation}
+
+Ovvero:
+
+\begin{equation}
+	\exp(G) = \mcm(\ordine{g_0}, \ordine{g_1}, \dots, \ordine{g_n}) \,\, \text{con } g_i \in G
+\end{equation}
+
+\begin{esercizio}
+	Calcolare $\exp(S_4)$.
+\end{esercizio}
+\begin{soluzione}
+Elenchiamo le tipologie di elementi di $S_4$:
+
+\begin{center}
+	\begin{tabular}{ccc}
+		unità & 1 & ordine 1 \\
+		scambi & (12) & ordine 2 \\
+		doppi scambi & (12)(34) & ordine 2 \\
+		3-cicli & (123) & ordine 3 \\
+		4-cicli & (1234) & ordine 4
+	\end{tabular}
+\end{center}
+
+Quindi:
+
+\begin{equation}
+	\exp(S_4) = \mcm(2, 3, 4) = 12
+\end{equation}
+\end{soluzione}
+
+\begin{teorema}
+	\label{thr:esponente}
+	Se $G$ è un gruppo abeliano finito, allora
+	
+	\begin{equation}
+		G \text{ ciclico } \Longleftrightarrow \exp(G) = \ordine{G}
+	\end{equation}
+\end{teorema}
+\begin{dimostrazione}
+	Vedi \cite[pag. 46-47]{jacobson}.
+\end{dimostrazione}
+
+Chiavi di lettura del precedente teorema:
+
+\begin{gather}
+	G \text{ ciclico e finito } (\Longrightarrow G \text{ abeliano}) \Longrightarrow \exp(G) = \ordine{G} \\
+	G \text{ abeliano e finito} \land \exp(G) = \ordine{G} \Longrightarrow G \text{ ciclico }
+\end{gather}
+
+\begin{teorema}
+	Sia $K$ un campo e sia $G$ un sottogruppo del gruppo moltiplicativo $K^*$. Se $G$ è finito, allora $G$ è ciclico.
+\end{teorema}
+\begin{dimostrazione}
+	In un campo la moltiplicazione è commutativa, quindi $G$ è abeliano.
+	
+	Quindi $G$ è abeliano e finito e posso usare il teoremo~\ref{thr:esponente}.
+	
+	Chiamiamo:
+	
+	\begin{gather}
+		e = \exp(G) \\
+		n = \ordine{G}
+	\end{gather}
+
+	In un gruppo finito l'esponente divide l'ordine:\footnote{l'ordine di $G$ e l'ordine di $g$ possono essere diversi $\forall g \in G$.}
+	
+	\begin{equation}
+		e|n \Longrightarrow e \le n
+	\end{equation}
+
+	Prendo il polinomio che ha coefficienti nel campo:
+	
+	\begin{equation}
+		x^e - 1 \in K[x]
+	\end{equation}
+
+	$e$ è l'esponente, quindi $g^e = 1 \forall g \in G$, quindi il polinomio ammette come radici almeno tutti gli elementi di $g$.
+	
+	Usiamo il teorema di Ruffini: il numero di radici di un polinomio è minore o uguale al grado, quindi:
+	
+	\begin{equation}
+		n \le e
+	\end{equation}
+
+	Quindi:
+	
+	\begin{equation}
+		n = e
+	\end{equation}
+
+	Quindi, per il teorema~\ref{thr:esponente}, $G$ è ciclico.
+\end{dimostrazione}
+
+\begin{esercizio}
+	Se $H$ è un sottogruppo finitamente generato di $(\Q, +)$, allora $G$ è ciclico.
+\end{esercizio}
+\begin{soluzione}
+	Battezziamo i generatori di $H$:
+	
+	\begin{equation}
+		H = \gen{\dfrac{a_1}{b_1}, \dfrac{a_2}{b_2}, \dots, \dfrac{a_r}{b_r}}
+	\end{equation}
+
+	Prendiamo:
+	
+	\begin{equation}
+		h = \dfrac{1}{b_1 \cdot b_2 \cdot \dots \cdot b_r}
+	\end{equation}
+
+	Quindi:
+	
+	\begin{equation}
+		\dfrac{a_i}{b_i} = h \cdot a_i \cdot b_1 \cdot \dots \cdot b_{i-1} \cdot b_{i+1} \cdot \dots \cdot b_r
+	\end{equation}
+
+	Quindi ogni generatore è un multiplo di $h$ (attenzione che stiamo usando una notazione additiva):
+	
+	\begin{equation}
+		\dfrac{a_i}{b_i} \in \gen{h}
+	\end{equation}
+
+	Quindi:
+	
+	\begin{equation}
+		H \le \gen{h}
+	\end{equation}
+
+	Ma i sottogruppi di gruppi ciclici sono ciclici, quindi $H$ è ciclico.
+\end{soluzione}
+
+\section{Teorema cinese del resto}
+
+\begin{teorema}
+	Se $G$ è un gruppo ciclico di ordine $n$, allora $G$ è isomorfo ad un prodotto diretto di gruppi ciclici di ordine potenza di primo.
+\end{teorema}
+\begin{dimostrazione}
+	Scomponiamo l'ordine $n$ in fattori primi:
+	
+	\begin{equation}
+		n = p_1^{a_1} \cdot \dots \cdot p_t^{a_t}
+	\end{equation}
+
+	Posso quindi considerare la quantità:
+	
+	\begin{equation}
+		q_i = \dfrac{n}{p_i{a_i}}
+	\end{equation}
+
+	che corrisponde al prodotto di tutti i fattori tranne quello $i$-esimo.
+	
+	Se ora battezziamo $g$ il generatore del gruppo ciclico $G$, chiamiamo:
+	
+	\begin{equation}
+		g_i := g^{q_i}
+	\end{equation}
+
+	Ciascuno di questi elementi ha ordine:
+	
+	\begin{equation}
+		\ordine{g_i} = \dfrac{n}{q_i} = p_i^{a_i}
+	\end{equation}
+
+	Consideriamo allora il prodotto diretto:
+	
+	\begin{equation}
+		\gen{g_1} \times \dots \times \gen{g_t}
+	\end{equation}
+
+	Definisco la seguente funzione:
+	
+	\begin{align}
+		\gamma: \gen{g_1} \times \dots \times \gen{g_t} &\longrightarrow G
+		(x1, \dots, x_t) \longmapsto x_1 \dots x_t
+	\end{align}
+
+	$\gamma$ è l'isomorfismo che cerco?
+	
+	$\gamma$ è un omomorfismo, infatti:
+	
+	\begin{align}
+		\gamma(x_1, \dots, x_t) &= x1 \cdot \dots \cdot x_t \cdot y_1 \cdot \dots \cdot y_t = \\
+		&= x_1y_1 \cdot \dots \cdot x_ty_t =  \\
+		&= \gamma(x_1y_1, \dots, x_ty_t) = \\
+		&= \gamma((x_1, \dots, x_t) \cdot (y_1, \dots, y_t))
+	\end{align}
+
+	Devo dimostrare che $\gamma$ è un isomorfismo. Ma dominio e codominio hanno la stessa cardinalità (infatti la cardinalità del dominio è il prodotto delle cardinalità dei gruppi $\gen{g_i}$). Quindi basta dimostrare l'iniettività o la suriettività.
+	
+	Dimostriamo la suriettività.
+	
+	Per come li ho costruiti l'MCD dei numeri $q_i$ è pari ad 1. Allora l'MCD si può scrivere come combinazione lineare a coefficienti interi degli elementi considerati:
+	
+	\begin{equation}
+		1 = \sum_i r_i q_i \quad \text{con } r_i \in \Z
+	\end{equation}
+
+	Quindi:
+	
+	\begin{align}
+		g &= g^1 = \\
+		&= g^{\sum_i r_i q_i} = \\
+		&= \prod_i(g^{q_i})^{r_i} = \\
+		&= \prod_i(g_i)^{r_i} = \\
+		&= \gamma(g_1^{r_1}, \dots, g_t^{r_t}) \\
+		\Longrightarrow g &\in \im(\gamma)
+	\end{align}
+
+	Quindi $\gamma$ è suriettiva, quindi anche iniettiva.
+\end{dimostrazione}
+Questo teorema corrisponde al:
+
+\begin{teorema}[Teorema cinese del resto]
+	\begin{equation}
+		\Z/m\Z \isomorfo \Z/p_1^{a_1}\Z \times \dots \times \Z/p_t^{a_t}\Z
+	\end{equation}
+\end{teorema}

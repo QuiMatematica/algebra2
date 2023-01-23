@@ -1,0 +1,59 @@
+\chapter{Gruppi quozienti}
+
+Si $G$ un gruppo e $N$ un suo sottogruppo normale:
+
+\begin{equation}
+	N \normale G
+\end{equation}
+
+Definiamo una relazione di congruenza:
+
+\begin{equation}
+	a \equiv b \,(\text{mod } N) \quad \text{ se } a^{-1}b \in N
+\end{equation}
+
+ovvero se:
+
+\begin{equation}
+	b = aN
+\end{equation}
+
+ovvero se:
+
+\begin{equation}
+	\exists n \in N \taleche b = an
+\end{equation}
+
+Vedi \cite[pag. 56]{jacobson} per la dimostrazione che questa relazione è di equivalenza.
+
+Le classi di equivalenza corrispondono ai laterali del sottogruppo $N$, e formano un gruppo in quanto:
+
+\begin{gather}
+	(gN)(hN) = ghN \\
+	N \text{ è l'unità} \\
+	(gN)^{-1} = g^{-1}N
+\end{gather}
+
+Definiamo \textbf{gruppo quoziente} di $G$ relativo a $N$ il gruppo formato dalle classi di equivalenza $G/\equiv$. Indichiamo questo gruppo con $G/N$.
+
+Le classi di equivalenza formano una partizione del gruppo $G$, pertanto gli elementi del gruppo quoziente $G/N$ rappresentano a loro volta una partizione di $G$. Uno degli elementi è rappresentato dal sottogruppo normale $N$ (figura~\ref{fig:Gruppi_quozienti_partizione}).
+
+\begin{figure}[tp]
+	\centering
+	\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+		\clip(-4.5,-3.4) rectangle (4.5,3.4);
+		\draw [rotate around={0:(0,0)},line width=1pt] (0,0) ellipse (4cm and 3cm);
+		\draw [shift={(-11,0)},line width=1pt] plot[domain=-0.27:0.27,variable=\t]({9*cos(\t r)},{9*sin(\t r)});
+		\draw [shift={(-1,12)},line width=1pt] plot[domain=4.63:5.12,variable=\t]({12*cos(\t r)},{12*sin(\t r)});
+		\draw [shift={(12,3)},line width=1pt]  plot[domain=3.4:3.65,variable=\t]({11*cos(\t r)},{11*sin(\t r)});
+		\draw (3.2,2.8) node[anchor=north west] {$G$};
+		\draw (-0.5,-1) node[anchor=north west] {$N$};
+		\draw (-3.5,0.5) node[anchor=north west] {$g_1N$};
+		\draw (-0.5,2) node[anchor=north west] {$g_2N$};
+		\draw (2.4,-0.2) node[anchor=north west] {$g_3N$};
+	\end{tikzpicture}
+	\caption{Gruppo quoziente $G/N$ come partizione del gruppo $G$.}
+	\label{fig:Gruppi_quozienti_partizione}
+\end{figure}
+
+Ogni gruppo $G \ne 1$ ha due sottogruppi normali: $G$ e $1$. $G$ è detto \textbf{semplice} se ha solo questi sottogruppi normali.

@@ -1,0 +1,87 @@
+\chapter{$S_3$}
+\label{chp:S3}
+
+\section{Caratteristiche del gruppo}
+
+\begin{center}
+	\begin{tabular}{lll}
+		Gruppo abeliano & No & Per esempio: $(12)(13) \neq (13)(12)$ \\
+		Gruppo ciclico & No & Non contiene elementi di ordine 6. \\
+		Ordine & 6 & $P_3 = 3! = 6$\\
+		Esponente & 6 & Il gruppo contiene elementi di ordine 1, 2 e 3. \\
+		Isomorfismi & $C_2 \times C_3$ & $G = \gen{(12), (123)}$ \\
+ 		&  $D_3$ & 
+	\end{tabular}
+\end{center}
+
+\section{Elementi}
+
+\begin{center}
+	\[
+	\begin{array}{cccc}
+		\toprule
+		\text{Elemento} & \text{Ciclo} & \text{Inverso} & \text{Ordine} \\
+		\midrule
+		\begin{pmatrix}
+			123 \\ 123
+		\end{pmatrix}
+		& (1)	& (1) & 1 \\
+		\begin{pmatrix}
+			123 \\ 132
+		\end{pmatrix}
+		& (23) & (23) & 2 \\
+		\begin{pmatrix}
+			123 \\ 213
+		\end{pmatrix}
+		& (12) & (12) & 2 \\
+		\begin{pmatrix}
+			123 \\ 231
+		\end{pmatrix}
+		& (123) & (132) & 3 \\
+		\begin{pmatrix}
+			123 \\ 312
+		\end{pmatrix}
+		& (132) & (123) & 3 \\
+		\begin{pmatrix}
+			123 \\ 321
+		\end{pmatrix}
+		& (13) & (13) & 2 \\
+		\bottomrule
+	\end{array}
+	\]
+\end{center}
+
+\section{Tavola di Cayley}
+
+\begin{center}
+	\[
+	\begin{array}{cccccc}
+		\midrule
+		(1) & (12) & (13) & (23) & (123) & (132) \\
+		(12) & (1) & (132) & (123) & (23) & (13) \\
+		(13) & (123) & (1) & (132) & (12) & (23) \\
+		(23) & (132) & (123) & (1) & (13) & (12) \\
+		(123) & (13) & (23) & (12) & (132) & (1) \\
+		(132) & (23) & (12) & (13) & (1) & (123) \\
+		\bottomrule
+	\end{array}
+	\]
+\end{center}
+
+\section{Sottogruppi non banali}
+
+\begin{center}
+	\begin{tabular}{ccccccc}
+		\toprule
+		Generatori & Elementi & Ordine & Indice & Ciclico & Normale & p-Sylow \\
+		\midrule
+		$\gen{(12)}$ & $\{(1), (12)\}$ & 2 & 3 & Sì & No & Sì \\
+		$\gen{(13)}$ & $\{(1), (13)\}$ & 2 & 3 & Sì & No & Sì \\
+		$\gen{(23)}$ & $\{(1), (23)\}$ & 2 & 3 & Sì & No & Sì \\
+		$\gen{(123)} = \gen{(132)}$ & $\{(1), (123), (132)\}$ & 3 & 2 & Sì & Sì & Sì \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+
+% sottogruppi
+% centro

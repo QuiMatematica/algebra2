@@ -1,0 +1,351 @@
+\chapter{Esercizi sugli omomorfismi}
+
+\begin{esercizio}
+	\label{ex:automorfismo_iota}
+	Sia:
+	
+	\begin{align}
+		\iota : G &\longrightarrow G \\
+		x &\longrightarrow x^{-1}
+	\end{align}
+
+	$\iota$ è un automorfismo se e solo se $G$ è abeliano.
+	\footnote{Cfr. \cite[pag. 63, es. n. 3]{jacobson}.}
+\end{esercizio}
+\begin{soluzione}
+	$\iota$ è una funzione biiettiva perché è l'inversa di se stessa. Ma è un omomorfismo (e quindi un automorfismo)?
+	
+	E' un omomorfismo se, $\forall x_1, x_2 \in G$:
+	
+	\begin{align}
+		\iota(x_1x_2) &= \iota(x_1)\iota(x_2) &&\text{per la definizione di omomorfismo} \\
+		(x_1x_2)^{-1} &= x_1^{-1}x_2^{-1} &&\text{per la definizione di $\iota$} \\
+		x_2^{-1}x_1^{-1} &= x_1^{-1}x_2^{-1} &&\text{per l'operazione di inversione} \\
+		(x_2^{-1}x_1^{-1})^{-1} &= (x_1^{-1}x_2^{-1})^{-1} &&\text{invertendo i due membri} \\
+		x_1x_2 &= x_2x_1 &&\text{per l'operazione di inversione}
+	\end{align}
+
+	Quindi $G$ è abeliano.
+\end{soluzione}
+
+\begin{esercizio}
+	Determina $\Aut G$ per un gruppo ciclico infinito e per un gruppo ciclico finito.
+	\footnote{Cfr. \cite[pag. 63, es. n. 4]{jacobson}}
+\end{esercizio}
+\begin{soluzione}
+	Dato che $G = \gen{g}$ è un gruppo ciclico, ogni endomorfismo $\alpha \in \End G$ trasforma il generatore $g$ in un qualche altro elemento di $G$, elemento che è una potenza del generatore:
+	
+	\begin{equation}
+		\alpha: g \longmapsto g^k
+	\end{equation}
+
+	Affinché un tale endomorfismo sia un automorfismo è necessario che l'elemento immagine $g^k$ sia a sua volta generatore del gruppo, ovvero:
+	
+	\begin{equation}
+		\gen{g^k} = \gen{g}
+	\end{equation}
+
+	Studiamo ora i due casi distinti.
+	
+	Nel caso di gruppo $G$ \textbf{ciclico e infinito}, sono solo due i valori di $k$ per cui $g^k$ è generatore di $G$, ovvero -1 e +1 (vedi teorema~\ref{thr:generatori_gruppi_ciclici_infiniti}).
+	
+	Quindi abbiamo due soli automorfismi per i gruppi ciclici infiniti: l'automorfismo identico e l'automorfismo $\iota$ (vedi esercizio~\ref{ex:automorfismo_iota}) che inverte tutti gli elementi di $G$.
+	
+	Quindi:
+	
+	\begin{equation}
+		\Aut G = \gen{\iota} \isomorfo C_2
+	\end{equation}
+
+	Se invece $G$ è un gruppo \textbf{ciclico finito di ordine $m$}, posso considerare solo i valori di $k$ tali che $0 \le k < m$. Il numero di generatori del gruppo è pari a $\varphi(m)$ (vedi teorema~\ref{thr:generatori_gruppi_ciclici_finiti}). Quindi:
+	
+	\begin{equation}
+		\ordine{\Aut G} = \varphi(m)
+	\end{equation}
+\end{soluzione}
+
+\begin{esercizio}
+	\label{ex:automorfismi_interni}
+	Sia $G$ un gruppo e $a \in G$ un suo elemento. Definiamo l'\emph{automorfismo interno} (o \emph{coniugio}):
+	
+	\begin{align}
+		I_a: G &\longrightarrow G \\
+		 x &\longmapsto axa^{-1}
+	\end{align}
+
+	Verifica che $I_a$ è un automorfismo.
+	
+	Dimostra che:
+	
+	\begin{align}
+		I: G &\longrightarrow \Aut G \\
+		a &\longmapsto I_a
+	\end{align}
+	
+	è un omomorfismo e che:
+	
+	\begin{equation}
+		\ker I = Z(G)
+	\end{equation}
+	
+	Quindi concludi che:
+	
+	\begin{equation}
+		\Inn G := \{I_a \taleche a \in G\}
+	\end{equation} 
+
+	è un sottogruppo di $\Aut G$ con:
+	
+	\begin{equation}
+		\Inn G \isomorfo G/Z(G)
+	\end{equation}
+	
+	Verifica che $\Inn G$ è un sottogruppo normale di $\Aut G$. $\Aut G/\Inn G$ è chiamato \emph{gruppo degli automorfismi esterni}.
+	\footnote{Cfr. \cite[pag. 63, es. n. 6]{jacobson}}
+\end{esercizio}
+\begin{soluzione}
+	Per verificare che $I_a$ è un automorfismo devo:
+	
+	\begin{enumerate}
+		\item verificare che è un omomorfismo, ovvero rispetta la proprietà~\eqref{eqn:omomorfismo_proprieta};
+		\item verificare che è un endomorfismo, ovvero una funzione di un gruppo su se stesso; ma questo è già verificato per definizione di $I_a$;
+		\item verificare che è un automorfismo, ovvero che la mappa è invertibile.
+	\end{enumerate}
+
+	Per verificare che $I_a$ è un omomorfismo basta osservare che:
+	
+	\begin{align}
+		I_a(x_1x_2) &= ax_1x_2a^{-1} && \text{per definizione di $I_a$} \\
+		&= ax_1a^{-1}ax_2a^{-1} && \text{perché $a^{-1}a = 1$} \\
+		&= I_a(x_1)I_a(x_2) && \text{per definizione di $I_a$}
+	\end{align}
+
+	Per verificare che $I_a$ è invertibile (e quindi un automorfismo) basta osservare che:
+	
+	\begin{align}
+		y = I_a(x) & \quad\text{chiamo $y$ l'immagine di $x$} \\
+		y = axa^{-1} & \quad\text{per definizione di $I_a$} \\
+		a^{-1}ya = a^{-1}(axa^{-1})a & \quad\text{per il secondo principio di equivalenza} \\
+		a^{-1}ya = x & \quad\text{per la proprietà distributiva} \\
+	\end{align}
+
+	Quindi risulta che:
+	
+	\begin{align}
+		x &= I_a^{-1}(y) && \text{la funzione inversa} \\
+		&= a^{-1}ya && \text{per quanto visto sopra} \\
+		&= a^{-1}y(a^{-1})^{-1} && \text{per definizione di elemento inverso} \\
+		&= I_{a^{-1}}(y) && \text{per definizione di $I_a$}
+	\end{align}
+
+	Quindi la mappa $I_a$ è invertibile perché:
+	
+	\begin{equation}
+		I_a^{-1} = I_{a^{-1}}
+	\end{equation}
+
+	Per dimostrare che la mappa $I$ è un omomorfismo basta verificare che soddisfa la proprietà~\eqref{eqn:omomorfismo_proprieta}. Ovvero, chiamata $\circ$ l'operazione di composizione di due automorfismi interni, devo dimostrare che:
+	
+	\begin{align}
+		I(a_1a_2) &= I(a_1) \circ I(a_2) \\
+		I_{a_1a_2} &= I_{a_1} \circ I_{a_2}
+	\end{align}
+
+	Verificare questa significa verificare che $\forall x \in G$:
+	
+	\begin{equation}
+		I_{a_1a_2}(x) = (I_{a_1} \circ I_{a_2})(x)
+	\end{equation}
+	
+	Si ha infatti:
+	
+	\begin{align}
+		I_{a_1a_2}(x) &= (a_1a_2)x(a_1a_2)^{-1} && \text{per definizione di $I_a$} \\
+		&= a_1a_2xa_2^{-1}a_1^{-1} && \text{per definizione di inverso} \\
+		&= a_1 I_{a_2}(x) a_1^{-1} && \text{per definizione di $I_a$} \\
+		&= I_{a_1}(I_{a_2}(x)) && \text{per definizione di $I_a$} \\
+		&= (I_{a_1} \circ I_{a_2})(x) && \text{per composizione di mappe}
+	\end{align}
+
+	\emph{Nota bene: } l'omomorfismo $I$ in genere non è suriettivo. Se, per esempio, $G$ è abeliamo, allora anche la mappa $\iota$ dell'esercizio~\ref{ex:automorfismo_iota} è un automorfismo, ma $\iota$ non è un'immagine di $I$.
+	
+	Il nucleo di $I$ può essere determinato come:
+	
+	\begin{align}
+		\ker I &= \{a \taleche I_a = 1\} && \text{per definizione di nucleo} \\
+		&= \{a \taleche \forall x \in G\,\,  axa^{-1} = x \} && \text{per definizione di $I_a$} \\
+		&= \{a \taleche \forall x \in G\,\, ax = xa \} && \text{per la proprietà degli elementi inversi} \\
+		&= Z(G) && \text{per definizione di centro}
+	\end{align}
+	
+	Per verificare che $\Inn G$ è un sottogruppo di $\Aut G$ basta osservare che è l'immagine di $G$ tramite la mappa $I$:
+	
+	\begin{equation}
+		\Inn G = I(G)
+	\end{equation}
+
+	Quindi per il teorema fondamentale degli omomorfismi~\ref{thr:Omomorfismi_fondamentale}, $\Inn G$, che è l'immagine dell'omomorfismo $I$, è un sottogruppo di $\Aut G$. Inoltre, visto che $\ker I = Z(G)$, allora $G/Z(G)$ è isomorfo all'immagine $\Inn G$ (figura~\ref{fig:automorfismi_interni}).
+	
+	
+	Per verificare che $Inn G$ è un sottogruppo normale di $Aut G$ dobbiamo verificare che, per ogni $A \in \Aut G$:
+	
+	\begin{equation}
+		A \circ \Inn G \circ A^{-1} = \Inn G
+	\end{equation}
+
+	Ovvero:
+	
+	\begin{equation}
+		\forall I_a \in \Inn G \quad A \circ I_a \circ A^{-1} \in \Inn G
+	\end{equation}
+	
+	Ovvero:
+	
+	\begin{equation}
+		\forall I_a \in \Inn G,\, \forall x \in G,\, \exists I_b \in \Inn G \quad (A \circ I_a \circ A^{-1})(x) = I_b(x)
+	\end{equation}
+
+	Infatti:
+	
+	\begin{align}
+		(A \circ I_a \circ A^{-1})(x) &= A(I_a(A^{-1}(x))) &&\text{per composizione di automorfismi} \\
+		&= A(a A^{-1}(x) a^{-1}) && \text{per definizione di $I_a$} \\
+		&= A(a) A(A^{-1}(x))A(a^{-1}) && \text{perché A è un automorfismo} \\
+		&= A(a) A(A^{-1}(x))A(a)^{-1} && \text{perché A è un automorfismo} \\
+		&= A(a) x A(a)^{-1} && \text{perché $A$ e $A^{-1}$ sono mappe inverse} \\
+		&= I_{A(a)}(x) && \text{per definizione di $I_a$}
+	\end{align}
+	
+\end{soluzione}
+
+\begin{figure}[tp]
+	\centering
+	\tikz {
+		\node (a) at (0,3) {$G$};
+		\node (b) at (3,3) {$\Aut G$};
+		\node (c) at (0,0) {$G/Z(G)$};
+		\draw (a) edge[->] node[above] {$I$} (b); 
+		\draw (a) edge[->] (c);
+		\draw (c) edge[->] (b);
+	}
+	\caption{Automorfismi interni}
+	\label{fig:automorfismi_interni}
+\end{figure}
+
+\begin{esercizio}
+	Se $\Aut G = 1$ allora $\ordine{G} \le 2$.
+	\footnote{Cfr. \cite[pag. 63, es. n. 8]{jacobson}}
+\end{esercizio}
+\begin{soluzione}
+	Se non ci sono automorfismi, non ci sono neanche automorfismi interni. Quindi deve risultare:
+	
+	\begin{align}
+		\Inn G = 1 &\quad\text{perché l'automorfismo interno deve essere identico} \\
+		G/Z(G) = 1 &\quad\text{perché gli automorfismi interni sono isomorfi a $G/Z(G)$} \\
+		Z(G) = G &\quad\text{perché il gruppo quoziente contiene solo l'identità} \\
+		G \text{ è abeliano} &\quad\text{perché il gruppo coincide con il suo centro}
+	\end{align}
+
+	Se il gruppo è abeliano, allora è presente anche l'automorfismo $\iota$ (vedi esercizio~\ref{ex:automorfismo_iota}), ma anche tale automorfismo deve essere identico, quindi:
+	
+	\begin{align}
+		\iota = 1 &\quad\text{perché l'automorfismo deve essere identico} \\
+		\forall g \in G\quad g = g^{-1} &\quad\text{perché ogni elemento deve essere inverso di se stesso} \\
+		\forall g \in G\quad g^2 = 1 &\quad\text{per il secondo principio di equivalenza}
+	\end{align}
+
+	Quindi tutti gli elementi di $G$ hanno al più ordine 2.
+
+	Passiamo ora alla notazione additiva. 
+	
+	Supponiamo di avere un gruppo $G$ abeliano in cui, $\forall g \in G$, $pg = 0$, con $p$ primo.
+	
+	Prendiamo inoltre il gruppo $F = \Z/p\Z$. Gli elementi di questo gruppo hanno la forma $z + p\Z$.
+	
+	Definiamo inoltre l'operazione:
+	
+	\begin{equation}
+		(z + p\Z) \circ g := zg
+	\end{equation}
+
+	Verifichiamo innanzitutto che questa operazione sia ben definita, ovvero se prendiamo due elementi equivalenti di $F$ otteniamo lo stesso elemento di $G$. Se ho due elementi equivalenti risulta:
+	
+	\begin{equation}
+		z_1 + p\Z = z_2 + p\Z
+	\end{equation}
+
+	Risulta ora:
+	
+	\begin{equation}
+		z_1g - z_2g = (z_1 - z_2)g
+	\end{equation}
+
+	Ma $z_1 \cong z_2 \mod p$, quindi $z_1 - z_2$ è un multiplo di $p$:
+	
+	\begin{equation}
+		z_1g - z_2g = (z_1 - z_2)g = tpg = t0 = 0
+	\end{equation}
+
+	Quindi:
+	
+	\begin{equation}
+		z_1g - z_2g = 0 \quad\Longrightarrow\quad z_1g = z_2g
+	\end{equation}
+
+	Quindi l'operazione è ben definita.
+	
+	L'operazione esterna è un prodotto esterno di un vettore ($g$) per uno scalare ($z$): $G$ è uno spazio vettoriale su $F$.
+	
+	Quindi \emph{se $G$ è un gruppo abeliano con tutti gli elementi di ordine $p$, $G$ può essere considerato uno spazio vettoriale su $F = \Z/p\Z$}.
+	
+	Inoltre un automorfismo di $G$ è un'applicazione lineare invertibile nello spazio vettoriale $G$ e \emph{$\Aut G$ coincide con il gruppo delle applicazioni lineari invertibili}.
+	
+	Torniamo all'esercizio in cui abbiamo capito che abbiamo un gruppo $G$ abeliano i cui elementi hanno tutti ordine al più 2. Quindi $G$ è uno spazio vettoriale su $F = \Z/2\Z$.
+	
+	Se $G$ è uno spazio vettoriale, ha anche una \emph{base} e possiamo domandarci qual è la dimensione dello spazio.
+	
+	Ipotizziamo (per assurdo) che la dimensione sia maggiore o uguale a 2. Esistono quindi in $G$ almeno due vettori $g_1$ e $g_2$ linearmente indipendenti che appartengono ad una base dello spazio vettoriale.
+	
+	Esiste quindi un'applicazione lineare che scambia $g_1$ con $g_2$ lasciando fissi tutti gli altri vettori di base. Tale applicazione lineare è un automorfismo non identico, quindi non è ammesso per il gruppo $G$ che stiamo considerando.
+	
+	Quindi il gruppo $G$ deve avere dimensione al massimo 1.
+	
+	Quindi il gruppo $G$ può avere dimensione 1 e avere due elementi (la base e il vettore nullo), oppure avere dimensione 0 e avere un solo elemento (il vettore nullo).
+	
+	Quindi:
+	
+	\begin{equation}
+		\ordine{G} \le 2
+	\end{equation}
+	
+\end{soluzione}
+
+\begin{esercizio}
+	Dimostrare che:
+	
+	\begin{equation}
+		\Aut(\Sym(3)) \isomorfo \Sym(3)
+	\end{equation}
+\end{esercizio}
+\begin{soluzione}
+	Per quanto visto nell'esercizio~\ref{ex:automorfismi_interni} sappiamo che:
+	
+	\begin{equation}
+		\Sym(3) / Z(\Sym(3)) \isomorfo \Inn(Sym(3)) \normale \Aut(Sym(3))
+	\end{equation}
+
+	Ma nessun elemento di $Z(\Sym(3))$ (a parte l'identità) è commutativo, quindi:
+	
+	\begin{gather}
+		Z(\Sym(3)) = 1 \quad\Longrightarrow\quad \Sym(3) / Z(\Sym(3)) = \Sym(3)
+	\end{gather}
+
+	Per cui possiamo concludere che:
+	
+	\begin{equation}
+		\Sym(3) \isomorfo \Inn(Sym(3)) \normale \Aut(Sym(3))
+	\end{equation}
+
+	Ci resta ora da dimostrare che $\Aut(\Sym(3))$ è isomorfico ad un sottogruppo di $\Sym(3))$.
+	\footnote{La soluzione di questo esercizio non è presente nelle registrazioni del corso, e la seconda parte della dimostrazione riportata su \cite{lucchini_week} è troppo lacunosa per poter essere compresa.}
+\end{soluzione}

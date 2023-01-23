@@ -1,0 +1,150 @@
+\chapter{Conseguenze del teorema di Cayley}
+
+Se abbiamo un gruppo $G$ finito e un suo sottogruppo $H$, per il teorema di Lagrange~\ref{thr:Laterali_Lagrange} l'ordine di $H$ divide l'ordine di $G$.
+
+Si può invertire questo teorema?
+
+Ovvero: dato un gruppo $G$ finito di ordine $n$ e scelto un $m$ che divide $n$, esiste un $H \le G$ tale che $\ordine{H} = m$?
+
+Con i gruppi ciclici funziona: esiste uno ed un solo sottogruppo per ogni divisore (vedi\ref{thr:ciclici_finiti_sottogruppi}).
+
+Con i gruppi abeliani funziona.
+
+Controesempio: $A_4$ ha ordine 12 ($4!/2$) ma non ha alcun sottogruppo di ordine 6.
+
+\begin{lemma}
+	\label{lmm:per_conseguenza_Cayley}
+	Sia $G$ un gruppo di ordine $m$ pari. Allora $G$ contiene almeno un elemento di ordine 2.
+\end{lemma}
+\begin{dimostrazione}
+	Sia:
+	
+	\begin{equation}
+		I = \{g \in G \taleche g = g^{-1}\}
+	\end{equation}
+
+	Se $g \not\in I$, allora anche $g^{-1} \not\in I$, quindi ci sono due elementi che appartengono alla differenza $G - I$. Questo vale per ogni elemento che non appartiene ad $I$, quindi:
+	
+	\begin{equation}
+		\ordine{I} \equiv \ordine{G} \mod 2
+	\end{equation}
+
+	Quindi se $\ordine{G}$ è pari, anche $\ordine{I}$ è pari.
+	
+	$I$ non è vuoto, in quanto $1 \in I$. Quindi deve contenere almeno un altro elemento $x \ne 1$. Tale elemento ha ordine 2, infatti:
+	
+	\begin{equation}
+		x^2 = xx = xx^{-1} = 1
+	\end{equation}
+\end{dimostrazione}
+
+\begin{teorema}
+	Sia $G$ un gruppo con $\ordine{G} = 2m$, con $m$ dispari. $G$ contiene almeno un sottogruppo di ordine $m$.
+\end{teorema}
+\begin{dimostrazione}
+	Partiamo dal teorema di Cayley~\ref{thr:Cayley}, per il quale:
+	\footnote{La notazione usata nei video \cite{lucchini} è diversa da quella usata in \cite{jacobson}.}
+	
+	\begin{align}
+		l: G &\longrightarrow \Sym G \\
+		g &\longmapsto l_g \\
+		l_g: G &\longrightarrow G \\
+		x &\longmapsto gx
+	\end{align}
+
+	E dal momento che $l$ è un isomorfismo: 
+	
+	\begin{equation}
+		G \isomorfo l(G) \le \Sym G
+	\end{equation}
+
+	Se dimostriamo che $l(G)$ contiene un sottogruppo di ordine $m$, allora questo vale anche per $G$.
+	
+	Dal momento che $\ordine{G} = 2m$ è pari, allora esiste almeno un elemento $g$ che ha ordine 2. Consideriamo allora l'elemento $l_g \in l(G) \le \Sym G$. Dal momento che è appartiene a $\Sym G$ lo voglio scrivere come prodotto di cicli disgiunti.
+	
+	Se prendo un qualunque elemento $x_1 \in G$, si ha che:
+	
+	\begin{equation}
+		x_1 \xrightarrow{l_g} gx_1 \xrightarrow{l_g} = ggx_1 = x_1
+	\end{equation}
+
+	Quindi la permutazione scambia gli elementi $x_1$ e $gx_1$. Posso quindi scrivere $l_g$ come prodotto di scambi di elementi disgiunti, e dal momento che $\ordine{G} = 2m$, gli scambi sono esattamente $m$:
+	
+	\begin{equation}
+		l_g = (x_1, gx_1)(x_2, gx_2) \dots (x_m, gx_m)
+	\end{equation}
+	
+	$m$ è dispari, quindi $l_g$ è prodotto di un numero dispari di scambi, quindi è una permutazione dispari e:
+	
+	\begin{equation}
+		l_g \not\in \Alt G
+	\end{equation}
+
+	Per comodità chiama $G^* = l(G)$.
+	
+	Abbiamo:
+	
+	\begin{gather}
+		G^* \le \Sym G \\
+		\Alt G \normale \Sym G
+	\end{gather}
+
+	Quindi per l'esercizio~\ref{ex:Laterali_Prodotto_di_sottogruppi} si ha:
+	
+	\begin{equation}
+		G^* \Alt G \le \Sym G
+	\end{equation}
+	
+	Inoltre $\Alt G$ è contenuto in $G^* \Alt G$ ma non possono essere uguali perché il gruppo prodotto contiene $l_g$, mentre  $l_g \not\in \Alt G$. Quindi:
+	
+	\begin{equation}
+		\Alt G < G^* \Alt G \le \Sym G
+	\end{equation}
+
+	Sappiamo che:
+	
+	\begin{equation}
+		\indice{\Sym G}{\Alt G} = 2
+	\end{equation}
+
+	quindi $\indice{\Sym G}{G^* \Alt G}$ deve dividere 2, ma non può essere 2 perché $\Alt G \ne G^* \Alt G$. Quindi:
+	
+	\begin{equation}
+		G^* \Alt G = \Sym G
+	\end{equation}
+
+	Allora, grazie al teorema dei due sottogruppi~\ref{thr:Isomorfismi_due_sottogruppi} (figura~\ref{fig:conseguenza_Cayley}), possiamo calcolare il seguente indice:
+	
+	\begin{equation}
+		\indice{G^*}{G^* \cap \Alt G} = \indice{G^* \Alt G}{\Alt G} = \indice{\Sym G}{\Alt G} = 2
+	\end{equation}
+	
+	Infine:
+	
+	\begin{gather}
+		\indice{G^*}{G^* \cap \Alt G} = \dfrac{\ordine{G^*}}{\ordine{G^* \cap \Alt G}} \\
+		\ordine{G^* \cap \Alt G} = \dfrac{\ordine{G^*}}{\indice{G^*}{G^* \cap \Alt G}} =
+		\dfrac{2m}{2} = m
+	\end{gather}
+	
+	Quindi $l(G)$ (che ne frattempo abbiamo battezzato $G^*$) possiede il sottogruppo $G^* \cap \Alt G$ di ordine $m$. Quindi anche $G$ (che è isomorfo a $l(G)$) possiede un sottogruppo di ordine $m$.
+	
+\end{dimostrazione}
+\begin{figure}[tp]
+	\centering
+	\tikz {
+		\node (a) at (2,4) {$G^* \Alt G = \Sym G$};
+		\node (b) at (0,2) {$G^*$};
+		\node (d) at (4,2) {$\Alt G$};
+		\node (e) at (2,0) {$G^* \cap \Alt G$};
+		\draw (a) edge[->] (b) 
+		(a) edge[->] (d) 
+		(b) edge[->] (e)
+		(d) edge[->] (e);
+		\draw[decorate,decoration={brace,raise=20pt}] (0,0) -- (0,2) node[pos=.5,right=-35pt,black]{2};
+		\draw[decorate,decoration={brace,raise=20pt}] (4,4) -- (4,2) node[pos=.5,right=23pt,black]{2};
+	}
+	\caption{Schema dei sottogruppi coinvolti nel teorema.}
+	\label{fig:conseguenza_Cayley}
+\end{figure}
+	

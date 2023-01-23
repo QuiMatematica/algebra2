@@ -1,0 +1,475 @@
+\chapter{Azione di un gruppo su un insieme}
+
+Quando si ha a che fare con i gruppi finiti è opportuno procurarsi degli intelligenti \emph{argomenti di conteggio}.
+
+Conosciamo bene i gruppi di permutazione: è utile realizzare un gruppo come gruppo di permutazioni.
+
+Lo sappiamo fare con il teorema di Cayley \textbf{RIF}. Ma se ho un gruppo di ordine $n$, lo devo mettere nel gruppo simmetrico di grado $n$, che ha ordine $n^2$, quindi mi trovo in un ambiente troppo grande.
+
+Allora un trucco è quello di realizzare il mio gruppo come gruppo di permutazioni ma in modi diversi, sperando di trovarne uno semplice.
+
+\section[Azione di un gruppo su un insieme]{Azione di un gruppo su un insieme\footnote{\cite[8 novembre 2021]{lucchini}}}
+
+Prendiamo un gruppo $G$ e un insieme $\Omega$.
+Consideriamo l'omomorfismo:
+
+\begin{equation}
+	\sigma: G \longrightarrow \Sym(\Omega)
+\end{equation}
+
+Non possiamo pretendere che $\sigma$ sia biiettiva.
+
+Avremo quindi un sottogruppo normale rappresentato da $\ker \sigma$ tale che:
+
+\begin{equation}
+	\dfrac{G}{\ker \sigma} \isomorfo \Sym(\Omega)
+\end{equation} 
+
+Più omomorfismo ho di questo tipo più probabilità ho di trovare un buon elemento di conteggio.
+
+Consideriamo $g \in G$ e $\omega \in \Omega$. $\sigma(g)$ è una permutazione di $\Omega$. Quindi posso applicare la permutazione $\sigma(g)$ a $\omega$, e trovo che questa sta in $\Omega$:
+
+\begin{equation}
+	\sigma(g)(\omega) \in \Omega
+\end{equation}
+
+Definiamo una notazione più rapida:
+
+\begin{equation}
+	g \circ \omega := \sigma(g)(\omega)
+\end{equation}
+
+Un'azione è una mappa tale che:
+
+\begin{gather}
+	G \times \Omega \longrightarrow \Omega \\
+	(g, \omega) \longmapsto g \circ \omega
+\end{gather}
+
+Proprietà di $\circ$:
+
+\begin{enumerate}
+	\item $1 \circ \omega = \omega \quad \forall \omega \in \Omega$ \\
+	perché $\sigma$ è un omomorfismo, quindi $1_G \longmapsto 1_{\Sym(\Omega)}$;
+	\item $g_1 \circ (g_2 \circ \omega) = (g_1 g_2) \circ \omega \quad \forall g_1, g_2 \in G; \forall \omega \in \Omega$
+\end{enumerate}
+
+Se conosco la mappa, come trovo $\sigma$?
+
+Per ogni elemento $g \in G$ definisco:
+
+\begin{gather}
+	\sigma_g: \Omega \longrightarrow \Omega \\
+	\omega \longmapsto g \circ \omega
+\end{gather}
+
+Questa $\sigma_g$ è una biiezione, perché ha come inverso la $\sigma_{g^{-1}}$.
+
+Ora posso costruire la mappa:
+
+\begin{gather}
+	\sigma: G \longrightarrow \Sym(\Omega) \\
+	g \longmapsto \sigma_g
+\end{gather}
+
+E questa mappa è un omomorfismo.
+
+Non dimenticare:
+
+\begin{align}
+	\ker \sigma &= \{g \in G \taleche g \circ \omega = \omega, \forall \omega \in \Omega\} \\
+	&= \{g \in G \taleche \sigma(g) = 1_{\Sym(\Omega)}\}
+\end{align}
+
+\section[Stabilizzatore]{Stabilizzatore\footnote{\cite[8 novembre 2021]{lucchini}}}
+
+Sia dato un gruppo $G$ che agisce su un insieme $\Omega$, e un elemento $\omega \in \Omega$. Lo \textbf{stabilizzatore} di $\omega$ è:
+
+\begin{equation}
+	\Stab_G(\omega) = G_\omega = \{g \in G \taleche g \circ \omega = \omega\}
+\end{equation}
+
+\begin{teorema}
+	Gli stabilizzatori sono sottogruppi di $G$:
+	
+	\begin{equation}
+		\Stab_g(\omega) \le G
+	\end{equation}
+\end{teorema}
+\begin{dimostrazione}
+	Per quanto riguarda la composizione, consideriamo due elementi $g_1$ e $g_2$ appartenenti allo $Stab_G(\omega)$. Si ha:
+	
+	\begin{align}
+		g_1g_2 \circ \omega &= g_1 \circ (g_2 \circ \omega) &\text{ per la proprietà 2} \\
+		&= g_1 \circ \omega &\text{ perché } g_2 \in \Stab_G(\omega) \\
+		&= \omega &\text{ perché } g_1 \in \Stab_G(\omega) \\
+		& \Longrightarrow g_1g_2 \in \Stab_G(\omega)
+	\end{align}
+
+	Per quanto riguarda l'inverso, consideriamo un generico elemento $g \in G$. Si ha:
+	
+	\begin{align}
+		g \circ \omega = \omega &\Longrightarrow g^{-1} \circ (g \circ \omega) = g^{-1} \circ \omega \\
+		&\Longrightarrow g^{-1}g \circ \omega = g^{-1} \circ \omega \\
+		&\Longrightarrow 1 \circ \omega = g^{-1} \circ \omega \\
+		&\Longrightarrow \omega = g^{-1} \circ \omega
+	\end{align}
+\end{dimostrazione}
+
+\begin{teorema}
+	L'intersezione di tutti gli stabilizzatori è il nucleo:
+	
+	\begin{equation}
+		\bigcap_{\omega \in \Omega}\Stab_G(\omega) = \ker \sigma
+	\end{equation}
+\end{teorema}
+
+\section[Esempi di azioni]{Esempi di azioni\footnote{\cite[8 novembre 2021]{lucchini}}}
+
+\subsection{Azione di Cayley}
+
+\begin{gather}
+	G = \Omega \\
+	g \circ x := gx \\
+	\Stab_G(x) = 1 \\
+	\ker \sigma = 1
+\end{gather}
+
+Ritroviamo il teorema di Cayley \textbf{RIF}: $G \le \Sym(G)$.
+
+\subsection{Coniugato di un elemento}
+
+\begin{gather}
+	G = \Omega \\
+	g \circ x := gxg^{-1}
+\end{gather}
+
+Quindi l'azione dell'elemento $g$ sull'elemento $x$ è il coniugato di $x$ tramite $g$.
+
+Abbiamo quindi che $\sigma_g$ è l'automorfismo interno indotto da $g$ per coniugazione \textbf{RIF}.
+
+\begin{align}
+	\Stab_G(x) &= \{g \taleche gxg^{-1} = x \} = \\\
+	&= \{g \taleche gx = xg \} = \\
+	&= C_G(x)
+\end{align}
+
+Lo stabilizzante dell'elemento $x$ è il centralizzatore di $x$ in $G$.
+
+\begin{align}
+	\ker \sigma &= \bigcap_{x \in G} C_G(x) = \\
+	&= Z(G)
+\end{align}
+
+Il nucleo è il centro di $G$.
+
+Ritroviamo che $Z(G)$ è un sottogruppo normale \textbf{RIF} in quanto nucleo di un omomorfismo.
+
+\subsection{Coniugato di un sottogruppo}
+
+\begin{gather}
+	\Omega = \{ H \taleche H \le G \} \\
+	g \circ H := \{ghg^{-1} \taleche h \in H\} = gHg^{-1}
+\end{gather}
+
+L'azione dell'elemento $g$ sul sottogruppo $H$ è il coniugato di $H$ tramite $g$.
+
+\begin{align}
+	\Stab_G(x) &= \{g \taleche gHg^{-1} = H \} = \\\
+	&= N_G(x)
+\end{align}
+
+Lo stabilizzatore l'insieme degli elementi $g$ che normalizzano $H$: è il \textbf{normalizzante} di $H$ in $G$.
+
+\subsection{Azione sui laterali sinistri}
+
+Dato un sottogruppo $H \le G$, consideriamo l'insieme dei laterali sinistri:
+
+\begin{equation}
+	\Omega = \{ xH \taleche x \in G \}
+\end{equation}
+	
+Definiamo l'azione sui laterali sinistri:
+
+\begin{equation}
+	g \circ xH := gxH
+\end{equation}
+
+Stabilizzatore:
+
+\begin{align}
+	g \in \Stab_G(xH) &\Longleftrightarrow g \circ xH = xH \\
+	&\Longleftrightarrow gxH = xH \\
+	&\Longleftrightarrow gx \in xH \\
+	&\Longleftrightarrow g \in xHx^{-1} \\
+	\Stab_G(xH) &= xHx^{-1}
+\end{align}
+
+Definiamo il \textbf{cuore normale} di $H$ in $G$ come:
+
+\begin{equation}
+	H_G := \ker \sigma = \bigcap_{x \in G} \Stab_G(xH)
+\end{equation}
+
+Viene definito \emph{normale} perché è il nucleo di un'azione, quindi è un sottogruppo normale di $G$:
+
+\begin{equation}
+	H_G \normale G
+\end{equation}
+
+Viene definito \emph{cuore} perché è contenuto in $H$, infatti posso prendere $x = 1$ quando faccio i coniugati, per cui ottengo che:
+
+\begin{equation}
+	H_G \subseteq H
+\end{equation}
+
+\begin{teorema}
+	$H_G$ è il più grande sottogruppo normale di G contenuto in H.
+\end{teorema}
+\begin{dimostrazione}
+	Consideriamo un generico sottogruppo normale $N$ di $G$ contenuto in $H$:
+	
+	\begin{gather}
+		N \subseteq H \\
+		N \normale G
+	\end{gather}
+
+	Faccio il coniugio dei due sottogruppi:
+	
+	\begin{equation}
+		gNg^{-1} \subseteq gHg^{-1}
+	\end{equation}
+
+	$N$ è normale quindi $gNg^{-1} = N$, quindi:
+	
+	\begin{equation}
+		N \subseteq gHg^{-1}
+	\end{equation}
+
+	Questa proposizione è vera $\forall g$, quindi:
+	
+	\begin{equation}
+		N \subseteq \bigcap_{g \in G} gHg^{-1} = H_G
+	\end{equation}
+
+	Quindi $H_G$ è il più grande sottogruppo normale di $G$ contenuto in $H$.
+\end{dimostrazione}
+
+\begin{teorema}
+	\label{thr:Azioni_laterali_indice_finito}
+	Dato $H \le G$ con $\indice{G}{H}= m$ finito, se $G$ agisce sull'insieme $\Omega = \{xH \taleche x \in G\}$, allora $\indice{G}{H_G}$ divide $m!$ (figura~\ref{fig:Azioni_laterali_indice_finito}).
+\end{teorema}
+\begin{dimostrazione}
+	Ricordo che l'indice $\indice{G}{H}$ è il numero di laterali (sinistri o destri) di $H$ in $G$. Quindi la cardinalità di $\Omega$ è $m$ e l'omomorfismo $\sigma$ è:
+	
+	\begin{equation}
+		\sigma: G \longrightarrow \Sym(\Omega) = S_m
+	\end{equation}
+
+	Inoltre il nucleo $\ker \sigma$ è il cuore normale $H_G$, che è un sottogruppo normale di $H$. Quindi per il secondo corollario~\ref{crl:Omomorfismi_fondamentale_2} del teorema fondamentale degli omomorfismi si ha:
+	
+	\begin{equation}
+		\dfrac{G}{\ker \sigma} \isomorfo \sigma(G) \le S_m
+	\end{equation}
+
+	Per il teorema~\ref{thr:Laterali_Lagrange} di Lagrange, l'ordine di un sottogruppo divide l'ordine del gruppo, quindi:
+	
+	\begin{equation}
+		\indice{G}{H_G} = \ordine{\dfrac{G}{\ker \sigma}} = \ordine{\sigma(G)} \text{ divide } \ordine{S_m} = m!
+	\end{equation}
+	
+	
+\end{dimostrazione}
+
+\begin{figure}[tp]
+	\centering
+	\tikz {
+		\node (a) at (0,4) {$G$};
+		\node (b) at (0,2) {$H$};
+		\node (c) at (0,0) {$\ker \sigma = H_G$};
+		\draw (a) edge[-] (b);
+		\draw (b) edge[-] (c);
+		\draw[decorate,decoration={brace,raise=20pt}] (a) -- (b) node[pos=.5,right=23pt,black]{$m$};
+		\draw[decorate,decoration={brace,raise=50pt}] (a) -- (c) node[pos=.5,right=53pt,black]{divide $m!$};
+	}
+	\caption{Rappresentazione del teorema \ref{thr:Azioni_laterali_indice_finito}.}
+	\label{fig:Azioni_laterali_indice_finito}
+\end{figure}
+
+\begin{teorema}
+	Se un gruppo $G$ infinito contiene un sottogruppo $H$ di indice finito, allora contiene anche un sottogruppo normale di indice finito.
+\end{teorema}
+\begin{dimostrazione}
+	Per il teorema~\ref{thr:Azioni_laterali_indice_finito}, chiamato $m = \indice{G}{H}$, $G$ contiene il sottogruppo normale $H_G$ il cui indice divide $m!$. Quindi $\indice{G}{H_G}$ è finito.
+\end{dimostrazione}
+
+Dimostriamo ora un'estensione del teorema \textbf{RIFERIMENTO}.
+
+\begin{esercizio}
+	Sia dato un gruppo finito $G$ con $p$ il più piccolo divisore dell'ordine $\ordine{G}$. Se $H \le G$ e $\indice{G}{H} = p$, allora $H$ è normale.
+	\footnote{\cite[Week 2, Exercise 8]{lucchini_week}}
+\end{esercizio}
+\begin{soluzione}
+	Per il teorema~\ref{thr:Azioni_laterali_indice_finito} sappiamo che:
+	
+	\begin{equation}
+		\indice{G}{H_G} \text{ divide } p!
+	\end{equation}
+
+	Quindi:
+	\footnote{
+		Se $\indice{G}{H_G}$ divide $p!$, allora esiste un intero positivo $a$ per il quale:
+		
+		\begin{equation}
+			a \cdot \indice{G}{H_G} = p! \Longrightarrow \indice{G}{H_G} = \dfrac{p!}{a}
+		\end{equation} 
+	
+		Per il teorema \textbf{RIFERIMENTO} abbiamo:
+		
+		\begin{equation}
+			\indice{G}{H_G} = \indice{G}{H} \cdot \indice{H}{H_G} \Longrightarrow
+			\dfrac{p!}{a} = p \cdot \indice{H}{H_G} \Longrightarrow
+			\indice{H}{H_G} = \dfrac{(p-1)!}{a}
+		\end{equation}
+	
+		Quindi $\indice{H}{H_G}$ divide $(p-1)!$.
+	}
+	
+	\begin{equation}
+		\indice{H}{H_G} \text{ divide } \dfrac{p!}{p} \Longrightarrow \indice{H}{H_G} \text{ divide } (p-1)!
+	\end{equation}
+
+	Per il teorema~\ref{thr:Laterali_Lagrange} di Lagrange:
+	
+	\begin{equation}
+		\indice{H}{H_G} \dividetxt \ordine{G}
+	\end{equation}
+
+	In $(p-1)!$ tutti i divisori sono più piccoli di $p$, il quale è il più piccolo divisore primo di $\ordine{G}$. Quindi $(p-1)!$ e $\ordine{G}$ sono coprimi, quindi il loro MCD è 1. Quindi:
+	
+	\begin{equation}
+		\indice{H}{H_G} = 1 \Longrightarrow H = H_G
+	\end{equation} 
+
+	Quindi $H$ è normale.
+
+\end{soluzione}
+
+\section[Orbita di un elemento di un insieme]{Orbita di un elemento di un insieme\footnote{\cite[8 novembre 2021]{lucchini}}}
+
+Considero un gruppo $G$ che agisce su un insieme $\Omega$. Definisco la seguente relazione tra gli elementi di $\Omega$:
+
+\begin{equation}
+	\omega_1 \eq \omega_2 \sse \exists g \in G \taleche \omega_2 = g \circ \omega_1
+\end{equation}
+
+\begin{teorema}
+	$\eq$ è una relazione di equivalenza.
+\end{teorema}
+\begin{dimostrazione}
+	La relazione $\eq$ è riflessiva, infatti:
+	
+	\begin{equation}
+		\omega = 1 \circ \omega
+	\end{equation}
+
+	La relazione $\eq$ è simmetrica, infatti:
+	
+	\begin{equation}
+		\omega_2 = g \circ \omega_1 \Longrightarrow g^{-1} \circ \omega_2 = g^{-1} \circ g \circ \omega_1 \Longrightarrow \omega_1 = g^{-1} \circ \omega_2
+	\end{equation}
+
+	La relazione $\eq$ è transitiva, infatti:
+	
+	\begin{equation}
+		\omega_2 = g_1 \circ \omega_1 \land \omega_3 = g_2 \circ \omega_2 \Longrightarrow \omega_1 = g_2g_1 \circ \omega_1
+	\end{equation}
+\end{dimostrazione}
+
+Possiamo allora passare alle classi di equivalenza che sono le \textbf{orbite} di $G$ su $\Omega$.
+
+Posso indicare con $G \circ \omega$ l'\textbf{orbita} di $\omega$.
+
+\begin{teorema}
+	Dati:
+	
+	\begin{itemize}
+		\item $G$ gruppo che agisce sull'insieme $\Omega$;
+		\item $\omega \in \Omega$;
+		\item $O = G \circ \omega$;
+		\item $H = \Stab_G(\omega)$;
+		\item $\Lambda = \{xH \taleche x \in G\}$
+	\end{itemize}
+
+	La funzione:
+	
+	\begin{align}
+		\gamma :\quad \Lambda &\longrightarrow O \\
+		xH &\longmapsto x \circ \omega
+	\end{align}
+
+	è una funzione ben definita e biiettiva.
+\end{teorema}
+\begin{dimostrazione}
+	La funzione $\gamma$ è ben definita, infatti è indipendente dal rappresentante del laterale sinistro che utilizzo. Se infatti $x_1H = x_2H$, allora:
+	
+	\begin{equation}
+		\exists h \in H \taleche x_2 = x_1 h
+	\end{equation}
+	
+	Quindi accade che:
+	
+	\begin{align}
+		x_2 \circ \omega &= x_1 h \circ \omega \\
+		&= x_1 \circ (h \circ \omega) \\
+		&= x_1 \circ \omega
+	\end{align}
+
+	La funzione $\gamma$ è suriettiva per definizione di orbita. 
+	
+	La funzione $\gamma$ è iniettiva perché:
+	
+	\begin{align}
+		\gamma(x_1H) = \gamma(x_2H) 
+		&\Longrightarrow x_1 \circ \omega = x_2 \circ \omega \\
+		&\Longrightarrow x_2^{-1} \circ x_1 \circ \omega = \omega \\
+		&\Longrightarrow x_2^{-1} x_1 \in H \quad \text{per definizione di stabilizzatore} \\
+		&\Longrightarrow x_1H = x_2H
+	\end{align}
+\end{dimostrazione}
+
+Se esiste una corrispondenza biiettiva significa che $\Lambda$ e $O$ hanno la stessa cardinalità:
+
+\begin{equation}
+	\ordine{O} = \ordine{\Lambda} = \indice{G}{\Stab_G(\omega)}
+\end{equation}
+
+Per calcolare quanti elementi ci sono nell'orbita di un elemento $\omega$ basta calcolare lo sbabilizzatore e l'indice.
+
+Se $G$ agisce su $G$ \textbf{per coniugio}, come sono fatte le orbite?
+
+Prendiamo un generico elemento $x \in G$. L'orbita è:
+
+\begin{equation}
+	G \circ x = \{gxg^{-1} \taleche g \in G\}
+\end{equation}
+
+Ovvero è la classe di coniugio di $x$ in $G$. Per calcolare quanti elementi ha questa classe basta:
+
+\begin{equation}
+	\ordine{G \circ x} = \indice{G}{\Stab_G(x)} = \indice{G}{C_G(x)}
+\end{equation}
+
+\textbf{L'ordine della classe di coniugio di un elemento è uguale all'indice del centralizzante dello stesso elemento:}
+
+\begin{equation}
+	\label{eq:ordine_classe_coniugio}
+	\ordine{G \circ x} = \indice{G}{C_G(x)}
+\end{equation}
+
+Se invece G agisce \textbf{per coniugio sui sottogruppi}, dato un sottogruppo $H \le G$, quanti sono i coniugati di $H$ in $G$?
+
+\begin{equation}
+	\ordine{G \circ H} = \indice{G}{\Stab_G(H)} = \indice{G}{N_G(x)}
+\end{equation}
+

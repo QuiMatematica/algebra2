@@ -1,0 +1,112 @@
+\chapter{$D_3$}
+
+Gruppo delle isometrie che mandano un triangolo equilatero in se stesso (figura~\ref{fig:D_3_Triangolo_con_numeri}).
+
+\begin{figure}[tp]
+	\centering
+	\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+		\begin{axis}[
+			x=2cm,y=2cm,
+			axis lines=middle,
+			xmin=-2.5,
+			xmax=2.5,
+			ymin=-1.5,
+			ymax=1.5,
+			xtick={-3,3},
+			ytick={-2,2},]
+			\clip(-2.5,-1.5) rectangle (2.5,1.5);
+			\fill[line width=2pt,color=figura,fill=figura,fill opacity=0.10000000149011612] (1,0) -- (-0.5,0.8660254037844387) -- (-0.5,-0.8660254037844384) -- cycle;
+			%\draw [line width=2pt] (0,0) circle (2cm);
+			\draw [line width=2pt,color=figura] (1,0)-- (-0.5,0.8660254037844387);
+			\draw [line width=2pt,color=figura] (-0.5,0.8660254037844387)-- (-0.5,-0.8660254037844384);
+			\draw [line width=2pt,color=figura] (-0.5,-0.8660254037844384)-- (1,0);
+			\begin{scriptsize}
+				% \draw [fill=uuuuuu] (1,0) circle (2pt);
+				\draw (1.05,0.15) node {1};
+				% \draw [fill=uuuuuu] (-0.5,0.8660254037844387) circle (2pt);
+				\draw (-0.55,1) node {2};
+				% \draw [fill=uuuuuu] (-0.5,-0.8660254037844384) circle (2pt);
+				\draw (-0.55,-1) node {3};
+				\draw (2.4,-.1) node {$x$};
+				\draw (-0.1,1.4) node {$y$};
+			\end{scriptsize}
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Triangolo equilatero di riferimento}
+	\label{fig:D_3_Triangolo_con_numeri}
+\end{figure}
+
+Chiamiamo $\rho$ la rotazione di $\frac{2\pi}{3}$ e $\iota$ la riflessione lungo l'asse delle ascisse (vedi il capitolo~\ref{cpt:Isometrie}):
+
+\begin{gather*}
+	\rho = \rho_{\frac{2\pi}{3}} \\
+	\iota = \iota_0 \\
+	D_3 = \gen{\rho, \iota}
+\end{gather*}
+
+\section{Caratteristiche del gruppo}
+
+\begin{center}
+	\begin{tabular}{lll}
+		Gruppo abeliano & No & Per esempio: $\iota\,\rho\iota \neq \rho\iota\,\iota$ \\
+		Gruppo ciclico & No & Non contiene elementi di ordine 6. \\
+		Ordine & 6 & $P_3 = 3! = 6$\\
+		Esponente & 6 & Il gruppo contiene elementi di ordine 1, 2 e 3. \\
+		Isomorfismi & $C_2 \times C_3$ &  \\
+		& $S_3$ & 
+	\end{tabular}
+\end{center}
+
+\section{Elementi}
+
+\begin{center}
+	\[
+	\begin{array}{cccc}
+		\toprule
+		\text{Elemento} & \text{Ciclo} & \text{Inverso} & \text{Ordine} \\
+		\midrule
+		1 & (1)	& 1 & 1 \\
+		\iota & (23) & \iota & 2 \\
+		\rho\iota & (12) & \rho\iota & 2 \\
+		\rho^2\iota & (13) & \rho^2\iota & 2 \\
+		\rho & (123) & \rho^2 & 3 \\
+		\rho^2 & (132) & \rho & 3 \\
+		\bottomrule
+	\end{array}
+	\]
+\end{center}
+
+\section{Tavola di Cayley}
+
+\begin{center}
+	\[
+	\begin{array}{cccccc}
+		\midrule
+		1 & \rho\iota & \rho^2\iota & \iota & \rho & \rho^2 \\
+		\rho\iota & 1 & \rho^2 & \rho & \iota & \rho^2\iota \\
+		\rho^2\iota & \rho & 1 & \rho^2 & \rho\iota & \iota \\
+		\iota & \rho^2 & \rho & 1 & \rho^2\iota & \rho\iota \\
+		\rho & \rho^2\iota & \iota & \rho\iota & \rho^2 & 1 \\
+		\rho^2 & \iota & \rho\iota & \rho^2\iota & 1 & \rho \\
+		\bottomrule
+	\end{array}
+	\]
+\end{center}
+
+\section{Sottogruppi non banali}
+
+\begin{center}
+	\begin{tabular}{ccccccc}
+		\toprule
+		Generatori & Elementi & Ordine & Indice & Ciclico & Normale & p-Sylow \\
+		\midrule
+		$\gen{\rho\iota}$ & $\{1, \rho\iota\}$ & 2 & 3 & Sì & No & Sì \\
+		$\gen{\rho^2\iota}$ & $\{1, \rho^2\iota\}$ & 2 & 3 & Sì & No & Sì \\
+		$\gen{\iota}$ & $\{1, \iota\}$ & 2 & 3 & Sì & No & Sì \\
+		$\gen{\rho} = \gen{\rho^2}$ & $\{1, \rho, \rho^2\}$ & 3 & 2 & Sì & Sì & Sì \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+
+% sottogruppi
+% centro

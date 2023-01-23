@@ -1,0 +1,82 @@
+\chapter{Teorema di Cayley}
+
+\begin{teorema}
+	\label{thr:Cayley}
+	Ogni gruppo è isomorfo ad un gruppo di trasformazioni.
+\end{teorema}
+\begin{dimostrazione}
+	Per ogni elemento $a \in G$ definiamo la mappa:
+	
+	\begin{align}
+		a_L : G &\longrightarrow G \\
+		x &\longmapsto ax
+	\end{align}
+
+	Chiamiamo $a_L$ la \emph{traslazione sinistra} (o \emph{moltiplicazione sinistra}) definita da $a$.
+	
+	Vogliamo dimostrare che:
+	
+	\begin{equation}
+		G_L = \{a_L \taleche a \in G\}
+	\end{equation}
+
+	è un gruppo di trasformazioni. Infatti:
+	
+	\begin{itemize}
+		\item la composizione di due elementi di $G_L$ è interna a $G_L$, infatti:
+			\begin{equation}
+				(a_L \circ b_L)(x) = abx = (ab)x = (ab)_L(x)
+			\end{equation}
+		\item l'operazione di composizione delle mappe $a_L$ è associativa, infatti:
+			\begin{align}
+				[a_L \circ (b_L \circ c_L)](x) &=  a_L((b_L \circ c_L)(x)) = \\
+				&= a_L(b_L(c_L(x))) = \\
+				&= (a_L \circ b_L)(c_L(x)) = \\
+				&= [(a_L \circ b_L) \circ c_L](x)
+			\end{align}
+		\item $1_L: x \longmapsto 1x$ è l'unità in quanto:
+			\begin{gather}
+				(1_L \circ a_L)(x) = 1_L(a_L(x)) = 1_L(ax) = 1ax = ax = a_L(x) \\
+				(a_L \circ 1_L)(x) = a_L(1_L(x)) = a_L(1x) = a1x = ax = a_L(x)
+			\end{gather}
+			ovvero:
+			\begin{equation}
+				1_L \circ a_L = a_L \circ 1_L = a_L
+			\end{equation}
+		\item ogni elemento $a_L$ ha il proprio inverso, che è $(a^-1)_L$, infatti:
+			\begin{gather}
+				(a_L \circ (a^{-1})_L)(x) = aa^{-1}x = x = 1_L(x) \\
+				((a^{-1})_L \circ a_L)(x) = a^{-1}ax = x = 1_L(x) 
+			\end{gather}
+		\item gli elementi $a_L$ sono trasformazioni in quanto mappe $G \longrightarrow G$.
+	\end{itemize}
+	
+	Consideriamo adesso la mappa:
+	
+	\begin{align}
+		L: G &\longrightarrow G_L
+		a &\longmapsto a_L
+	\end{align}
+
+	Questa mappa è un omomorfismo in quanto:
+	
+	\begin{equation}
+		(a_L \circ b_L)(x) = abx = (ab)_L(x)
+	\end{equation}
+
+	Inoltre è suriettivo per definizione, ed è iniettivo in quanto, se $a = b$, allora:
+	
+	\begin{equation}
+		a_L(x) = ax = bx = b_L(x) \quad\Longrightarrow\quad a_L = b_L
+	\end{equation}
+
+	Quindi $L$ è un isomorfismo e:
+	
+	\begin{equation}
+		G \isomorfo G_L
+	\end{equation}
+\end{dimostrazione}
+
+\begin{corollario}
+	Ogni gruppo finito di ordine $n$ è isomorfo ad un sottogruppo del gruppo simmetrico $S_n$.
+\end{corollario}

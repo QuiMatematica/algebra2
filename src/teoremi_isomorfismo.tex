@@ -1,0 +1,161 @@
+\chapter{Isomorfismi}
+
+\section[Teorema dei due sottogruppi]{Teorema dei due sottogruppi (o secondo teorema di isomorfismo)}
+
+\begin{teorema}[Teorema dei due sottogruppi]
+	\label{thr:due_sottogruppi}
+	Dati $H \le G$ e $N \normale G$ allora
+	
+	\begin{equation}
+		\dfrac{H}{H \cap N} \isomorfo \dfrac{HN}{N}
+	\end{equation}
+\end{teorema}
+\begin{figure}[tp]
+	\centering
+	\tikz {
+		\node (a) at (2,6) {$G$};
+		\node (f) at (2,4) {$HN$};
+		\node (b) at (0,2) {$H$};
+		\node (d) at (4,2) {$N$};
+		\node (e) at (2,0) {$H \cap N$};
+		\node [red] (g) at (2,2) {$\isomorfo$};
+		\draw (a) edge[->] (f) 
+		(f) edge[->] (b)
+		(f) edge[->] (d) 
+		(b) edge[->] (e)
+		(d) edge[->] (e)
+		(1,1) edge[->,red] (g)
+		(3,3) edge[->,red] (g);
+	}
+	\caption{Rappresentazione del teorema dei due sottogruppi.}
+	\label{fig:Isomorfismi_due_sottogruppi}
+\end{figure}
+\begin{dimostrazione}
+	Consideriamo l'omomorfismo:
+	
+	\begin{align}
+		\pi: G &\longrightarrow G/N \\
+		g &\longmapsto gN
+	\end{align}
+
+	Consideriamo ora la restrizione $\pi |_H$ per la quale il dominio diventa il sottogruppo $H$:
+	
+	\begin{align}
+		\pi |_H: H &\longrightarrow G/N \\
+		h &\longmapsto hN
+	\end{align}
+
+	Vogliamo determinare cos'è l'immagine di $H$: appartengono all'immagine i laterali generati da elementi di $H$, ma è possibile che ci siano elementi di $G$ esterni ad $H$ che generano gli stessi laterali:
+	
+	\begin{align}
+		\pi(H) &= \{gN \taleche \exists h \in H, gN = hN \} = \\
+		&= \{gN \taleche \exists h \in H, g \in hN\} = \\
+		&= \{gN \taleche g \in HN\} = \\
+		&= NH/N
+	\end{align}
+
+	Determiniamo ora il nucleo di $\pi |_H$:
+	
+	\begin{align}
+		\ker \pi |_H &= \{h \in H \taleche hN = N\} \\
+		&= H \cap N
+	\end{align}
+
+	Quindi per il corollario~\ref{crl:Omomorfismi_fondamentale_1}  del teorema fondamentale degli omomorfismi:
+	
+	\begin{equation}
+		\dfrac{H}{\ker \pi |_H} \isomorfo \pi(H) \quad\Longrightarrow\quad \dfrac{H}{H \cap N} \isomorfo \dfrac{HN}{N}
+	\end{equation}
+
+\end{dimostrazione}
+
+\section[Teorema di corrispondenza]{Teorema di corrispondenza (o terzo teorema di isomorfismo)}
+
+\begin{teorema}[Teorema di corrispondenza]
+	\label{thr:corrispondenza}
+	Sia dato un epimorfismo $\eta: G \longrightarrow \overline{G}$.
+	
+	I sottogruppi $H$ di $G$ che contengono $\ker\eta$ sono in corrispondenza biunivoca con i sottogruppi $\eta(H)$ di $\overline{G}$ (figura~\ref{fig:Isomorfismi_corrispondenza}).
+	
+	Questa corrispondenza preserva le inclusioni, gli indici, la normalità e i quozienti.
+	
+	Caso particolare: se $N \normale G$, allora posso definire $\eta$ come:
+	
+	\begin{equation}
+		\eta: G \longrightarrow G/N \quad \text{ con } \quad \eta(g) = gN
+	\end{equation}
+	
+	Ogni $H \le G$ con $N \subseteq H$ è isomorfo a $H/N \le G/N$  (figura~\ref{fig:Isomorfismi_corrispondenza_laterali}).
+	
+	Se anche $H \normale G$ allora:
+	
+	\begin{equation}
+		G/H=(G/N)/(H/N)
+	\end{equation}
+\end{teorema}
+
+\begin{figure}[tp]
+	\centering
+	\tikz {
+		\node (a) at (2,4) {$G$};
+		\node (b) at (0,2) {$H_1$};
+		\node (c) at (2,2) {$H_2$};
+		\node (d) at (4,2) {$H_3$};
+		\node (e) at (2,0) {$\ker \eta$};
+		\draw (a) edge[->] (b) 
+			(a) edge[->] (c)
+			(a) edge[->] (d) 
+			(b) edge[->] (e)
+			(c) edge[->] (e)
+			(d) edge[->] (e);
+	}
+	$\qquad$
+	\tikz {
+		\node (a) at (2,4) {$\overline{G} = \eta(G)$};
+		\node (b) at (0,2) {$\eta(H_1)$};
+		\node (c) at (2,2) {$\eta(H_2)$};
+		\node (d) at (4,2) {$\eta(H_3)$};
+		\node (e) at (2,0) {$1 = \eta(\ker \eta)$};
+		\draw (a) edge[->] (b) 
+			(a) edge[->] (c)
+			(a) edge[->] (d) 
+			(b) edge[->] (e)
+			(c) edge[->] (e)
+			(d) edge[->] (e);
+	}
+	\caption{Rappresentazione del teorema di corrispondenza.}
+	\label{fig:Isomorfismi_corrispondenza}
+\end{figure}
+
+\begin{figure}[tp]
+	\centering
+	\tikz {
+		\node (a) at (2,4) {$G$};
+		\node (b) at (0,2) {$H_1$};
+		\node (c) at (2,2) {$H_2$};
+		\node (d) at (4,2) {$H_3$};
+		\node (e) at (2,0) {$N$};
+		\draw (a) edge[->] (b) 
+		(a) edge[->] (c)
+		(a) edge[->] (d) 
+		(b) edge[->] (e)
+		(c) edge[->] (e)
+		(d) edge[->] (e);
+	}
+	$\qquad$
+	\tikz {
+		\node (a) at (2,4) {$G/N$};
+		\node (b) at (0,2) {$H_1/N$};
+		\node (c) at (2,2) {$H_2/N$};
+		\node (d) at (4,2) {$H_3/N$};
+		\node (e) at (2,0) {$1 = N/N$};
+		\draw (a) edge[->] (b) 
+		(a) edge[->] (c)
+		(a) edge[->] (d) 
+		(b) edge[->] (e)
+		(c) edge[->] (e)
+		(d) edge[->] (e);
+	}
+	\caption{Rappresentazione del teorema di corrispondenza nel caso particolare.}
+	\label{fig:Isomorfismi_corrispondenza_laterali}
+\end{figure}

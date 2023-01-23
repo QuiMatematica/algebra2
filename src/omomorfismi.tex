@@ -1,0 +1,395 @@
+\chapter{Omomorfismi}
+
+La funzione $\eta: G \longrightarrow G'$ è un \textbf{omomorfismo} se:
+
+\begin{gather}
+	\label{eqn:omomorfismo_proprieta} \eta(ab) = \eta(a)\eta(b) \\
+	\eta(1) = 1'
+\end{gather}
+
+La seconda è conseguenza della prima. Quindi per verificare che una funzione è un omomorfismo ci basta verificare la prima. 
+
+Un omomorfismo suriettivo si chiama \textbf{epimorfismo}.
+
+Un omomorfismo iniettivo si chiama \textbf{monomorfismo}.
+
+Un omomorfismo biiettivo si chiama \textbf{isomorfismo}.
+
+Un omomorfismo di un gruppo su se stesso si chiama \textbf{endomorfismo}.
+
+Un endomorfismo biiettivo si chiama \textbf{automorfismo} (figura~\ref{fig:Omomorfismi_dalle_funzioni_agli_automorfismi}).
+
+\begin{figure}[tp]
+	\centering
+	\tikz {
+		\node (a) at (0,8) {funzione/mappa};
+		\node (b) at (3,9) {suriettiva};
+		\node (c) at (3,7) {iniettiva};
+		\node (d) at (6,8) {biiettiva};
+		\draw (a) edge[->] (b); 
+		\draw (a) edge[->] (c);
+		\draw (b) edge[->] (d);
+		\draw (c) edge[->] (d);
+		\node (e) at (0,5) {omomorfismo};
+		\node (f) at (3,6) {epimorfismo};
+		\node (g) at (3,4) {monomorfismo};
+		\node (h) at (6,5) {isomorfismo};
+		\draw (e) edge[->] (f); 
+		\draw (e) edge[->] (g);
+		\draw (f) edge[->] (h);
+		\draw (g) edge[->] (h);
+		\node (i) at (0,3) {endomorfimo};
+		\node (j) at (6,3) {automorfismo};
+		\draw (a) edge[->] (e);
+		\draw (e) edge[->] (i);
+		\draw (i) edge[->] (j);
+	}
+	\caption{Dalle funzioni agli automorfismi}
+	\label{fig:Omomorfismi_dalle_funzioni_agli_automorfismi}
+\end{figure}
+
+\begin{teorema}
+	Siano $\eta$ e $\zeta$ due omomorfismi $G \longrightarrow G'$. Sia $S$ l'insieme dei generatori di $G$.
+	
+	Se $\eta(s) = \zeta(s) \,\forall s \in S$ allora $\eta = \zeta$.
+\end{teorema}
+\begin{dimostrazione}
+	Vedi \cite[pag. 60]{jacobson}.
+\end{dimostrazione}
+
+\begin{corollario}
+	Sia $\eta$ un endomorfismo di $G$. Sia $H$ l'insieme degli elementi fissi di $\eta$:
+	
+	\begin{equation}
+		H = \{h \in G \taleche \eta(h) = h\}
+	\end{equation}
+
+	$H$ è un sottogruppo di $G$.
+\end{corollario}
+
+\begin{teorema}
+	Si $\eta: G \longrightarrow G'$ un omomorfismo, e $\zeta: G' \longrightarrow G''$ un altro omomorfismo. Allora $\eta\zeta: G \longrightarrow G''$ è un omomorfismo.
+\end{teorema}
+
+Gli automorfismo di un gruppo formano il \textbf{gruppo degli automorfismi}: $\Aut G$. E' un gruppo di trasformazioni.
+
+Gli endomorfismi di un gruppo formano il \textbf{mononoide degli endomorfismi}: $\End G$. E' un monoide di trasformazioni.
+
+Il \textbf{nucleo} $\ker \eta$ di un omomorfismo $\eta$ è l'insieme degli elementi di $G$ tali che la loro immagine è l'identità:
+
+\begin{equation}
+	\ker \eta = \{g \in G \taleche \eta(g) = 1'\}
+\end{equation}
+
+\section{Teorema fondamentale degli omomorfismi}
+
+\begin{lemma}
+	\label{lmm:omomorfismo_iniettivo}
+	Un omomorfismo $\eta$ è iniettivo se e solo se $\ker \eta = 1$.
+\end{lemma}
+\begin{dimostrazione}
+	\textbf{Prima parte:}
+	
+	\begin{equation}
+		\eta \text{ iniettivo} \quad\Longrightarrow\quad \ker \eta = 1
+	\end{equation}
+	
+	Poniamo per assurdo che $\ker \eta \ne 1$. Allora:
+	
+	\begin{equation}
+		\exists b \in G, b \ne 1 : \eta(b) = 1'
+	\end{equation}
+
+	Ma anche:
+	
+	\begin{equation}
+		\eta(1) = 1'
+	\end{equation} 
+
+	Quindi $\eta$ non può essere iniettivo.
+	
+	\textbf{Seconda parte:}
+	
+	\begin{equation}
+		\ker \eta = 1 \quad\Longrightarrow\quad \eta \text{ iniettivo}
+	\end{equation}
+	
+	Poniamo per assurdo che $\eta$ non sia iniettivo. Allora:
+	
+	\begin{equation}
+		\exists a, b \in G, a \ne b : \eta(a) = \eta(b)
+	\end{equation}
+
+	Se $a$ e $b$ sono elementi diversi, allora:
+	
+	\begin{equation}
+		b \ne a \Longrightarrow a^{-1}b \ne a^{-1}a \Longrightarrow a^{-1}b \ne b
+	\end{equation}
+
+	Passiamo alle immagini:
+	
+	\begin{align}
+		\eta(a^{-1}b) &= \eta(a)^{-1}\eta(b) &\text{perché $\eta$ è un omomorfismo} \\
+		&=\eta(a)^{-1}\eta(a) &\text{perché $\eta(a)=\eta(b)$} \\
+		&=1' &\text{per prodotto di inversi}
+	\end{align}
+
+	Quindi:
+	
+	\begin{equation}
+		a^{-1}b \in \ker \eta \quad\Longrightarrow\quad \ker \eta \ne 1
+	\end{equation}
+	
+\end{dimostrazione}
+
+\begin{teorema}[Teorema fondamentale degli omomorfismi di gruppi]
+	\label{thr:Omomorfismi_fondamentale}
+	Dato un omomorfismo $\eta: G \longrightarrow G'$ allora (figure~\ref{fig:Omomorfismi_fondamentale} e~\ref{fig:Omomorfismi_partizione}):
+	\begin{itemize}
+		\item $\eta(G) \le G'$
+		\item $\ker \eta \normale G$
+		\item $\bar{\eta}: a \ker \eta \longmapsto \eta(a)$ è iniettiva
+	\end{itemize}
+\end{teorema}
+
+\begin{figure}[tp]
+	\centering
+	\tikz {
+		\node (a) at (0,3) {$G$};
+		\node (b) at (3,3) {$G'$};
+		\node (c) at (0,0) {$G/\ker \varphi$};
+		\draw (a) edge[->] node[above] {$\eta$} (b); 
+		\draw (a) edge[->] node[left] {$\nu$} (c);
+		\draw (c) edge[->] node[below right] {$\bar{\eta}$} (b);
+	}
+	\caption{Teorema fondamentale degli omomorfismi}
+	\label{fig:Omomorfismi_fondamentale}
+\end{figure}
+
+\begin{figure}[tp]
+	\centering
+	\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+		\clip(-4.5,-3.4) rectangle (4.5,3.4);
+		\draw [rotate around={0:(0,0)},line width=1pt] (0,0) ellipse (4cm and 3cm);
+		\draw [shift={(-11,0)},line width=1pt] plot[domain=-0.27:0.27,variable=\t]({9*cos(\t r)},{9*sin(\t r)});
+		\draw [shift={(-1,12)},line width=1pt] plot[domain=4.63:5.12,variable=\t]({12*cos(\t r)},{12*sin(\t r)});
+		\draw [shift={(12,3)},line width=1pt]  plot[domain=3.4:3.65,variable=\t]({11*cos(\t r)},{11*sin(\t r)});
+		\draw (3.2,2.8) node[anchor=north west] {$G$};
+		\draw (-0.5,-1) node[anchor=north west] {$\ker\eta$};
+		\draw (-3.7,0.5) node[anchor=north west] {$g_1\ker\eta$};
+		\draw (-0.5,2) node[anchor=north west] {$g_2\ker\eta$};
+		\draw (2.2,-0.2) node[anchor=north west] {$g_3\ker\eta$};
+	\end{tikzpicture}
+	\caption{Gruppo quoziente $G/\ker\eta$ come partizione del gruppo $G$.}
+	\label{fig:Omomorfismi_partizione}
+\end{figure}
+
+\begin{dimostrazione}
+	Vedi \cite[pagg. 61 e 62]{jacobson}.
+	
+	\textbf{Prima parte. }	
+	Per verifica che $\eta(G)$ è un sottogruppo di G' devo verificare che l'insieme è chiuso per il prodotto definito in G'.
+	
+	Dati due elementi $g_1, g_2 \in G$ qualunque:
+	
+	\begin{gather}
+		\eta(g_1), \eta(g_2) \in \eta(G) \\
+		\eta(g_1)\eta(g_2) = \eta(g_1g_2) \in \eta(G)
+	\end{gather}
+
+	Quindi il prodotto di due elementi dell'immagine $\eta(G)$ è interno all'immagine stessa: $\eta(G)$ è un sottogruppo di $G'$.
+	
+	\textbf{Seconda parte.}
+	Definiamo ora:
+	
+	\begin{equation}
+		K = \ker \eta = \{k \in G \taleche \eta(k) = 1'\}
+	\end{equation}
+
+	Per verificare che $\ker \eta$ è un sottogruppo normale di $G$ mi basta verificare che:
+	
+	\begin{equation}
+		gKg^{-1} = K \quad\forall g \in G
+	\end{equation}
+		
+	$\forall g \in G$ e $\forall k \in K$ risulta:
+	
+	\begin{align}
+		\eta(gkg^{-1}) &= \eta(g)\eta(k)\eta(g^{-1}) = &\text{perché $\eta$ è un omomorfismo} \\
+		&= \eta(g)1'\eta(g^{-1}) = &\text{perché $k \in \ker \eta$} \\
+		&= \eta(g)\eta(g^{-1}) = &\text{perché 1' è l'identità di $G'$} \\
+		&= \eta(gg^{-1}) = &\text{perché $\eta$ è un omomorfismo} \\
+		&= \eta(1) = &\text{perché $g$ e $g^{-1}$ sono inversi} \\
+		&= 1' &\text{perché $\eta$ è un omomorfismo}
+	\end{align}
+
+	Quindi:
+	
+	\begin{equation}
+		gkg^{-1} \in K \quad\Longrightarrow\quad gKg^{-1} = K \quad\Longrightarrow\quad K \normale G
+	\end{equation}
+
+	\textbf{Terza parte.}
+	Consideriamo $L$ un sottogruppo normale di $G$ contenuto in $K$:
+	
+	\begin{equation}
+		L \normale K \normale G
+	\end{equation}
+
+	Formiamo il gruppo quoziente $G/L$ in cui sappiamo che:
+	
+	\begin{gather}
+		\label{eqn:quoziente_L_1} (aL)(bL) = abL \quad \forall a, b \in G \\
+		\label{eqn:quoziente_L_2}L \text{ è unità}
+	\end{gather}
+
+	Consideriamo la funzione $\nu$ così definita:
+	
+	\begin{align}
+		\nu:\, G &\longrightarrow G/L \\
+		a &\longmapsto aL
+	\end{align}
+
+	Le formule~\eqref{eqn:quoziente_L_1} e~\eqref{eqn:quoziente_L_2} garantiscono che $\nu$ sia un omomorfismo.
+
+	Dobbiamo verificare che l'omomorfismo indotto da $\eta$:
+	
+	\begin{align}
+		\bar{\eta}:\, G/L &\longrightarrow G' \\
+		aL &\longmapsto \eta(a)
+	\end{align}
+	
+	sia \emph{ben definito}, ovvero che il suo comportamento non dipenda dagli elementi scelti per ciascun laterale. Verifichiamo quindi cosa succede se prendiamo due elementi $a$ e $b$ di $G$ diversi ma appartenenti allo stesso laterale:
+	
+	\begin{align}
+		aL &= bL &\text{$a$ e $b$ appartengono allo stesso laterale} \\
+		\exists l \in L \taleche b &= aL &\text{per definizione di laterale} \\
+		\eta(b) &= \eta(a)\eta(l) &\text{perché $\eta$ è un omomorfismo} \\
+		\eta(b) &= \eta(a) 1' &\text{perché $l \in L \subseteq K = \ker \eta$} \\
+		\eta(b) &= \eta(a) &\text{perché $1'$ è unità di $G'$}
+	\end{align} 
+	
+	Quindi $\bar{\eta}$ è ben definito.
+	
+	Quindi:
+	
+	\begin{equation}
+		\forall a \in G : \bar{\eta}\nu(a) = \bar{\eta}(aL) = \eta(a)
+	\end{equation}
+
+	Quindi vale il diagramma commutativo di figura~\ref{fig:Omomorfismi_fondamentale_con_L}.
+
+	Determiniamo l'immagine di $\bar{\eta}$.
+	
+	Se $g' \in \eta(G)$ allora:
+	
+	\begin{align}
+		\exists a \in G \taleche \eta(a) = g' &\quad\text{per definizione di immagine} \\
+		\bar{\eta}(aL) = g' &\quad\text{per definizione di $\bar{\eta}$} \\
+		g' \in \bar{\eta}(G/L) &\quad\text{per definizione di immagine}
+	\end{align}
+
+	Se $g' \in \bar{\eta}(G/L)$ allora:
+
+	\begin{align}
+		\exists a \in G \taleche \bar{\eta}(aL) = g' &\quad\text{per definizione di immagine} \\
+		\eta(a) = g' &\quad\text{per definizione di $\bar{\eta}$} \\
+		g' \in \eta(G) &\quad\text{per definizione di immagine}
+	\end{align}
+
+	Quindi:
+	
+	\begin{equation}
+		\eta(G) = \bar{\eta}(G/L)
+	\end{equation}
+	
+	Determiniamo infine il nucleo di $\bar{\eta}$ ovvero:
+	
+	\begin{align}
+		\ker \bar{\eta} = \{aL \taleche \bar{\eta}(aL) = 1'\} & \quad\text{per definizione di nucleo} \\
+		\ker \bar{\eta} = \{aL \taleche \eta(a) = 1'\} & \quad\text{per definizione di $\bar{\eta}$} \\
+		\ker \bar{\eta} = \{aL \taleche a \in \ker \eta\} & \quad\text{per definizione di nucleo} \\
+		\label{eqn:nucleo_eta_segnato} \ker \bar{\eta} = \ker \eta / L &\quad\text{per definizione di laterale}
+	\end{align}
+
+	Infatti preso un $k \in \ker \eta$ si ha:
+	
+	\begin{align}
+		\nu(k) = kL &\quad\text{per definizione di $\nu$} \\
+		\bar{\eta}(kL) = \eta(k) & \quad\text{per definizione di $\bar{\eta}$} \\
+		\bar{\eta}(kL) = 1' &\quad\text{perché $k \in \ker \eta$}
+	\end{align}
+	
+	Invece, preso un $g \not\in \ker \eta$ si ha:
+	
+	\begin{align}
+		\nu(g) = gL &\quad\text{per definizione di $\nu$} \\
+		\bar{\eta}(gL) = \eta(g) &\quad\text{per definizione di $\bar{\eta}$} \\
+		\bar{\eta}(gL) \ne 1' &\quad\text{perché $g \not\in \ker \eta$}
+	\end{align}
+	
+	Infine, per il lemma~\ref{lmm:omomorfismo_iniettivo}, l'omomorfismo $\bar{\eta}$ è iniettivo se e solo se il suo nucleo è uguale all'unità. L'unità di $G/L$ è $L$, quindi $\bar{\eta}$ è iniettivo se accade che:
+	
+	\begin{align}
+		L = \ker \bar{\eta} & \quad\text{condizione per il lemma} \\
+		L = \ker \eta / L & \quad\text{per la formula \eqref{eqn:nucleo_eta_segnato}} \\
+		L = \ker \eta & \quad\text{per definizione di laterale}
+	\end{align} 
+	
+\end{dimostrazione}
+
+\begin{figure}[tp]
+	\centering
+	\tikz {
+		\node (a) at (0,3) {$G$};
+		\node (b) at (3,3) {$G'$};
+		\node (c) at (0,0) {$G/L$};
+		\draw (a) edge[->] node[above] {$\eta$} (b); 
+		\draw (a) edge[->] node[left] {$\nu$} (c);
+		\draw (c) edge[->] node[below right] {$\bar{\eta}$} (b);
+	}
+	\caption{Diagramma commutativo con il sottogruppo normale $L$}
+	\label{fig:Omomorfismi_fondamentale_con_L}
+\end{figure}
+
+\begin{corollario}[Primo corollario del teorema fondamentale degli omomorfismi di gruppi]
+	\label{crl:Omomorfismi_fondamentale_1}
+	Dato un epimorfismo $\eta: G \longrightarrow G'$ allora $\bar{\eta}: a \ker \eta \longmapsto \eta(a)$ è un isomorfismo.
+\end{corollario}
+\begin{dimostrazione}
+	Se infatti $\eta$ è suriettivo, allora $\bar{\eta}$ è iniettivo e suriettivo, quindi è un isomorfismo (immagine~\ref{fig:eta_suriettivo}).
+\end{dimostrazione}
+
+\begin{figure}[tp]
+	\centering
+	\tikz {
+		\node (a) at (0,4) {$G$};
+		\node (b) at (4,4) {$G'$};
+		\node (c) at (0,0) {$G/\ker \eta$};
+		\draw (a) edge[->] node[above] {$\eta$} (b);
+		\draw (a) edge[->] node[below] {suriettivo} (b); 
+		\draw (a) edge[->] node[left] {$\nu$} (c);
+		\draw (c) edge[->] node[above left] {$\bar{\eta}$} (b);
+		\draw (c) edge[->] node[below right] {iniettivo e suriettivo} (b);
+	}
+	\caption{Diagramma commutativo con $\eta$ suriettivo}
+	\label{fig:eta_suriettivo}
+\end{figure}
+
+\begin{corollario}[Secondo corollario del teorema fondamentale degli omomorfismi di gruppi]
+	\label{crl:Omomorfismi_fondamentale_2}	Se un gruppo $G$ gode di un omomorfismo $\eta: G \longrightarrow G'$ allora $\exists K \normale G$ tale che $G/K \isomorfo \eta(G)$ dove $K = \ker \eta$.
+\end{corollario}
+
+\section{Sintesi}
+
+Una mappa/funzione
+
+\begin{equation}
+	\eta: G \longrightarrow G'
+\end{equation}
+
+\begin{itemize}
+	\item è un omomorfismo se $\eta(ab) = \eta(a)\eta(b)$;
+	\item è un endomorfismo se $G' = G \Longrightarrow \eta : G \longrightarrow G$;
+	\item è un automorfismo se $\exists \eta^{-1}: G \longrightarrow G$. 
+\end{itemize}

@@ -1,0 +1,228 @@
+\chapter{Torsione}
+
+Da un gruppo $G$ (infinito), si chiama \textbf{torsione} l'insieme degli elementi di ordine finito:
+
+\begin{equation}
+	T(G) = \{g \in G \taleche \ordine{g} \text{ finito}\}
+\end{equation}
+
+Generalmente la torsione non è un sottogruppo.
+
+\begin{esercizio}
+	Se $G$ è abeliano, allora:
+	
+	\begin{equation}
+		T(G) \le G
+	\end{equation}
+\end{esercizio}
+\begin{soluzione}
+	Prendiamo due elementi $x, y \in T(G)$. Se sono di ordine finito significa che:
+	
+	\begin{gather}
+		\exists m \ne 0 \taleche x^m = 1 \\
+		\exists n \ne 0 \taleche y^n = 1
+	\end{gather}
+
+	Vogliamo domandarci se anche $xy$ è un elemento di $T(G)$. Risulta:
+	
+	\begin{align}
+		(xy)^{mn} &= x^{mn}y^{mn} && \text{ammesso perché $G$ è abeliano} \\
+		&= (x^m)^n(y^n)^m && \text{per le proprietà delle potenze} \\
+		&= 1^n1^m && \text{per come ho scelto $x$ e $y$} \\
+		&= 1 \cdot 1 && \text{per proprietà dell'unità} \\
+		&= 1
+	\end{align}
+
+	Anche $xy \in T(G)$, quindi $T(G)$ è chiuso per l'operazione di moltiplicazione, quindi $T(G)$ è un sottogruppo.
+	
+	Inoltre, dal momento che $G$ è abeliano, $T(G)$ è un sottogruppo normale:
+	
+	\begin{equation}
+		T(G) \normale G
+	\end{equation}
+\end{soluzione}
+
+\begin{esercizio}
+	\label{ex:torsione_del_quoziente}
+	Se $G$ è abeliano, allora:
+	
+	\begin{equation}
+		T(G/T(G)) = \{T(G)\}
+	\end{equation}
+\end{esercizio}
+\begin{soluzione}
+	L'insieme $T(G/G(T))$ contiene i laterali di ordine finito, ovvero i laterali per i quali esiste una potenza che è uguale all'identità del gruppo quoziente. E l'identità del gruppo quoziente è, in questo caso, $T(G)$.
+	
+	Quindi abbiamo:
+	
+	\begin{equation}
+		T(G/T(G)) = \{gT(G) \taleche \exists n \taleche (gT(G))^n = T(G)\}
+	\end{equation}
+	
+	Distribuiamo la potenza e teniamo presente che la potenza di ogni elemento della torsione appartiene alla torsione stessa (visto che la torsione è un sottogruppo di $G$), quindi:
+	
+	\begin{equation}
+		T(G/T(G)) = \{gT(G) \taleche \exists n \taleche g^nT(G) = T(G)\}
+	\end{equation}
+
+	Per le proprietà dei laterali, questo significa che $g^n$ appartiene a $T(G)$:
+	
+	\begin{equation}
+		T(G/T(G)) = \{gT(G) \taleche \exists n \taleche g^n \in T(G)\}
+	\end{equation}
+
+	Se $g^n$ appartiene alla torsione significa che esiste una sua potenza che è uguale all'identità:
+	
+	\begin{equation}
+		T(G/T(G)) = \{gT(G) \taleche \exists n \exists m \taleche (g^n)^m = 1\}
+	\end{equation}
+
+	Ma questo significa che anche $g$ appartiene alla torsione:
+	
+	\begin{equation}
+		T(G/T(G)) = \{gT(G) \taleche g \in T(G)\}
+	\end{equation}
+
+	E se facciamo i laterali con elementi appartenenti al sottogruppo normale, otteniamo il sottogruppo stesso:
+	
+	\begin{equation}
+		T(G/T(G)) = \{T(G)\}
+	\end{equation}
+\end{soluzione}
+
+Questo teorema significa che, \emph{dato un gruppo $G$ con una torsione $T(G)$, se costruiamo il gruppo quoziente $G/T(G)$ questo non ha torsione se non l'elemento identico $T(G)$}. 
+
+\begin{esercizio}
+	Considerare il gruppo additivo del campo $\R$. Dimostrare che:
+	
+	\begin{equation}
+		T(\R/\Z) = \Q/\Z
+	\end{equation}
+	
+	E dimostrare che:
+	
+	\begin{equation}
+		T(\R/\Q) = \{\Q\}
+	\end{equation}
+\end{esercizio}
+\begin{soluzione}
+	I laterali di $\R$ contenuti in $\R/\Z$ hanno forma $x + \Z$, con $x \in \R$. Esempi di laterali sono:
+	
+	\begin{align}
+		0 + \Z &= \{0; 0 \pm 1; 0 \pm 2; \dots\} \\
+		\frac{1}{2} + \Z &= \biggl\{\frac{1}{2}; \frac{1}{2} \pm 1; \frac{1}{2} \pm 2; \dots \biggr\} \\
+		\sqrt{2} + \Z &= \{\sqrt{2}; \sqrt{2} \pm 1; \sqrt{2} \pm 2; \dots \}
+	\end{align}
+
+	Vogliamo cercare quali laterali $x + \Z$ appartengono alla torsione del gruppo quoziente, ovvero quei laterali tali che:
+	
+	\begin{equation}
+		\exists m \in \Z, m \ne 0 \taleche m(x + \Z) = \Z
+	\end{equation}
+
+	Attenzione che stiamo usando la notazione additiva, e che l'identità del gruppo quoziente è il sottogruppo normale $\Z$.
+	
+	Eseguiamo il prodotto e teniamo presente che un qualunque intero moltiplicato per un intero appartiene agli interi ($m\Z = \Z$), quindi:
+	
+	\begin{equation}
+		mx + \Z = \Z
+	\end{equation}
+
+	E, similmente: per ottenere un intero da un intero è necessario sommare un intero, quindi:
+	
+	\begin{equation}
+		mx \in \Z
+	\end{equation}
+
+	Se $mx$ è un intero, significa che $x$ è il quoziente tra un intero e $m$ (che è a sua volta un intero), quindi $x$ è un razionale:
+	
+	\begin{equation}
+		x \in \Q
+	\end{equation} 
+
+	Se quindi $x$ è un razionale, allora i laterali che appartengono alla torsione cercata appartengono a $\Q/\Z$:
+	
+	\begin{equation}
+		T(\R/\Z) = \Q/\Z
+	\end{equation}
+
+	E con questa la prima parte è dimostrata. Per la seconda parte consideriamo che:
+	
+	\begin{equation}
+		\label{eq:torsioni_reali}
+		\dfrac{\R/\Z}{T(\R/\Z)} = \dfrac{\R/\Z}{\Q/\Z} \isomorfo \R/\Q
+	\end{equation}
+
+	Ora, per il risultato dell'esercizio~\ref{ex:torsione_del_quoziente}, si ha:
+	
+	\begin{equation}
+		T\biggl(\dfrac{\R/\Z}{T(\R/\Z)}\biggr) = \{T(\R/\Z)\}
+	\end{equation}
+
+	Ovvero il gruppo quoziente $\dfrac{\R/\Z}{T(\R/\Z)}$ non ha torsione se non l'identità $T(\R/\Z)$.
+
+	Quindi per l'isomorfismo della formula~\eqref{eq:torsioni_reali}, anche il gruppo quoziente $\R/\Q$ non ha torsione se non l'identità $\Q$:
+	
+	\begin{equation}
+		T(\R/\Q) = \{\Q\}
+	\end{equation}
+	
+\end{soluzione}
+
+Possiamo interpretare il risultato di questo esercizio osservando che prendendo la potenza di un numero razionale ottengo un numero razionale, mentre se prendo la potenza di un numero irrazionale non ottengo mai un numero razionale.
+
+\begin{esercizio}
+	Se $G$ è un gruppo abeliano finitamente generato e tutti i suoi generatori hanno ordine finito, allora $G$ è finito.
+\end{esercizio}
+\begin{soluzione}
+	Sia:
+	
+	\begin{equation}
+		G = \gen{g_1, g_2, \dots, g_t}
+	\end{equation}
+
+	Sappiamo inoltre che:
+	
+	\begin{equation}
+		\forall i \in [1, t] \quad \ordine{g_i} = n_i \text{ finito}
+	\end{equation}
+
+	Ogni elemento di $G$ è generato da un prodotto dei generatori. Se il gruppo non è abeliano, non posso riordinare gli elementi, mentre se è abeliano posso farlo, quindi ogni elementi $g \in G$ lo posso scrivere come:
+	
+	\begin{equation}
+		g = g_1^{a_1} \cdot g_2^{a_2} \cdot \dots \cdot g_t^{a_t} \text{ con $a_i < n_i$}
+	\end{equation}
+
+	Quindi per il principio di moltiplicazione ho al più $n_1 \cdot n_2 \cdot \dots \cdot n_t$ scelte e:
+	
+	\begin{equation}
+		\ordine{G} \le n_1 \cdot n_2 \cdot \dots \cdot n_t
+	\end{equation}
+\end{soluzione}
+
+\begin{esercizio}
+	Dimostrare che $\Q/\Z$ non è finitamente generato.
+\end{esercizio}
+\begin{soluzione}
+	Ogni elemento di $\Q/\Z$ ha ordine finito, infatti ogni suo elemento ha forma:
+	
+	\begin{equation}
+		\frac{a}{b} + \Z \in \dfrac{\Q}{\Z} 
+	\end{equation}
+
+	tali elementi sono finiti se:
+	
+	\begin{equation}
+		\exists m > 0 \taleche m\biggl( \frac{a}{b} + \Z \biggr) = \Z
+	\end{equation}
+
+	E' sufficiente prendere un $m$ che sia multiplo di $b$.
+	
+	Poniamo per assurdo che $\Q/\Z$ sia finitamente generato. Allora per l'esercizio precedente, visto che tutti gli elementi (e quindi anche gli eventuali generatori) sono finiti dovrebbe essere finito. Ma non lo è. Quindi non è finitamente generato.
+\end{soluzione}
+
+Possiamo anche concludere che $\Q/\Z$ è un gruppo in cui tutti gli elementi hanno ordine finito, ma:
+
+\begin{equation}
+	\exp \dfrac{\Q}{\Z} = \infty
+\end{equation}

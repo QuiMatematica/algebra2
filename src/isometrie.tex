@@ -1,0 +1,1060 @@
+\chapter{Isometrie del piano}
+\label{cpt:Isometrie}
+
+\section[Isometrie del piano]{Isometrie del piano\footnote{\cite[7 novembre 2021]{lucchini}}}
+Le isometrie sono le trasformazioni del piano che preservano le distanze. A noi interessano quelle che fissano l'origine.
+
+E' immediato pensare che le isometrie rappresentano un sottogruppo delle trasformazioni del piano.
+
+Le isometrie che fissano l'origine sono:
+
+\begin{itemize}
+	\item le rotazioni di un angolo $\alpha$, che indichiamo con $\rho_\alpha$ (figura~\ref{fig:Isometrie_Rotazione});
+	\item le riflessioni attorno ad una retta che forma un angolo $\alpha$ con l'asse delle ascisse, che indichiamo con $\iota_\alpha$ (figura~\ref{fig:Isometrie_Riflessione}).
+\end{itemize}
+
+\section[Isometrie come matrici]{Isometrie come matrici\footnote{Approfondimento personale}}
+
+Prendiamo sul piano cartesiano un generico punto $P(x; y)$ e facciamolo ruotare attorno all'origine del piano di un angolo $\alpha$. Otteniamo così un nuovo punto $P(x'; y')$ (figura~\ref{fig:Isometrie_Rotazione}).
+
+\begin{figure}[tp]
+	\centering
+	\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+		\begin{axis}[
+			x=1cm,y=1cm,
+			axis lines=middle,
+			xmin=-1,
+			xmax=5,
+			ymin=-1,
+			ymax=5,
+			xtick={-10,11},
+			ytick={-7,10},]
+			\clip(-10.72,-7.2) rectangle (11.92,10.32);
+			\draw [shift={(-1,-1)},line width=1pt,color=green,fill=green,fill opacity=0.1] (0,0) -- (0:1.3) arc (0:26.56505117707799:1.3) -- cycle;
+			\draw [shift={(-1,-1)},line width=1pt,color=green,fill=green,fill opacity=0.1] (0,0) -- (26.56505117707799:1.5) arc (26.56505117707799:59.56505117707799:1.5) -- cycle;
+			\draw [shift={(-1,-1)},line width=1pt,color=green] (0:1.3) arc (0:26.56505117707799:1.3);
+			\draw [shift={(-1,-1)},line width=1pt,color=green] (0:1.17) arc (0:26.56505117707799:1.17);
+			\draw [line width=1pt,color=gray] (0,0)-- (4,2);
+			\draw [line width=1pt,color=gray] (0,0)-- (2.2654042017516423,3.8558972759509564);
+			\begin{scriptsize}
+				\draw [fill=blue] (4,2) circle (2.5pt);
+				\draw[] (4.3,2.4) node {$P(x; y)$};
+				\draw[] (-0.32,0.35) node {$O$};
+				\draw[] (1.6,0.4) node {$\theta$};
+				\draw [fill=blue] (2.2654042017516423,3.8558972759509564) circle (2.5pt);
+				\draw[] (2.6,4.2) node {$P'(x'; y')$};
+				\draw[] (1.35,1.2) node {$\alpha$};
+			\end{scriptsize}
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Rotazione}
+\label{fig:Isometrie_Rotazione}
+\end{figure}
+
+Utilizziamo le formule goniometriche che ci permettono di passare dalle coordinate cartesiane alle coordinate polari.
+
+I \emph{moduli} dei punti $P$ e $P'$, ovvero le loro distanze dall'origine, sono uguali. Quindi possiamo scrivere $\overline{OP}$ per intendere indifferentemente i moduli dei due punti.
+
+Chiamiamo $\theta$ l'\emph{argomento} del punto $P$. Se questo punto viene fatto ruotare di un angolo $\alpha$, l'argomento di $P'$ è $\theta + \alpha$.
+
+Le coordinate del punto $P$ possono essere espresse come:
+
+\begin{equation}
+x = \overline{OP} \cos \theta
+\end{equation}
+\begin{equation}
+y = \overline{OP} \sin \theta
+\end{equation}
+
+Calcoliamo l'ascissa del punto $P'$:
+
+\begin{align}
+	x' & = \overline{OP} \cos (\theta + \alpha) = \\
+	& = \overline{OP} ( \cos \theta \cos \alpha - \sin \theta \sin \alpha) = \\
+	& = \overline{OP} \cos \theta \cos \alpha - \overline{OP} \sin \theta \sin \alpha = \\
+	& = x \cos \alpha - y \sin \alpha
+\end{align}
+ 
+Calcoliamo l'ordinata del punto $P'$:
+
+\begin{align}
+	y' & = \overline{OP} \sin (\theta + \alpha) = \\
+	& = \overline{OP} ( \sin \theta \cos \alpha + \cos \theta \sin \alpha) = \\
+	& = \overline{OP} \sin \theta \cos \alpha + \overline{OP} \cos \theta \sin \alpha = \\
+	& = y \cos \alpha + x \sin \alpha
+\end{align}
+
+Quindi possiamo passare dalle coordinate di $P(x; y)$ alle coordinate $P'(x', y')$ con queste equazioni:
+
+\begin{equation}
+	\begin{cases}
+		x' = x \cos \alpha - y \sin \alpha \\
+		y' = y \cos \alpha + x \sin \alpha
+	\end{cases}
+\end{equation}
+
+E queste equazioni possono essere sintetizzate come prodotto matriciale:
+
+\begin{equation}
+	\begin{bmatrix}
+		x' \\
+		y' 
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+		\cos \alpha & -\sin \alpha \\
+		\sin \alpha & \cos \alpha
+	\end{bmatrix}
+	\begin{bmatrix}
+		x \\
+		y 
+	\end{bmatrix}
+\end{equation}
+
+Chiamiamo $\rho_\alpha$ la matrice dell'isometria:
+
+\begin{equation}
+	\rho_\alpha =
+	\begin{bmatrix}
+		\cos \alpha & -\sin \alpha \\
+		\sin \alpha & \cos \alpha
+	\end{bmatrix}
+\end{equation}
+
+Consideriamo ora una riflessione attorno ad una retta $r$ che forma un angolo $\alpha$ con l'asse delle ascisse. Prendiamo sul piano cartesiano un generico punto $P(x; y)$ e facciamolo riflettere nel nuovo punto $P(x'; y')$ (figura~\ref{fig:Isometrie_Riflessione}).
+
+\begin{figure}[tp]
+	\centering
+	\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+		\begin{axis}[
+			x=1cm,y=1cm,
+			axis lines=middle,
+			xmin=-1,
+			xmax=5,
+			ymin=-1,
+			ymax=5,
+			xtick={-10,11},
+			ytick={-7,10},]
+			\clip(-10.72,-7.2) rectangle (11.92,10.32);
+			\draw [shift={(-1,-1)},line width=1pt,color=green,fill=green,fill opacity=0.1] (0,0) -- (0:1.3) arc (0:26.56505117707799:1.3) -- cycle;
+			\draw [shift={(-1,-1)},line width=1pt,color=green,fill=green,fill opacity=0.1] (0,0) -- (0:2) arc (0:43:2) -- cycle;
+			\draw [shift={(-1,-1)},line width=1pt,color=green] (0:1.3) arc (0:26.56505117707799:1.3);
+			\draw [shift={(-1,-1)},line width=1pt,color=green] (0:1.17) arc (0:26.56505117707799:1.17);
+			\draw [line width=1pt,color=gray] (0,0)-- (4,2);
+			\draw [line width=1pt,color=gray,domain=-10.72:11.92] plot(\x,{(-0--3.4099918003124925*\x)/3.656768508095853});
+			\draw [line width=1pt,color=gray] (0,0)-- (2.27415399549615,3.850743253551046);
+			\draw [line width=1pt,color=gray,dash pattern=on 3pt off 3pt] (2.27415399549615,3.850743253551046)-- (4,2);
+			\begin{scriptsize}
+				\draw [fill=blue] (4,2) circle (2.5pt);
+				\draw[] (4.3,2.4) node {$P(x; y)$};
+				\draw [] (0,0) circle (2pt);
+				\draw[] (-0.32,0.35) node {$O$};
+				\draw[] (1.46,0.3) node {$\theta$};
+				\draw[] (2.2,0.75) node {$\alpha$};
+				\draw [fill=blue] (2.27415399549615,3.850743253551046) circle (2.5pt);
+				\draw[] (2.3,4.29) node {$P'(x'; y')$};
+			\end{scriptsize}
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Rotazione}
+	\label{fig:Isometrie_Riflessione}
+\end{figure}
+
+Anche in questo caso utilizziamo le formule goniometriche che ci permettono di passare dalle coordinate cartesiane alle coordinate polari.
+
+Indichiamo con $\overline{OP}$ i \emph{moduli} dei punti $P$ e $P'$.
+
+Chiamiamo $\theta$ l'\emph{argomento} del punto $P$. Per calcolare l'argomento di $P'$ consideriamo che:
+
+\begin{align}
+	\widehat{P'Ox} & = \widehat{P'Or} + \alpha = \\
+	& = \widehat{POr} + \alpha = \\
+	& = (\alpha - \theta) + \alpha = \\
+	& = 2\alpha - \theta
+\end{align}
+
+Calcoliamo l'ascissa del punto $P'$:
+
+\begin{align}
+	x' & = \overline{OP} \cos (2\alpha - \theta) = \\
+	& = \overline{OP} ( \cos 2\alpha \cos \theta + \sin 2\alpha \sin \theta) = \\
+	& = \overline{OP} \cos 2\alpha \cos \theta + \overline{OP} \sin 2\alpha \sin \theta = \\
+	& = x \cos 2\alpha + y \sin 2\alpha
+\end{align}
+
+Calcoliamo l'ordinata del punto $P'$:
+
+\begin{align}
+	y' & = \overline{OP} \sin (2\alpha - \theta) = \\
+	& = \overline{OP} ( \sin 2\alpha \cos \theta - \cos 2\alpha \sin \theta) = \\
+	& = \overline{OP}  \sin 2\alpha \cos \theta + \overline{OP} \cos 2\alpha \sin \theta = \\
+	& = x \sin 2\alpha - y \cos 2\alpha
+\end{align}
+
+Quindi possiamo passare dalle coordinate di $P(x; y)$ alle coordinate $P'(x', y')$ con queste equazioni:
+
+\begin{equation}
+	\begin{cases}
+		x' = x \cos 2\alpha + y \sin 2\alpha \\
+		y' = x \cos 2\alpha - y \sin 2\alpha
+	\end{cases}
+\end{equation}
+
+E queste equazioni possono essere sintetizzate come prodotto matriciale:
+
+\begin{equation}
+	\begin{bmatrix}
+		x' \\
+		y' 
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+		\cos 2\alpha & \sin 2\alpha \\
+		\sin 2\alpha & -\cos 2\alpha
+	\end{bmatrix}
+	\begin{bmatrix}
+		x \\
+		y 
+	\end{bmatrix}
+\end{equation}
+
+Chiamiamo $\iota_\alpha$ la matrice dell'isometria:
+
+\begin{equation}
+	\iota_\alpha =
+	\begin{bmatrix}
+		\cos 2\alpha & \sin 2\alpha \\
+		\sin 2\alpha & -\cos 2\alpha
+	\end{bmatrix}
+\end{equation}
+
+\section[Il gruppo delle isometrie]{Il gruppo delle isometrie\footnote{\cite[7 novembre 2021]{lucchini}}}
+
+Possiamo ora verifica che le isometrie formano un gruppo in quanto l'operazione di composizione è interna:
+
+\begin{align}
+	\rho_\alpha \rho_\beta & = 
+	\begin{bmatrix}
+		\cos \alpha & -\sin \alpha \\
+		\sin \alpha & \cos \alpha
+	\end{bmatrix}
+	\begin{bmatrix}
+		\cos \beta & -\sin \beta \\
+		\sin \beta & \cos \beta
+	\end{bmatrix} 
+	= \notag \\
+	& = 
+	\begin{bmatrix}
+		\cos \alpha \cos \beta -\sin \alpha \sin \beta & - \cos \alpha \sin \beta - \sin \alpha \cos \beta \\
+		\sin \alpha \cos \beta + \cos \alpha \sin \beta & - \sin \alpha \sin \beta + \cos \alpha \cos \beta
+	\end{bmatrix} 
+	= \notag \\
+	& = 
+	\begin{bmatrix}
+		\cos (\alpha + \beta) & - \sin (\alpha + \beta) \\
+		\sin (\alpha + \beta) & \cos (\alpha + \beta)
+	\end{bmatrix} 
+	= \notag \\
+	\label{eqn:Isometrie_R_R}
+	& = \rho_{\alpha + \beta}
+\end{align}
+
+\begin{align}
+	\iota_\alpha \iota_\beta & = 
+	\begin{bmatrix}
+		\cos 2\alpha & \sin 2\alpha \\
+		\sin 2\alpha & -\cos 2\alpha
+	\end{bmatrix}
+	\begin{bmatrix}
+		\cos 2\beta & \sin 2\beta \\
+		\sin 2\beta & -\cos 2\beta
+	\end{bmatrix} 
+	= \notag \\
+	& = 
+	\begin{bmatrix}
+		\cos 2\alpha \cos 2\beta +\sin 2\alpha \sin 2\beta & \cos 2\alpha \sin 2\beta - \sin 2\alpha \cos 2\beta \\
+		\sin 2\alpha \cos 2\beta - \cos 2\alpha \sin 2\beta & \sin 2\alpha \sin 2\beta + \cos 2\alpha \cos 2\beta
+	\end{bmatrix} 
+	= \notag \\
+	& = 
+	\begin{bmatrix}
+		\cos (2\alpha - 2\beta) & - \sin (2\alpha - 2\beta) \\
+		\sin (2\alpha - 2\beta) & \cos (2\alpha - 2\beta)
+	\end{bmatrix} 
+	= \notag \\
+	\label{eqn:Isometrie_I_I}
+	& = \rho_{2\alpha - 2\beta}
+\end{align}
+
+\begin{align}
+	\rho_\alpha \iota_\beta & = 
+	\begin{bmatrix}
+		\cos \alpha & -\sin \alpha \\
+		\sin \alpha & \cos \alpha
+	\end{bmatrix}
+	\begin{bmatrix}
+		\cos 2\beta & \sin 2\beta \\
+		\sin 2\beta & -\cos 2\beta
+	\end{bmatrix} 
+	= \notag \\
+	& = 
+	\begin{bmatrix}
+		\cos \alpha \cos 2\beta -\sin \alpha \sin 2\beta & \cos \alpha \sin 2\beta + \sin \alpha \cos 2\beta \\
+		\sin \alpha \cos 2\beta + \cos \alpha \sin 2\beta & \sin \alpha \sin 2\beta - \cos \alpha \cos 2\beta
+	\end{bmatrix} 
+	= \notag \\
+	& = 
+	\begin{bmatrix}
+		\cos (\alpha + 2\beta) & \sin (\alpha + 2\beta) \\
+		\sin (\alpha + 2\beta) & - \cos (\alpha + 2\beta)
+	\end{bmatrix} 
+	= \notag \\
+	\label{eqn:Isometrie_R_I}
+	& = \iota_{\frac{\alpha}{2} + \beta}
+\end{align}
+
+\begin{align}
+	\iota_\alpha \rho_\beta & = 
+	\begin{bmatrix}
+		\cos 2\alpha & \sin 2\alpha \\
+		\sin 2\alpha & -\cos 2\alpha
+	\end{bmatrix}
+	\begin{bmatrix}
+		\cos \beta & -\sin \beta \\
+		\sin \beta & \cos \beta
+	\end{bmatrix} 
+	= \notag \\
+	& = 
+	\begin{bmatrix}
+		\cos 2\alpha \cos \beta +\sin 2\alpha \sin \beta & - \cos 2\alpha \sin \beta + \sin 2\alpha \cos \beta \\
+		\sin 2\alpha \cos \beta - \cos 2\alpha \sin \beta & - \sin 2\alpha \sin \beta - \cos 2\alpha \cos \beta
+	\end{bmatrix} 
+	= \notag \\
+	& = 
+	\begin{bmatrix}
+		\cos (2\alpha - \beta) & \sin (2\alpha - \beta) \\
+		\sin (2\alpha - \beta) & -\cos (2\alpha - \beta)
+	\end{bmatrix} 
+	= \notag \\
+	\label{eqn:Isometrie_I_R}
+	& = \iota_{\alpha-\frac{\beta}{2}}
+\end{align}
+
+Se quindi chiamo $R$ l'insieme di tutte le rotazioni e $I$ l'insieme di tutte le riflessioni ottengo:
+
+\begin{equation}
+	G = R \cup I
+\end{equation}
+
+E $G$ è un gruppo in quanto la composizioni delle isometrie è ancora un'isometria.
+
+Inoltre dalla \eqref{eqn:Isometrie_R_R}, visto che la composizione di due rotazioni è ancora una rotazione, possiamo affermare che $R$ è un sottogruppo di $G$:
+
+\begin{equation}
+	R \le G
+\end{equation}
+
+Prendiamo ora una riflessione privilegiata, ovvero quella rispetto all'asse delle ascisse:
+
+\begin{equation}
+	\iota = \iota_0
+\end{equation}
+
+Dalla \eqref{eqn:Isometrie_R_I} ricaviamo che:
+
+\begin{equation}
+	\rho_\alpha \iota = \iota_{\frac{\alpha}{2}}
+\end{equation}
+
+Quindi attraverso la composizione con $\iota$, ad ogni rotazione corrisponde una riflessione con angolo dimezzato e, viceversa, ad ogni riflessione corrisponde una rotazione con angolo doppio. Quindi abbiamo tante riflessioni quante rotazioni, e non ci sono rotazioni che sono alche riflessioni nè viceversa.
+
+Quindi possiamo affermare che possiamo ottenere l'insieme delle riflessioni come prodotto tra l'insieme delle rotazioni e $\iota$:
+
+\begin{equation}
+	I = R\iota
+\end{equation}
+
+Inoltre l'unione tra $R$ e $I$ che definisce il nostro gruppo $G$ è un'unione disgiunta a meno dell'unità:
+
+\begin{equation}
+	G = R \overset{\circ}{\cup} R\iota
+\end{equation}
+
+Inoltre avendo tante rotazioni quante riflessioni, risulta che $R$ è un sottogruppo di \emph{indice} 2.
+
+\begin{equation}
+	|G:R| = 2
+\end{equation}
+
+Per il teorema \textbf{TODO} i sottogruppi di indice 2 sono normali, quindi $R$ è un sottogruppo normale di $G$.
+
+\begin{equation}
+	R \unlhd G
+\end{equation}
+
+Dalle formule \eqref{eqn:Isometrie_I_R} e \eqref{eqn:Isometrie_R_I} capiamo che se compongo una riflessione con una rotazione ottengo una riflessione, e se compongo questa con un'altra riflessione ottengo una rotazione. Quindi se coniugo una rotazione con una riflessione ottengo uno rotazione.
+Inoltre nel coniugare posso considerare che l'inversa di una riflessione è sempre la riflessione stessa, quindi posso coniugare semplicemente con la composizione:
+
+\begin{equation}
+	\iota_\beta \rho_\alpha \iota_\beta
+\end{equation}
+
+Andiamo a calcolare il risultato di questo coniugio:
+
+\begin{align}
+	\iota_\beta \rho_\alpha \iota_\beta 
+	& = \iota_{\beta-\frac{\alpha}{2}} \iota_\beta = \notag \\
+	& = \rho_{2(\beta-\frac{\alpha}{2}) - 2\beta} = \notag \\
+	& = \rho_{2\beta-\alpha - 2\beta} = \notag \\
+	\label{eqn:Isometrie_coniugio_rho}
+	& = \rho_{-\alpha}
+\end{align}
+
+Ora posso dimenticare tutte le formule di prima e ricordare solo la \eqref{eqn:Isometrie_coniugio_rho}.
+
+Il gruppo $G$ degli isomorfismi ha quindi queste caratteristiche:
+
+\begin{equation}
+	R \unlhd G
+\end{equation}
+\begin{equation}
+	R\iota \le G
+\end{equation}
+\begin{equation}
+	R \cap R\iota = 1
+\end{equation}
+
+Quindi per il teorema \textbf{TODO} il gruppo $G$ si può ottenere come prodotto dei sottogruppi $R$ e $R\iota$:
+
+\begin{equation}
+	G = R \, R\iota
+\end{equation}
+
+Quindi ogni elemento di $G$ si scrive in un solo modo: come prodotto di una rotazione che sta in $R$ con una riflessione che sta in $R\iota$.
+
+\begin{equation}
+	G = R\gen{\iota}
+\end{equation}
+
+Ogni elemento può essere scritto nella forma:
+
+\begin{equation}
+	g = \rho_\alpha \iota^\epsilon \quad\text{ con } \epsilon \in \{0,1\}
+\end{equation}
+
+Verifichiamo cosa succede se moltiplico due isometrie scritte in questo modo. Ne prendo 2 qualsiasi:
+
+\begin{equation}
+	g_1 = \rho_{\alpha_1} \iota^{\epsilon_1}
+\end{equation}
+\begin{equation}
+	g_2 = \rho_{\alpha_2} \iota^{\epsilon_2}
+\end{equation}
+
+E li moltiplico:
+
+\begin{align}
+	g_1g_2 
+	& = \rho_{\alpha_1} \iota^{\epsilon_1} \rho_{\alpha_2} \iota^{\epsilon_2} \notag \\
+	& = \rho_{\alpha_1} \iota^{\epsilon_1} \rho_{\alpha_2}  \iota^{\epsilon_1}  \iota^{\epsilon_1} \iota^{\epsilon_2} \notag \\
+	& = \rho_{\alpha_1} (\iota^{\epsilon_1} \rho_{\alpha_2}  \iota^{\epsilon_1})  \iota^{\epsilon_1} \iota^{\epsilon_2} \notag 
+\end{align}
+
+Si presentano quindi due casi
+
+\begin{equation}
+	g_1g_2 =
+	\begin{cases}
+		\rho_{\alpha_1} \rho_{\alpha_2} \iota^{\epsilon_2} = \rho_{\alpha_1 + \alpha_2} \iota^{\epsilon_2} & \text{se } \epsilon_1 = 0 \\
+		\rho_{\alpha_1} \rho_{-\alpha_2} \iota \iota^{\epsilon_2} = \rho_{\alpha_1 - \alpha_2} \iota^{\epsilon_2 + 1} & \text{se } \epsilon_1 = 1 		
+	\end{cases}
+\end{equation}
+
+\section[Ordine degli elementi]{Ordine degli elementi\protect\footnote{\cite[7 novembre 2021]{lucchini}}}
+
+Per descrivere il sottogruppo $R$ utilizziamo il toro:
+
+\begin{equation}
+	T = \{c \in \mathbb{C} \taleche \modulo{c} = 1\}
+\end{equation}
+
+Consideriamo la mappa:
+
+\begin{equation}
+	R \longrightarrow T: \rho_\alpha \longmapsto e^{i\alpha}
+\end{equation}
+
+E' un isomorfismo perché:
+
+\begin{equation}
+	\rho_\alpha \rho_\beta = e^{i\alpha} e^{i\beta} = e^{i(\alpha + \beta)} = \rho_{\alpha + \beta}
+\end{equation}
+
+Quindi:
+
+\begin{equation}
+	R \isomorfo T
+\end{equation}
+
+Qual è l'ordine di una rotazione?
+
+\begin{align}
+	(\rho_\alpha)^n = 1 & \sse (e^{i\alpha})^n = 1 \\
+	& \sse \alpha n = k\, 2 \pi \text{ con } k \in \Z \\
+	& \sse \alpha = \dfrac{k}{n}\,2\pi \text{ con } k \in \Z \\
+	& \sse \alpha \in \Q \, 2\pi
+\end{align}
+
+Per cui la torsione del sottogruppo $R$ è:
+
+\begin{equation}
+	\label{eqn:isometrie_T_di_R}
+	T(R) = \{\rho_\alpha \taleche \alpha \in \Q\,2\pi\}
+\end{equation}
+
+Ovvero l'immagine tramite l'isomorfismo di $\rho_\alpha$ è una radice $n$-esima di 1 per un $n$ opportuno.
+
+Al contrario:
+
+\begin{equation}
+	\ordine{\rho_\alpha} = \infty \sse \alpha \not\in \Q\,2\pi
+\end{equation}
+
+Quindi se voglio un elemento di ordine infinito, mi basta sceglierlo con $\alpha \not\in \Q\,2\pi$.
+
+Dalla \eqref{eqn:isometrie_T_di_R} risulta che:
+
+\begin{equation}
+	\alpha = \dfrac{2\pi}{n} \Longrightarrow \ordine{\rho_\alpha} = n
+\end{equation}
+
+Quindi qualunque sia l'ordine che mi interessa, trovo sempre un elemento di quell'ordine che, nel toro, corrisponde ad una radice $n$-esima di 1.
+
+Se ora prendiamo una rotazione $\rho_\alpha$ qualsiasi e la componiamo con $\iota$ otteniamo una riflessione, e tutte le riflessioni hanno ordine 2 in quanto sono l'inverso di se stesse. Ma se noi componiamo due riflessioni:
+
+\begin{equation}
+	\iota \cdot \iota\rho_\alpha = \rho_\alpha 
+\end{equation}
+
+L'ordine di $\rho_\alpha$ dipende dall'angolo $\alpha$. Quindi \emph{il prodotto di due elementi di ordine 2 può avere ordine infinito o un qualunque altro ordine si voglia}.
+
+\section[Centro del gruppo delle isometrie]{Centro del gruppo delle isometrie\protect\footnote{\cite[7 novembre 2021]{lucchini}}}
+
+Cerchiamo gli elementi $g \in Z(G)$: questi elementi possono essere riflessioni o rotazioni. Divido il problema in 2 parti.
+
+\textbf{Caso 1: $g \in \iota R$}: è una riflessione
+
+Se $g$ è una riflessione allora:
+
+\begin{equation}
+	g \rho_\alpha g = \rho_{-\alpha} \Longrightarrow g \rho_\alpha = \rho_{-\alpha} g
+\end{equation}
+
+Ma se $g$ è nel centro, allora deve commutare con tutti gli elementi di $G$, in particolare:
+
+\begin{equation}
+	g\rho_\alpha = \rho_\alpha g
+\end{equation}
+
+Quindi deve risultare:
+
+\begin{gather}
+	\rho_{-\alpha} = \rho_\alpha \\
+	\alpha \in \{0, \pi\}
+\end{gather}
+
+Quindi basta scegliere un $\alpha \not\in \{0, \pi\}$ e ho un elemento che non commuta con $g$. Quindi \emph{le riflessioni non appartengono al centro}.
+
+\textbf{Caso 2: $g \in R$}: è una rotazione.
+
+Una rotazione commuta con tutte le altre rotazioni. Devo però trovare le rotazioni che commutano anche con le riflessioni. Chiamando $g = \rho_\alpha$ rifaccio il ragionamento di prima:
+
+\begin{gather}
+	\iota \rho_\alpha \iota = \rho_{-\alpha} \Longrightarrow \iota \rho_\alpha = \rho_{-\alpha} \iota \\
+	\rho_\alpha \in Z(G) \Longrightarrow \iota\rho_\alpha = \rho_\alpha \iota \\
+	\rho_{-\alpha} = \rho_\alpha \\
+	\alpha \in \{0, \pi\}
+\end{gather}
+
+Quindi gli unici elementi che stanno in $Z(G)$ sono l'identità e la rotazione $\rho_\pi$:
+
+\begin{equation}
+	\label{eqn:Isometrie_Z_G}
+	Z(G) = \gen{\rho_\pi} \isomorfo C_2
+\end{equation}
+
+\section[Gruppi diedrali]{Gruppi diedrali\protect\footnote{\cite[7 novembre 2021]{lucchini}}}
+
+Prendiamo un pentagono regolare e costruiamo il gruppo delle isometrie che mandano il pentagono in se stesso (figura~\ref{fig:Isometrie_Pentagono}).
+\footnote{
+	Solitamente si disegna il poligono con un vertice sul semiasse positivo delle ascisse (e il centro nell'origine degli assi). In questo caso la riflessione "base" $\iota$ rappresenta una riflessione che tiene fermo tale vertice e scambia quelli del primo e secondo quadrante con quelli del terzo e quarto quadrante.
+	
+	Tuttavia è possibile disegnare il poligono anche in altre posizioni.
+	Se $n$ è dispari, si può disegnare il poligono con un vertice sul semiasse negativo delle ascisse. Mentre, se $n$ è dispari, si può disegnare il poligono ovviamente simmetrico rispetto all'asse delle ascisse ma con i lati che tagliano l'asse delle $x$. In questo caso la riflessione $\iota$ va a scambiare tutti i vertici: quelli di ordinata positiva con quelli di ordinata negativa.
+}
+
+\begin{figure}[tp]
+	\centering
+	\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+		\begin{axis}[
+			x=2cm,y=2cm,
+			axis lines=middle,
+			xmin=-2.5,
+			xmax=2.5,
+			ymin=-1.5,
+			ymax=1.5,
+			xtick={-3,3},
+			ytick={-2,2},]
+			\clip(-2.5,-1.5) rectangle (2.5,1.5);
+			\fill[line width=2pt,color=figura,fill=figura,fill opacity=0.1] (1,0) -- (0.30901699437494745,0.9510565162951535) -- (-0.8090169943749471,0.5877852522924731) -- (-0.8090169943749472,-0.5877852522924729) -- (0.30901699437494723,-0.9510565162951534) -- cycle;
+			%\draw [line width=2pt] (0,0) circle (2cm);
+			\draw [line width=2pt,color=figura] (1,0)-- (0.30901699437494745,0.9510565162951535);
+			\draw [line width=2pt,color=figura] (0.30901699437494745,0.9510565162951535)-- (-0.8090169943749471,0.5877852522924731);
+			\draw [line width=2pt,color=figura] (-0.8090169943749471,0.5877852522924731)-- (-0.8090169943749472,-0.5877852522924729);
+			\draw [line width=2pt,color=figura] (-0.8090169943749472,-0.5877852522924729)-- (0.30901699437494723,-0.9510565162951534);
+			\draw [line width=2pt,color=figura] (0.30901699437494723,-0.9510565162951534)-- (1,0);
+			\begin{scriptsize}
+				\draw (2.4,-.1) node {$x$};
+				\draw (-0.1,1.4) node {$y$};
+			\end{scriptsize}
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Pentagono regolare di riferimento}
+	\label{fig:Isometrie_Pentagono}
+\end{figure}
+
+Quali isometrie ci sono?
+
+Abbiamo le rotazioni pari a $\frac{2\pi}{5}$, $2\frac{2\pi}{5}$, $\dots$, $4\frac{2\pi}{5}$:
+
+\begin{gather}
+	\rho = \rho_{\frac{2\pi}{5}} \\
+	\ordine{\rho} = 5
+\end{gather}
+
+Inoltre abbiamo le riflessioni. Chiamiamo $\iota$ la riflessione lungo l'asse delle ascisse.
+
+\begin{gather}
+	D_5 = \gen{\rho, \iota} \\
+	\ordine{D_5} = 10 \\
+	D_5 \isomorfo \gen{\rho}\gen{\iota}
+\end{gather}
+
+Vale con qualunque poligono di $n$ lati: otteniamo il \textbf{gruppo diedrale} $D_n$, di grado $n$ e ordine $2n$ (attenzione alle notazioni che cambiano di autore in autore).
+
+Possiamo battezzare i vertici del pentagono con i numeri (figura~\ref{fig:Isometrie_Pentagono_con_numeri}).
+
+\begin{figure}[tp]
+	\centering
+	\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+		\begin{axis}[
+			x=2cm,y=2cm,
+			axis lines=middle,
+			xmin=-2.5,
+			xmax=2.5,
+			ymin=-1.5,
+			ymax=1.5,
+			xtick={-3,3},
+			ytick={-2,2},]
+			\clip(-2.5,-1.5) rectangle (2.5,1.5);
+			\fill[line width=2pt,color=figura,fill=figura,fill opacity=0.1] (1,0) -- (0.30901699437494745,0.9510565162951535) -- (-0.8090169943749471,0.5877852522924731) -- (-0.8090169943749472,-0.5877852522924729) -- (0.30901699437494723,-0.9510565162951534) -- cycle;
+			%\draw [line width=2pt] (0,0) circle (2cm);
+			\draw [line width=2pt,color=figura] (1,0)-- (0.30901699437494745,0.9510565162951535);
+			\draw [line width=2pt,color=figura] (0.30901699437494745,0.9510565162951535)-- (-0.8090169943749471,0.5877852522924731);
+			\draw [line width=2pt,color=figura] (-0.8090169943749471,0.5877852522924731)-- (-0.8090169943749472,-0.5877852522924729);
+			\draw [line width=2pt,color=figura] (-0.8090169943749472,-0.5877852522924729)-- (0.30901699437494723,-0.9510565162951534);
+			\draw [line width=2pt,color=figura] (0.30901699437494723,-0.9510565162951534)-- (1,0);
+			\begin{scriptsize}
+				\draw (1.05,0.15) node {1};
+				\draw (0.4,1.1) node {2};
+				\draw (-0.9,0.7) node {3};
+				\draw (-0.9,-0.7) node {4};
+				\draw (0.4,-1.1) node {5};
+				\draw (2.4,-.1) node {$x$};
+				\draw (-0.1,1.4) node {$y$};
+			\end{scriptsize}
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Pentagono regolare di riferimento con vertici numerati}
+	\label{fig:Isometrie_Pentagono_con_numeri}
+\end{figure}
+
+
+Posso descrivere ogni isometria rispetto al comportamento sui vertici.
+
+Se considero la rotazione di $\frac{2\pi}{5}$ ottengo la permutazione $(12345)$, mentre se considero la rotazione $\iota$ ottengo la permutazione $(25)(34)$. Quindi possiamo dire:
+
+\begin{equation}
+	D_5 \isomorfo \gen{(12345), (25)(34)} \le S_5
+\end{equation}
+
+\section[Centro dei gruppi diedrali]{Centro dei gruppi diedrali\footnote{\cite[8 novembre 2021]{lucchini}}}
+
+\begin{esercizio}
+	Descrivere $Z(D_n)$.
+\end{esercizio}
+
+	Ricordando~\eqref{eqn:Isometrie_Z_G} possiamo dire:
+	
+	\begin{equation}
+		Z(D_n) \subseteq Z(G) = \gen{\rho_\pi}
+	\end{equation}
+
+	Ma $\rho_\pi$ potrebbe non appartenere a $D_n$.
+	
+	Se $\rho_\pi \in D_n$, allora in $D_n$ c'è una rotazione di ordine 2. Ma se $n$ è dispari non ci sono rotazioni di ordine 2. Quindi succede quando $n$ è pari:
+	
+	\begin{equation}
+		\rho_\pi \in D_n \Longleftrightarrow n \text{ è pari}
+	\end{equation}
+
+\section[Sottogruppi normali dei gruppi diedrali]{Sottogruppi normali dei gruppi diedrali\footnote{\cite[8 novembre 2021]{lucchini}}}
+
+\begin{esercizio}
+	Descrivere i sottogruppi normali di $D_n$.
+\end{esercizio}
+
+	Dimostriamo innanzitutto che:
+	
+	\begin{equation}
+		H \le \gen{\rho} \Longrightarrow H \normale D_n
+	\end{equation}
+
+	Prendiamo un elemento
+	
+	\begin{equation}
+		g = \rho^\alpha \iota^\beta
+	\end{equation}
+
+	con $\alpha$ ridotto a modulo $n$ e $\beta$ ridotto a modulo 2.
+	
+	$H$ è sottogruppo di un gruppo ciclico, quindi è ciclico:
+	
+	\begin{equation}
+		H = \gen{\rho^k}
+	\end{equation}
+
+	Facciamo il coniugio del generatore con l'elemento $g$:
+	
+	\begin{align}
+		g \rho^k g^{-1} 
+		& = \rho^\alpha \iota^\beta \rho^k (\rho^\alpha \iota^\beta)^{-1} \\
+		& = \rho^\alpha \iota^\beta \rho^k \iota^\beta \rho^{-\alpha}
+	\end{align}
+
+	Il valore di $\iota^\beta \rho^k \iota^\beta$ dipende dal valore di $\beta$:
+	
+	\begin{equation}
+		\iota^\beta \rho^k \iota^\beta = 
+		\begin{cases}
+			\rho^k & \text{se } \beta = 0 \\
+			\rho^{-k} & \text{se } \beta = 1
+		\end{cases}
+	\end{equation}
+
+	Quindi:
+	
+	\begin{equation}
+		g \rho^k g^{-1} = \rho^\alpha \rho^{\pm k} \rho^{-\alpha} 
+	\end{equation}
+
+	E poiché le rotazioni commutano:
+	
+	\begin{equation}
+		g \rho^k g^{-1} = \rho^{\pm k}
+	\end{equation}
+	
+	Quindi se coniugo $\rho^k$ o trovo $\rho^k$ oppure trovo il suo inverso $\rho^{-k}$. Quindi $H$ è normale in $D_n$.
+	
+	Quindi tutti i sottogruppi di $\gen{\rho}$ sono normali.
+	
+	Verifichiamo ora se ce ne sono altri.
+	
+	Sia:
+	
+	\begin{equation}
+		H \normale D_n \text{ con } H \not\subseteq \gen{\rho}
+	\end{equation}
+
+	Ovvero in $H$ c'è almeno una riflessione:
+	
+	\begin{equation}
+		\exists k : \rho^k \iota = \iota^* \in H
+	\end{equation}
+
+	Consideriamo ora l'isometria $\rho \iota^* \rho^{-1} \iota^*$. La componente $\rho \iota^* \rho^{-1}$ appartiene ad $H$ perché $\iota^* \in H \normale D_n$. Anche $\iota^*$ appartiene ad $H$, quindi:
+	
+	\begin{gather}
+		\rho \iota^* \rho^{-1} \iota^* \in H \\
+		\rho (\iota^* \rho^{-1} \iota^*) \in H \\
+		\rho \rho \in H \\
+		\rho^2 \in H \\
+		\gen{\rho^2} \le H
+	\end{gather}
+
+	Dobbiamo ora distinguere i due casi: $n$ dispari e $n$ pari.
+	
+	\textbf{Caso 1: $n$ dispari}
+	
+	Se $n$ è dispari allora
+	
+	\begin{equation}
+		(n; 2) = 1
+	\end{equation}
+
+	quindi anche $\rho^2$ è generatore di $\gen{\rho}$:
+	
+	\begin{equation}
+		\ordine{\rho^2} = \ordine{\rho} \quad\Longleftrightarrow\quad \gen{\rho^2} = \gen{\rho}
+	\end{equation}
+	 
+	Quindi $H$ contiene $\rho$ e siccome contiene anche la riflessione $\iota^* = \rho^k \iota$ allora contiene anche $\iota$. Quindi $H = D_n$.
+
+	Quindi l'unico sottogruppo normale che non ho ancora trovato e che non è contenuto in $\gen{\rho}$ è $D_n$. 
+
+	\textbf{Caso 2: $n$ pari}
+
+	Chiamo:
+	
+	\begin{equation}
+		N = \gen{\rho^2}
+	\end{equation}
+
+	Usiamo il \textbf{Teorema di corrispondenza} (vedi~\ref{thr:Isomorfismi_corrispondenza}),
+	il quale ci dice che esiste una corrispondenza tra i sottogruppi normali di $D_n$ che contengono $N$ e i sottogruppi normali di $\dfrac{D_n}{N}$ (figura~\ref{fig:Isometrie_diedrali_normali}).
+	
+	\begin{figure}[tp]
+		\centering
+		\tikz {
+			\node (a) at (2,4) {$D_n = \gen{\rho, \iota}$};
+			\node (b) at (0,2) {?};
+			\node (c) at (2,2) {?};
+			\node (d) at (4,2) {$\dots$};
+			\node (e) at (2,0) {$N = \gen{\rho^2}$};
+			\draw (a) edge[->] (b) 
+			(a) edge[->] (c)
+			(a) edge[->] (d) 
+			(b) edge[->] (e)
+			(c) edge[->] (e)
+			(d) edge[->] (e);
+		}
+		$\qquad$
+		\tikz {
+			\node (a) at (2,4) {$D_n/N$};
+			\node (b) at (0,2) {?};
+			\node (c) at (2,2) {?};
+			\node (d) at (4,2) {$\dots$};
+			\node (e) at (2,0) {$1 = N/N$};
+			\draw (a) edge[->] (b) 
+			(a) edge[->] (c)
+			(a) edge[->] (d) 
+			(b) edge[->] (e)
+			(c) edge[->] (e)
+			(d) edge[->] (e);
+		}
+		\caption{Corrispondenze tra i sottogruppi normali dei gruppi diedrali (1).}
+		\label{fig:Isometrie_diedrali_normali}
+	\end{figure}
+
+	Ora, dal momento che $D_n = \gen{\rho, \iota}$ abbiamo che:
+	\footnote{
+		Se $n$ è pari, il sottogruppo normale $\gen{\rho^2}$ partiziona il gruppo $D_n$ nei seguenti laterali:
+		\begin{align*}
+			1\gen{\rho^2} & = \{1, \rho^2, \rho^4, \dots, \rho^{n-2}\} \\
+			& = 1\gen{\rho^2} = \rho^2\gen{\rho^2} = \dots = \rho^{n-2}\gen{\rho^2} \\
+			& = \text{ insieme delle rotazioni pari} \\
+			\rho\gen{\rho^2} & = \{\rho, \rho^3, \dots, \rho^{n-1}\} \\
+			& = \rho\gen{\rho^2} = \rho^3\gen{\rho^2} = \dots = \rho^{n-1}\gen{\rho^2} \\
+			& = \text{ insieme delle rotazioni dispari} \\
+			\iota\gen{\rho^2} & = \{\iota, \rho^2\iota, \rho^4\iota, \dots, \rho^{n-2}\iota\} \\
+			& = \iota\gen{\rho^2} = \rho^2\iota\gen{\rho^2} = \dots = \rho^n\iota\gen{\rho^2} \\
+			& = \text{ insieme delle riflessioni pari} \\
+			\rho\iota\gen{\rho^2} & = \{\rho\iota, \rho^3\iota, \rho^5\iota, \dots, \rho^{n-1}\iota\} \\
+			& = \rho\iota\gen{\rho^2} = \rho^3\iota\gen{\rho^2} = \dots = \rho^{n-1}\iota\gen{\rho^2} \\
+			& = \text{ insieme delle riflessioni dispari}
+		\end{align*}
+		Se $n$ è dispari, si hanno i seguenti laterali:
+		\begin{align*}
+			1\gen{\rho^2} & = \{\rho, \rho^2, \dots, \rho^n\} \\
+			& = 1\gen{\rho^2} = \rho\gen{\rho^2} = \dots = \rho^{n-1}\gen{\rho^2} \\
+			& = \text{ insieme delle rotazioni} \\
+			\iota\gen{\rho^2} & = \{\iota, \rho\iota, \rho^2\iota, \dots, \rho^{n-1}\iota\} \\
+			& = \iota\gen{\rho^2} = \rho\iota\gen{\rho^2} = \dots = \rho^{n-1}\iota\gen{\rho^2} \\
+			& = \text{ insieme delle riflessioni} \\
+		\end{align*}
+	}
+	
+	\begin{gather}
+		\dfrac{D_n}{N} = \gen{\rho N, \iota N} \\
+		\ordine{\rho N} = 2 \\
+		\ordine{\iota N} = 2
+	\end{gather}
+
+	Quindi $\dfrac{D_n}{N}$ è di ordine 4,
+	\footnote{In \cite[p. 48]{garonzi} c'è un'altra interessante dimostrazione dell'ordine di $D_n/N$: \\
+	\[\ordine{D_n : \gen{\rho^2}} = \ordine{D_n : \gen{\rho}} \cdot \ordine{\gen{\rho} : \gen{\rho^2}} = 4\]}
+	abeliano \textbf{(TODO: perché?)}, non ciclico (infatti contiene 2 elementi di ordine 2), quindi:
+	
+	\begin{equation}
+		\dfrac{D_n}{N} \isomorfo C_2 \times C_2
+	\end{equation}
+	
+	$C_2 \times C_2$ ha 4 sottogruppi, tutti normali perché abeliano \textbf{(TODO: perché?)}
+	
+	Quindi $\dfrac{D_n}{N}$ ha 4 sottogruppi: l'identità di ordine 1 e 3 sottogruppi di ordine 2, che corrispondono a:
+	\footnote{
+		$\rho N$ è l'insieme delle rotazioni dispari, e la composizione di due rotazioni dispari fa una rotazione pari, ovvero un elemento del laterale $1 N$ che in $D_n/N$ si comporta da unità. 
+		
+		$\iota N$ è l'insieme delle riflessioni pari, e la composizione di due riflessioni pari è una rotazione pari, ovvero un elemento del laterale $1 N$ che in $D_n/N$ si comporta da unità. 
+		
+		$\rho\iota N$ è l'insieme delle riflessioni dispari, e la composizione di due riflessioni dispari è una rotazione pari, ovvero un elemento del laterale $1 N$ che in $D_n/N$ si comporta da unità.
+	}
+	
+	\begin{equation}
+		\gen{\rho N}, \gen{\iota N}, \gen{\rho\iota N}
+	\end{equation}
+
+	Tornando indietro con il teorema di corrispondenza trovo che i tre sottogruppi normali che contengono $\gen{\rho^2}$ sono (figura~\ref{fig:Isometrie_diedrali_normali_c2_c2}):
+	
+	\begin{equation}
+		\gen{\rho^2, \rho} = \gen{\rho}, \gen{\rho^2, \iota}, \gen{\rho^2, \rho\iota}
+	\end{equation} 
+	
+	\begin{sidewaysfigure}
+		\centering
+		\tikz {
+			\node (a) at (2,4) {$D_n = \gen{\rho, \iota}$};
+			\node (b) at (0,2) {$\gen{\rho}$};
+			\node (c) at (2,2) {$\gen{\rho^2, \iota}$};
+			\node (d) at (4,2) {$\gen{\rho^2, \rho\iota}$};
+			\node (e) at (2,0) {$N = \gen{\rho^2}$};
+			\draw (a) edge[->] (b) 
+			(a) edge[->] (c)
+			(a) edge[->] (d) 
+			(b) edge[->] (e)
+			(c) edge[->] (e)
+			(d) edge[->] (e);
+		}
+		$\qquad$
+		\tikz {
+			\node (a) at (2,4) {$D_n/N$};
+			\node (b) at (0,2) {$\gen{\rho N}$};
+			\node (c) at (2,2) {$\gen{\iota N}$};
+			\node (d) at (4,2) {$\gen{\rho\iota N}$};
+			\node (e) at (2,0) {$1 = \gen{1N} = N/N$};
+			\draw (a) edge[->] (b) 
+			(a) edge[->] (c)
+			(a) edge[->] (d) 
+			(b) edge[->] (e)
+			(c) edge[->] (e)
+			(d) edge[->] (e);
+		}
+		$\qquad$
+		\tikz {
+			\node (a) at (2,4) {$C_2 \times C_2$};
+			\node (b) at (0,2) {$\gen{a, 1}$};
+			\node (c) at (2,2) {$\gen{1, b}$};
+			\node (d) at (4,2) {$\gen{a, b}$};
+			\node (e) at (2,0) {$1$};
+			\draw (a) edge[->] (b) 
+			(a) edge[->] (c)
+			(a) edge[->] (d) 
+			(b) edge[->] (e)
+			(c) edge[->] (e)
+			(d) edge[->] (e);
+		}
+		\caption{Corrispondenze tra i sottogruppi normali dei gruppi diedrali (2).}
+		\label{fig:Isometrie_diedrali_normali_c2_c2}
+	\end{sidewaysfigure}
+
+	Quindi i sottogruppi normali di $D_n$ sono:
+	
+	\begin{enumerate}
+		\item i sottogruppi di $\gen{\rho}$
+		\item il gruppo $D_n$
+		\item \emph{se $n$ è pari:} i sottogruppi $\gen{\rho}$, $\gen{\rho^2, \iota}$, $\gen{\rho^2, \rho\iota}$
+	\end{enumerate}
+
+	I gruppi $\gen{\rho^2, \iota}$ e $\gen{\rho^2, \rho\iota}$ sono gruppi diedrali di grado $\frac{n}{2}$ e corrispondono alle isometrie di poligoni con un numero dimezzato di lati.
+
+\section[Sottogruppi di $D_6$]{Sottogruppi di $D_6$\footnote{\cite[8 novembre 2021]{lucchini}}}
+
+\begin{esercizio}
+	Elencare i sottogruppi di $D_6$
+\end{esercizio}
+
+Sottogruppo delle rotazioni:
+
+\begin{equation}
+	R = \gen{\rho} \isomorfo C_6
+\end{equation}
+
+Sottogruppi di $R$, in corrispondenza ai divisori di 6:
+
+\begin{equation}
+	1, \quad \gen{\rho^3} \isomorfo C_2, \quad \gen{\rho^2} \isomorfo C_2
+\end{equation}
+
+Cerchiamo poi i sottogruppi $H \le G$ con $H \not\subseteq R$.
+
+Sappiamo che $R$ è normale, quindi $HR$ è un sottogruppo di $D_6$ (vedi~\ref{ex:Laterali_Prodotto_di_sottogruppi}). 
+
+$R$ è di indice 2 e $H$ non è contenuto in $R$, quindi $HR = D_6$.
+\footnote{
+Non trovando spiegazioni migliori, io la giustifico così.
+$R$ è di indice 2. $H$ non è contenuto in $R$, quindi contiene almeno un elemento che non appartiene ad $R$. 
+Questo elemento è presente anche in $HR$, quindi $HR$ ha cardinalità maggiore di $R$, ovvero ha indice minore (visto che cardinalità e indici sono inversamente proporzionali). L'unico indice minore di 2 è 1, quindi $HR$ coincide con $D_6$.
+}
+
+Quindi per il teorema dei due sottogruppi (vedi~\ref{thr:Isomorfismi_due_sottogruppi}) sappiamo che (figura~\ref{fig:Isometrie_due_sottogruppi}):
+
+	\begin{figure}[tp]
+	\centering
+	\tikz {
+		\node (a) at (2,4) {$D_6 = HR$};
+		\node (b) at (0,2) {$H$};
+		\node (d) at (4,2) {$R$};
+		\node (e) at (2,0) {$H \cap R$};
+		\draw (a) edge[->] (b) 
+		(a) edge[->] (d) 
+		(b) edge[->] (e)
+		(d) edge[->] (e);
+	}
+	\caption{Teorema dei due sottogruppi applicato a $D_6$.}
+	\label{fig:Isometrie_due_sottogruppi}
+\end{figure}
+
+
+\begin{equation}
+	\dfrac{H}{H \cap R} \isomorfo \dfrac{HR}{R} \isomorfo C_2 
+\end{equation}
+
+Quindi $H$ è generato da $H \cap R$ e da un altro elemento che sta fuori. Visto che $H \cap R$ contiene solo rotazioni, affinché $H$ non sia un sottogruppo delle rotazioni è necessario che l'elemento da aggiungere come generatore sia un'opportuna rotazione. Quindi per conoscere $H$ partiamo dalla varie possibilità di $H \cap R$
+	
+\[
+	\begin{array}{cc}
+		\toprule
+		H \cap R & H \\
+		\midrule
+		\gen{\rho} \isomorfo C_6 & \gen{\rho, \iota} = D_6 \\
+		\midrule
+		\gen{\rho^2} \isomorfo C_3 & \gen{\rho^2, \iota} \isomorfo D_3 \isomorfo S_3 \\
+			& \gen{\rho^2, \iota\rho} \isomorfo D_3 \isomorfo S_3 \\
+		\midrule
+		\gen{\rho^3} \isomorfo C_2 & \gen{\rho^3, \iota} \isomorfo C_2 \times C_2 \\
+			& \gen{\rho^3, \iota\rho} \isomorfo C_2 \times C_2 \\
+			& \gen{\rho^3, \iota\rho^2} \isomorfo C_2 \times C_2 \\
+		\midrule
+		1 & \gen{\iota} \isomorfo C_2 \\
+			& \gen{\iota\rho} \isomorfo C_2 \\
+			& \gen{\iota\rho^2} \isomorfo C_2 \\
+			& \gen{\iota\rho^3} \isomorfo C_2 \\
+			& \gen{\iota\rho^4} \isomorfo C_2 \\
+			& \gen{\iota\rho^5} \isomorfo C_2 \\
+		\bottomrule
+	\end{array}
+\]
+
+Nota che $\iota\rho$ non è contenuto in $\gen{\rho^2, \iota}$.
+
+Invece non devo aggiungere $\gen{\rho^2, \iota\rho^2}$ perché $\iota\rho^2 \in \gen{\rho^2, \iota}$.

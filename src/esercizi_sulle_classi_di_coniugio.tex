@@ -1,0 +1,396 @@
+\chapter{Esercizi sulle classi di coniugio}
+
+\begin{corollario}
+	Due elementi di $S_n$ sono coniugati se hanno la stessa struttura ciclica.
+	\footnote{Nella registrazione \cite[13 ottobre 2021]{lucchini} manca il primo pezzo, dove immagino abbia discusso come due elementi coniugati di $S_n$ hanno la stessa struttura ciclica. Per esempio, se prendiamo:
+	
+		\begin{equation}
+			\alpha = (124) \in S_6
+		\end{equation}
+
+	e lo coniughiamo con:
+	
+	\begin{equation}
+		\beta = (13)(25)(46)
+	\end{equation} 
+
+	Mi basta sostituire gli elementi di $\alpha$ usando i cicli di $\beta$, quindi:
+	
+	\begin{itemize}
+		\item mando l'1 nel 3 perché in $\beta$ c'è (13);
+		\item mando il 2 nel 5 perché in $\beta$ c'è (25);
+		\item mando il 4 nel 6 perché in $\beta$ c'è (46).
+	\end{itemize}
+
+	Quindi:
+	
+	\begin{equation}
+		\beta \alpha \beta^{-1} = (356)
+	\end{equation}
+	}
+\end{corollario}
+
+Per esempio:
+
+\begin{gather}
+	\sigma_1 = (149)(25) \in S_{10} \\
+	\sigma_2 = (273)(14) \in S_{10}
+\end{gather}
+
+Cerco un $\beta$ tale che:
+
+\begin{equation}
+	\beta \sigma_1 \beta^{-1} = \sigma_2
+\end{equation}
+
+$\beta$ deve:
+\begin{itemize}
+	\item mandare l'1 nel 2;
+	\item mandare il 4 nel 7;
+	\item mandare il 9 nel 3;
+	\item mandare il 2 nell'1;
+	\item mandare il 5 nel 4.
+\end{itemize}
+
+Ci sono ancora diversi gradi di libertà perché ci sono diversi elementi non nominati. Una possibile soluzione potrebbe essere:
+
+\begin{equation}
+	\beta = (12)(547)(39)
+\end{equation}
+
+\begin{esercizio}
+	Descrivi le classi di coniugio e i centralizzatori degli elementi nel gruppo simmetrico $S_4$.
+\end{esercizio}
+\begin{soluzione}
+		
+	Per ogni elemento voglio contare i coniugati e vedere chi è il centralizzante.
+
+	Per il teorema precedente\footnote{mancante}, le classi di coniugio corrispondono alle possibili strutture cicliche. In particolare \textbf{il numero di coniugati corrisponde al numero di elementi della struttura ciclica}.
+	
+	Di identità ce n'è una sola.
+	
+	I 2-cicli sono pari al numero di combinazioni di 4 elementi in gruppi da 2. Uso le combinazioni perché i cicli $(12)$ e $(21)$ sono in verità lo stesso ciclo, quindi non devo considerare gruppi con elementi ordinati. Quindi:
+	
+	\begin{equation}
+		\text{numero di 2-cicli } = \binom{4}{2} = \dfrac{4!}{2! \cdot 2!} = \dfrac{4 \cdot 3}{2} = 6
+	\end{equation}
+
+	Per contare i 3-cicli devo:
+	
+	\begin{itemize}
+		\item decidere quale elemento deve stare fermo, e ho 4 scelte (per esempio tengo fermo l'elemento 4);
+		\item per ciascun elemento fermo ho un 3-ciclo e il suo inverso (quindi ho i cicli $(123)$ e $(132)$).
+	\end{itemize}
+
+	Quindi in totale ho:
+	
+	\begin{equation}
+		\text{numero di 3-cicli } = 4 \cdot 2 = 8
+	\end{equation}
+
+	Per contare i 4-cicli considero che il primo elemento è indifferente, mentre gli altri possono essere in qualunque ordine. Quindi:
+	
+	\begin{equation}
+		\text{numero di 4-cicli } = 3! = 6
+	\end{equation}
+
+	Per contare i doppi 2-cicli basta accoppiare i 2-cicli, quindi:
+	
+	\begin{equation}
+		\text{numero di doppi 2-cicli } = 6 : 2 = 3
+	\end{equation}
+	
+	Dal momento che ho fatto una partizione, la somma deve fare l'ordine di $S_4$, che è 24, infatti:
+	
+	\begin{equation}
+		1 + 6 + 8 + 6 + 3 = 24
+	\end{equation}
+	
+	Per la formula~\eqref{eq:ordine_classe_coniugio} posso calcolare l'ordine dei centralizzanti come:
+	
+	\begin{equation}
+		\ordine{C_G(g)} = \dfrac{\ordine{G \circ x}}{\ordine{G}}
+	\end{equation}
+
+	Quindi:
+	
+	\begin{itemize}
+		\item l'identità ha la classe di coniugio di ordine 1, quindi il centralizzante di ordine 24 (infatti tutti gli elementi di un qualunque gruppo commutano con l'identità);
+		\item il 2-ciclo $(12)$ ha la classe di coniugio di ordine 6, quindi il centralizzante di ordine 4;
+		\item e così via...
+	\end{itemize}
+	
+	Rimane da determinare i centralizzanti.
+	
+	Il centralizzante dell'identità è l'intero insieme $S_4$, visto che tutti gli elementi del gruppo commutano con l'identità e visto che l'ordine del centralizzante corrisponde all'ordine del gruppo.
+	
+	Chi commuta con $(12)$? Devo trovare 4 elementi. $(12)$ commuta con se stesso. Inoltre $(34)$ commuta con $(12)$ perché è un ciclo disgiunto. Il gruppo $\gen{(12)(34)}$ ha ordine 4, quindi è questo il centralizzante che sto cercando:
+	
+	\begin{equation}
+		C_G((12)) = \gen{(12),(34)} \,\isomorfo C_2 \times C_2
+	\end{equation}
+
+	Chi commuta con $(123)$? Devo trovare 3 elementi. $(123)$ commuta con se stesso. Il sottogruppo $\gen{(123)}$ ha 3 elementi: 1, $(123)$ e $(132)$. Quindi è questo il centralizzante che sto cercando:
+	
+	\begin{equation}
+		C_G((123)) = \gen{(123)} \,\isomorfo C_3
+	\end{equation}
+	
+	Chi commuta con $(1234)$? Devo trovare 4 elementi. $(1234)$ commuta con se stesso e il sottogruppo $\gen{(1234)}$ ha 4 elementi: 1, $(1234)$, $(13)(24)$ e $(1432)$. Quindi è questo il centralizzante che sto cercando:
+	
+	\begin{equation}
+		C_G((1234)) = \gen{(1234)} \,\isomorfo C_4
+	\end{equation}
+	
+	Chi commuta con $(12)(34)$? Devo trovare 8 elementi.
+	
+	Osservo che:
+	
+	\begin{equation}
+		(12)(34) = (1324)^2
+	\end{equation}
+
+	perché l'1 va nel 2 e viceversa, e il 3 va nel 4 e viceversa. Ma dal momento che $(1324)$ è quadrato di $(12)(34)$, i due termini commutano.
+	
+	Ho trovato i primi 4 elementi:
+	
+	\begin{equation}
+		\gen{(1324)} = \{1, (1324), (12)(34), (1423)\}
+	\end{equation}
+	
+	Me ne servono altri 4.
+	
+	Facciamo riferimento a $D_4$. $(1324)$ è una rotazione e il gruppo generato da questo elemento corrisponde a tutte le rotazioni di un quadrato (figura~\ref{fig:Isometrie_D4_da_1324}). Inoltre l'elemento $(12)(34)$ corrisponde alla rotazione di $\pi$. Il nostro elemento, quindi, è centro di $D_4$. Ci basta quindi prendere una riflessione di $D_4$ e trovare così tutti gli elementi che commutano con $(12)(34)$. Una tale riflessione potrebbe essere $(14)(23)$. Quindi il centro cercato è:
+	
+	\begin{equation}
+		C_G((12)(34)) = \gen{(1324), (14)(23)} \isomorfo C_4 \times C_2 \isomorfo D_4
+	\end{equation}
+	
+	
+\end{soluzione}
+
+	\begin{sidewaystable}
+	\centering
+	\begin{tabular}{ccccc}
+		\toprule
+		Struttura ciclica & Elemento & Numero coniugati & Ordine centralizzante & Centralizzante \\
+		\midrule
+		identità & 1 & 1 & 24 & $S_4$ \\
+		2-cicli & (12) & $\binom{4}{2} = 6$ & 4 & $\gen{(12), (34)} \,\isomorfo C_2 \times C_2$ \\
+		3-cicli & (123) & $4 \cdot 2 = 8$ & 3 & $\gen{(123)} \,\isomorfo C_3$ \\
+		4-cicli & (1234) & $3! = 6$ & 4 & $\gen{(12345)} \,\isomorfo C_4$ \\
+		doppi 2-cicli & (12)(34) & 6:2 = 3 & 8 & $\gen{(1324),(14)(23)} \,\isomorfo C_4 \times C_2 \isomorfo D_4$ \\
+		\midrule
+		& & $24 = \ordine{S_4}$ & & \\ 
+		\bottomrule
+	\end{tabular}
+	\caption{Classi di coniugio e centralizzanti di $S_4$}
+	\label{fig:classi_coniugio_s4}
+\end{sidewaystable}
+
+	\begin{figure}[tp]
+	\centering
+	\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+		\begin{axis}[
+			x=2cm,y=2cm,
+			axis lines=middle,
+			xmin=-2.5,
+			xmax=2.5,
+			ymin=-1.5,
+			ymax=1.5,
+			xtick={-3,3},
+			ytick={-2,2},]
+			\clip(-2.5,-1.5) rectangle (2.5,1.5);
+			\fill[line width=2pt,color=figura,fill=figura,fill opacity=0.1] (1,-1) -- (1,1) -- (-1,1) -- (-1,-1) -- cycle;
+			%\draw [line width=2pt] (0,0) circle (2cm);
+			\draw [line width=2pt,color=figura] (1,-1)-- (1,1);
+			\draw [line width=2pt,color=figura] (1,1)-- (-1,1);
+			\draw [line width=2pt,color=figura] (-1,1)-- (-1,-1);
+			\draw [line width=2pt,color=figura] (-1,-1)-- (1,-1);
+			\begin{scriptsize}
+				\draw (1.15,-1.05) node {1};
+				\draw (1.15,1.05) node {3};
+				\draw (-1.15,1.05) node {2};
+				\draw (-1.15,-1.05) node {4};
+				\draw (2.4,-.1) node {$x$};
+				\draw (-0.1,1.4) node {$y$};
+			\end{scriptsize}
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Gruppo $D_4$ per le rotazioni $(1324)^n$}
+	\label{fig:Isometrie_D4_da_1324}
+\end{figure}
+
+\begin{esercizio}
+	$\sigma \in S_n$ sia un $n$-ciclo. Determinare il suo centralizzante $C_{S_n}(\sigma)$.
+\end{esercizio}
+\begin{soluzione}
+	Innanzitutto determiniamo quanti sono gli $n$-cicli. Al primo posto posso mettere un elemento qualunque, per semplicità poniamo di porre un 1. Devo poi combinare gli altri $n-1$ elementi in tutti i possibili ordini, quindi avrò:
+	
+	\begin{equation}
+		\text{numero di $n$-cicli } = \ordine{^{S_n}\sigma} = P_n = n! 
+	\end{equation}  
+
+	Quindi per la formula~\eqref{eq:ordine_classe_coniugio} il centralizzante ha ordine:
+	
+	\begin{equation}
+		\ordine{C_{S_n}(\sigma)} = \dfrac{\ordine{S_n}}{\ordine{^{S_n}\sigma}} = \dfrac{n!}{(n-1)!} = n
+	\end{equation}
+
+	Osserviamo ora che $\gen{\sigma}$, ovvero il più piccolo sottogruppo che contiene $\sigma$ ha ordine $n$ quindi:
+	
+	\begin{equation}
+		C_{S_n}(\sigma) = \gen{\sigma} \isomorfo C_n
+	\end{equation}
+
+	Le uniche permutazioni di grado $n$ che commutano con un $n$-ciclo sono le potenze di quel ciclo.
+\end{soluzione}
+
+\begin{esercizio}
+	Trovare tutti i sottogruppi normali di $S_4$.
+\end{esercizio}
+\begin{soluzione}
+	Alcuni sottogruppi normali di $S_4$ sono di immediata individuazione:
+	
+	\begin{itemize}
+		\item $S_4$: ogni gruppo è normale di se stesso;
+		\item 1: il sottogruppo dell'identità è normale in quanto, per definizione, ogni elemento commuta con l'identità;
+		\item $A_4$: il gruppo alterno ha indice 2, quindi è normale (per il teorema~\ref{thr:sottogruppi_di_indice_2})
+	\end{itemize}
+
+	Inoltre se consideriamo il gruppo diedrale $D_4$ abbiamo il sottogruppo:
+	
+	\begin{equation}
+		V = \gen{(12)(34), (14)(23)} = \{1, (12)(34), (14)(23), (13)(24)\}
+	\end{equation}
+
+	$V$ è il \textbf{gruppo di Klein}. E' un sottogruppo normale in quanto composto dall'identità e dalla classe di coniugio dei doppi scambi.
+	
+	Abbiamo quindi trovato finora 4 sottogruppi normali di $S_4$:
+	
+	\begin{equation}
+		1, V, A_4, S_4 \normale S_4
+	\end{equation}
+
+	Vogliamo ora dimostrare che non ce ne possono essere altri.
+	
+	Ipotizziamo per assurdo che esista un sottogruppo $N$ normale di $S_4$. Dobbiamo analizzare due situazioni.
+	
+	\textbf{Primo caso:} $N$ contiene $V$.
+	
+	Per il teorema di corrispondenza~\ref{thr:corrispondenza} i sottogruppi normali di $S_4$ che contengono $V$ sono in biiezione con i sottogruppi normali di $S_4/V$.
+	
+	Studiamo $S_4/V$.
+	
+	Consideriamo il sottogruppo di $S_4$ delle permutazioni che tengono ferme l'elemento 4 e permutano gli altri 3:
+	
+	\begin{equation}
+		H = \{\sigma \taleche \sigma(4) = 4\} \le S_4
+	\end{equation}
+
+	Se tale gruppo agisce solo sugli elementi 1, 2 e 3, esso è isomorfo ad $S_3$:
+	
+	\begin{equation}
+		H \isomorfo S_3
+	\end{equation}
+
+	Consideriamo ora l'insieme $HV$: visto che $V$ è un sottogruppo normale, allora per il teorema~\ref{thr:prodotto_sottogruppi} $HV$ è un sottogruppo di $S_4$.
+	
+	L'intersezione $H \cap V$ contiene solo l'identità in quanto $V$ contiene i doppi scambi e nessun doppio scambio tiene fermo 4.
+	
+	Quindi, per il teorema~\ref{thr:ordine_prodotto_sottogruppi}:
+	
+	\begin{equation}
+		\ordine{HV} = \dfrac{\ordine{H}\ordine{V}}{\ordine{H \cap V}} = \dfrac{6 \cdot 4}{1} = 24
+	\end{equation}
+
+	Quindi:
+	
+	\begin{equation}
+		\ordine{HV} = \ordine{S_4} \quad\Longrightarrow\quad HV = S_4
+	\end{equation}
+
+	Ora, per il teorema dei due sottogruppi~\ref{thr:due_sottogruppi} abbiamo:
+	
+	\begin{equation}
+		\dfrac{S_4}{V} = \dfrac{HV}{V} \isomorfo \dfrac{H}{H \cap V} \isomorfo H \isomorfo S_3
+	\end{equation}
+
+	Quindi per scoprire i sottogruppi normali di $S_4/V$ ci basta conoscere i sottogruppi normali di $S_3$.
+	
+	I sottogruppi di $S_3$ sono:
+	
+	\begin{itemize}
+		\item $\gen{(12)}$
+		\item $\gen{(13)}$
+		\item $\gen{(23)}$
+		\item $\gen{(123)}$
+	\end{itemize}
+
+	I primi tre sottogruppi non sono normali, in quanto i loro generatori sono tra loro coniugati. Il quarto ha indice 2 quindi è normale.
+	
+	Posso infine usare il teorema di corrispondenza~\ref{thr:corrispondenza} e trovare i sottogruppi normali che contengono $V$: mi basta trovare le anti-immagini dei sottogruppi normali di $S_3$. $S_3$ è in corrispondenza con $S_4$, mentre l'identità di $S_3$ è in corrispondenza con il sottogruppo $V$ di $S_4$. Dobbiamo determinare chi è in corrispondenza con il sottogruppo $\gen{(123)}$ di $S_3$, ma tale sottogruppo ha indice 2, quindi è in corrispondenza con il sottogruppo normale di indice 2 di $S_4$, che è $A_4$ (figura~\ref{fig:corrispondenza_per_S4_su_V}).
+	
+	
+	Non ci sono quindi altri sottogruppi normali di $S_4$ che contengono $V$.
+	
+	\textbf{Secondo caso:} $N$ non contiene $V$.
+	
+	Se $N$ non contiene $V$, significa che $N$ non contiene nessun doppio scambio.
+	
+	Il quadrato di un 4-ciclo è un doppio scambio:
+	
+	\begin{equation}
+		(1234)^4 = (13)(24)
+	\end{equation}
+	
+	Quindi se $N$ contenesse i 4-cicli allora conterrebbe anche i doppi scambi. Visto che non può contenere doppi scambi, $N$ non contiene i 4-cicli.
+	
+	Il prodotto di due 3-cicli è un doppio scambio:
+	
+	\begin{equation}
+		(123) \cdot (124) = (13)(24)
+	\end{equation}
+
+	Quindi se $N$ contenesse i 3-cicli allora conterrebbe anche i doppi scambi. Visto che non può contenere doppi scambi, $N$ non contiene i 3-cicli.
+	
+	Il prodotto di due scambi disgiunti è un doppio scambio:
+	
+	\begin{equation}
+		(12)\cdot (34) = (12)(34)
+	\end{equation}
+
+	Quindi se $N$ contenesse gli scambi allora conterrebbe anche i doppi scambi. Visto che non può contenere doppi scambi, $N$ non contiene gli scambi.
+
+	Quindi solo l'identità può stare in $N$, ovvero se $N$ non contiene $V$, allora $N = 1$.
+	
+	Quindi non ho altri sottogruppi normali di $S_4$ al di fuori di $S_4$, $A_4$, $V$ e $1$.
+\end{soluzione}
+	\begin{figure}[tp]
+	\centering
+	\tikz {
+		\node (a) at (0,4) {$S_4$};
+		\node (b) at (0,2) {$N = A_4$};
+		\node (c) at (0,0) {$V$};
+		\node (x1) at (2,4) {$\Longleftrightarrow$};
+		\node (x2) at (2,2) {$\Longleftrightarrow$};
+		\node (x3) at (2,0) {$\Longleftrightarrow$};
+		\node (d) at (4,4) {$S_4/V$};
+		\node (e) at (4,2) {$N/V = A_4/V$};
+		\node (f) at (4,0) {$V/V = 1$};
+		\node (y1) at (6,4) {$\isomorfo$};
+		\node (y2) at (6,2) {$\isomorfo$};
+		\node (y3) at (6,0) {$\isomorfo$};
+		\node (g) at (8,4) {$S_3$};
+		\node (h) at (8,2) {$\gen{(123)}$};
+		\node (i) at (8,0) {$1$};
+		\draw (a) edge[->] (b) 
+		(b) edge[->] (c);
+		\draw (d) edge[->] (e) 
+		(e) edge[->] (f);
+		\draw (g) edge[->] (h) 
+		(h) edge[->] (i);
+	}
+	\caption{Teorema di corrispondenza per $S_4/V$.}
+	\label{fig:corrispondenza_per_S4_su_V}
+\end{figure}

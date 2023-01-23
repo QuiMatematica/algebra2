@@ -1,0 +1,423 @@
+\chapter{Laterali}
+
+\section{Laterali destri e sinistri}
+
+Dato un sottogruppo $H$ di un gruppo $G$, possiamo definire questa relazione d'equivalenza:
+
+\begin{equation}
+	g_1 \sim g_2 \Longleftrightarrow \exists h \in H \taleche g_2 = g_1 h
+\end{equation}
+
+Le classi di equivalenza di questa relazione si chiamano \textbf{laterali sinistri} e sono del tipo $xH$: prendo un elemento $x$ di $G$ e lo moltiplico per tutti gli elementi di $H$.
+
+Il numero di classi di equivalenza si chiama \textbf{indice} e si indica con $\indice{G}{H}$.
+
+L'indice dei laterali sinistri è uguale all'indice dei laterali destri.
+
+\section{Trasversali}
+
+Un \textbf{trasversale sinistro} è un insieme $T$ di rappresentanti per le classi laterali sinistre.
+
+I laterali sinistri formano una partizione del gruppo, quindi possiamo scrivere:
+
+\begin{equation}
+	G = \bigcup^\circ_{t \in T} tH
+\end{equation}
+
+Un trasversale sinistro non è necessariamente un trasversale destro.
+
+Consideriamo per esempio il gruppo $S_3$ (vedi capitolo~\ref{chp:S3}) e il suo sottogruppo:
+
+\begin{equation}
+	H=\gen{(23)} = \{(1), (23)\}
+\end{equation} 
+
+I laterali sinistri di $H$ in $S_3$ sono:
+
+\begin{gather}
+	1H = \{(1), (23)\} = (23)H \\
+	(12)H = \{(12), (123)\} = (123)H \\
+	(13)H = \{(13), (132)\} = (132)H
+\end{gather}
+
+Mentre i laterali destri di $H$ in $S_3$ sono:
+
+\begin{gather}
+	H1 = \{(1), (23)\} = H(23) \\
+	H(12) = \{(12), (132)\} = H(12) \\
+	H(13) = \{(13), (123)\} = H(123)
+\end{gather}
+
+Quindi l'insieme
+
+\begin{equation}
+	T = \{(1), (13), (123)\}
+\end{equation}
+
+è un trasversale sinistro, ma non un trasversale destro.
+
+\begin{teorema}
+	Se $T$ è un trasversale sinistro, allora $T^{-1}$ è un trasversale destro, dove:
+	
+	\begin{equation}
+		T^{-1} = \{t^{-1} \taleche t \in T\}
+	\end{equation}
+\end{teorema}
+\begin{dimostrazione}
+	Partiamo dall'unione disgiunta dei trasversali sinistri e applichiamo l'inverso:
+	
+	\begin{gather}
+		G = \bigcup^\circ_{t \in T} tH \\
+		G^{-1} = \bigcup^\circ_{t \in T} (tH)^{-1} \\
+		G = \bigcup^\circ_{t \in T} H^{-1}t^{-1} \\
+		G = \bigcup^\circ_{t \in T} Ht^{-1}
+	\end{gather}
+
+	Dove abbiamo potuto considerare che $G = G^{-1}$ e $H = G^{-1}$ in quanto gruppi.
+\end{dimostrazione}
+
+Abbiamo quindi dimostrato che:
+
+\begin{teorema}
+	L'indice, sia che lavori a destra sia che lavori a sinistra, è sempre lo stesso.
+\end{teorema}
+
+\section{Sottogruppo normale}
+
+Un sottogruppo $N \le G$ è \textbf{normale} se si ha:
+
+\begin{equation}
+	gNg^{-1} = N \quad \forall g \in G
+\end{equation}
+
+oppure, che è equivalente:
+
+\begin{equation}
+	gN = Ng \quad \forall g \in G
+\end{equation}
+
+Si indica con:
+
+\begin{equation}
+	N \normale G
+\end{equation}
+
+Se $N$ è un sottogruppo normale, un laterale destro è anche laterale sinistro, e un trasversale destro è anche trasversale sinistro.
+
+\section{Sottogruppo di sottogruppo}
+
+\begin{teorema}
+	\label{thr:fattorizzazione_indici}
+	Se $K \le H \le G$, allora
+	
+	\begin{equation}
+		\indice{G}{K} = \indice{G}{H} \cdot \indice{H}{K}
+	\end{equation} 
+\end{teorema}
+\begin{dimostrazione}
+	Chiamo $T$ un trasversale sinistro di $H$ in $G$.
+	
+	Chiamo $U$ un trasversale sinistro di $K$ in $H$.
+	
+	Vogliamo trovare un trasversale sinistro di $K$ in $G$:
+	
+	\begin{gather}
+		G = \bigcup^\circ_{t \in T} tH \quad\land\quad H = \bigcup^\circ_{u \in U} uK \\
+		G = \bigcup^\circ_{t \in T} t \biggl(\bigcup^\circ_{u \in U} uK\biggr) \\
+		G = \bigcup^\circ_{t \in T, u \in U} tuK
+	\end{gather}
+
+	Quindi $TU$ è un trasversale sinistro di $K$ in $G$.
+	
+	Quindi:
+	
+	\begin{equation}
+		\indice{G}{K} = \ordine{TU} = \ordine{T} \cdot \ordine{U} = \indice{G}{H} \cdot \indice{H}{K}
+	\end{equation}
+
+	Ovvero: \emph{il sottogruppo intermedio fattorizza l'indice}.
+\end{dimostrazione}
+
+\section{Intersezione di sottogruppi}
+
+\begin{esercizio}
+	Dati due sottogruppi $H$ e $K$ di $G$, se conosco $\indice{G}{H}$ e $\indice{G}{K}$, cosa posso dire di $\indice{G}{H \cap K}$ (figura~\ref{fig:Laterali_intersezione_di_sottogruppi})?
+\end{esercizio}
+\begin{figure}[tp]
+	\centering
+	\tikz {
+		\node (a) at (2,4) {$G$};
+		\node (b) at (0,2) {$H$};
+		\node (d) at (4,2) {$K$};
+		\node (e) at (2,0) {$H \cap K$};
+		\draw (a) edge[->] (b) 
+		(a) edge[->] (d) 
+		(b) edge[->] (e)
+		(d) edge[->] (e);
+	}
+	\caption{Intersezione di sottogruppi.}
+	\label{fig:Laterali_intersezione_di_sottogruppi}
+\end{figure}
+\begin{soluzione}
+	Siano $h_1, h_2 \in H$ tali che:
+	
+	\begin{equation}
+		h_1(H \cap K) \ne h_2(H \cap K)
+	\end{equation}
+
+	Ovvero $h_1$ e $h_2$ stanno in laterali dell'intersezione diversi.
+	
+	\begin{gather}
+		h_2^{-1}h_1 \not\in H \cap K \\
+		h_2^{-1}h_1 \not\in K \quad \text{perché } h_1, h_2 \in H
+		h_1 K \ne h_2 K
+	\end{gather}
+
+	Quindi $h_1$ e $h_2$ stanno in laterali di $K$ diversi. Quindi:
+	
+	\begin{equation}
+		\indice{H}{H \cap K} \le \indice{G}{K}
+	\end{equation}
+
+	Quindi, per il teorema~\ref{thr:fattorizzazione_indici}, si ha:
+	
+	\begin{gather}
+		\indice{G}{H \cap K} = \indice{G}{H} \cdot \indice{H}{H \cap K} \\
+		\indice{G}{H \cap K} \le \indice{G}{H} \cdot \indice{G}{K}
+	\end{gather}
+
+	L'indice dell'intersezione è minore o uguale al prodotto degli indici.
+\end{soluzione}
+
+In generale l'uguaglianza non c'è, vedi per esempio la figura~\ref{fig:Laterali_intersezione_di_sottogruppi_esempio_s3}.
+
+\begin{figure}[tp]
+	\centering
+	\tikz {
+		\node (a) at (2,4) {$G = S_3$};
+		\node (b) at (0,2) {$H = \gen{(12)}$};
+		\node (d) at (4,2) {$K = \gen{(13)}$};
+		\node (e) at (2,0) {$H \cap K = 1$};
+		\draw (a) edge[->] (b); 
+		\draw (a) edge[->] (d);
+		\draw (b) edge[->] (e);
+		\draw (d) edge[->] (e);
+		\draw[decorate,decoration={brace,raise=40pt}] (0,2) -- (0,4) node[pos=.5,right=-55pt,black]{3};
+		\draw[decorate,decoration={brace,raise=40pt}] (4,4) -- (4,2) node[pos=.5,right=43pt,black]{3};
+		\draw[decorate,decoration={brace,raise=60pt}] (4,4) -- (4,0) node[pos=.5,right=63pt,black]{6};
+	}
+	\caption{Intersezione di sottogruppi: esempio con $S_3$.}
+	\label{fig:Laterali_intersezione_di_sottogruppi_esempio_s3}
+\end{figure}
+
+\begin{teorema}
+	Se $\indice{G}{H}$ e $\indice{G}{K}$ sono coprimi, allora
+	
+	\begin{equation}
+		\indice{G}{H \cap K} = \indice{G}{H} \cdot \indice{G}{K}
+	\end{equation}
+\end{teorema}
+\begin{dimostrazione}
+	Per il teorema~\ref{thr:fattorizzazione_indici} si ha:
+	
+	\begin{gather}
+		\indice{G}{H} \text{ divide } \indice{G}{H \cap K} \\
+		\indice{G}{K} \text{ divide } \indice{G}{H \cap K}
+	\end{gather}	
+
+	Quindi:
+	
+	\begin{gather}
+		\indice{G}{H} \cdot \indice{G}{K} \text{ divide } \indice{G}{H \cap K} \\
+		\indice{G}{H} \cdot \indice{G}{K} \le \indice{G}{H \cap K}
+	\end{gather}
+
+	Ma nell'esercizio precedente abbiamo verificato che:
+	
+	\begin{equation}
+		\indice{G}{H} \cdot \indice{G}{K} \ge \indice{G}{H \cap K}
+	\end{equation}
+
+	Quindi:
+	
+	\begin{equation}
+		\indice{G}{H} \cdot \indice{G}{K} = \indice{G}{H \cap K}
+	\end{equation}
+\end{dimostrazione}
+
+\section{Prodotto di sottogruppi}
+
+\begin{teorema}
+	\label{thr:prodotto_sottogruppi}
+	Siano $H$ e $K$ due sottogruppi di $G$. Definiamo:
+	
+	\begin{equation}
+		HK = \{hk \taleche h \in H, k \in K\}
+	\end{equation}
+
+	Si ha:
+
+	\begin{equation}
+		HK \le G \Longleftrightarrow HK = KH
+	\end{equation}
+
+	In particolare se $N$ è un sottogruppo normale di $G$, allora $NH = HN$ è un sottogruppo di $G$ per ogni $H \le G$.
+
+\end{teorema}
+\begin{dimostrazione}
+	Partiamo da un controesempio. Se prendiamo i seguenti sottogruppi di $S_3$:
+	
+	\begin{equation}
+		H = \{1, (12)\}, K = \{1, (13)\}
+	\end{equation}
+	
+	otteniamo il prodotto di sottogruppi:
+	
+	\begin{equation}
+		HK = \{1, (12), (13), (123)\}
+	\end{equation}
+	
+	Questo insieme ha cardinalità 4, che non è un divisore dell'ordine di $S_3$ (che è 6), quindi, per il  teorema di Lagrange \textbf{LINK}, non è un sottogruppo di $S_3$.
+	
+	Supponiamo ora che $HK \le G$: allora si ha:
+	
+	\begin{equation}
+		HK = (HK)^{-1} = K^{-1}H^{-1} = KH
+	\end{equation}
+	
+	E questo dimostra la prima parte del teorema.
+	
+	Inoltre se $N$ è un sottogruppo normale si ha:
+	
+	\begin{equation}
+		nh = hh^{-1}nh = h(h^{-1}nh) = hn^* \quad \text{con } n^* \in N
+	\end{equation}
+\end{dimostrazione}
+
+\begin{teorema}
+	\label{thr:ordine_prodotto_sottogruppi}
+	Se $H$ e $K$ sono finiti, allora:
+
+	\begin{equation}
+		\ordine{HK} = \dfrac{\ordine{H}\ordine{K}}{\ordine{H \cap K}}
+	\end{equation}
+\end{teorema}
+
+\begin{esercizio}
+	Sia $G$ è un gruppo, $H \le G$, $N \normale G$ e:
+	
+	\begin{gather}
+		HN = G \\
+		H \cap N = 1
+	\end{gather}
+
+	Ovvero $H$ è il complementare di $N$.
+	
+	Esiste una funzione $\gamma: H \times N \longrightarrow G$ biettiva, ma tale funzione non è un isomorfismo.
+\end{esercizio}
+\begin{soluzione}
+	Se $HN = G$ significa che:
+	
+	\begin{equation}
+		\forall g \in G \, \exists h \in H, k \in K \taleche g = hn
+	\end{equation}
+
+	Presi due elementi $h_1, h_2 \in H$ e due elementi $n_1, n_2 \in N$:
+	
+	\begin{equation}
+		h_1n_1 = h_2n_2 \Longrightarrow h_2^{-1}h_1 = n_2n_1^{-1}
+	\end{equation}
+
+	Ma $h_2^{-1}h_1$ è un elemento di $H$ e $n_2n_1^{-1}$ è un elemento di $N$. E dal momento che questi due elementi sono in verità lo stesso elemento, allora tale valore sta anche in $H \cap N$. Ma nell'intersezione c'è solo l'unità, quindi:
+	
+	\begin{gather}
+		h_2^{-1}h_1 = 1 \Longrightarrow h_1 = h_2 \\
+		n_2n_1^{-1} = 1 \Longrightarrow n_1 = n_2 
+	\end{gather}
+
+	Questo significa che il prodotto $g = hn$ è unico per ogni elemento $g$.
+	
+	Quindi la funzione:
+	
+	\begin{align}
+		\gamma: H \times N &\longrightarrow G \\
+		(h, n) &\longmapsto hn
+	\end{align}
+
+	è suriettiva e iniettiva, quindi è biiettiva.
+	
+	Tuttavia non è garantito che $\gamma$ sia un isomorfismo. Infatti $G$ potrebbe non essere abeliano, $H$ e $K$ potrebbero essere abeliani quindi anche il prodotto $H \times K$ sarebbe abeliano.
+	
+	Per esempio se considero:
+	
+	\begin{gather}
+		G = S_3 \text{ abeliano} \\
+		H = \gen{(12)} \text{ ciclico quindi abeliano} \\
+		N = \gen{(123)} \text{ ciclico quindi abeliano}
+	\end{gather}
+
+	abbiamo che:
+	
+	\begin{gather}
+		HN = S_3 \\
+		H \cap N = 1
+	\end{gather}
+
+	Ma $H \times N$ è abeliano (perché prodotto diretto di gruppi abeliani), mentre $G$ non lo è.
+	
+	Questo significa che la funzione non rispetta l'operazione di composizione. Per esempio:
+	
+	\begin{gather}
+		((12), (123)) \cdot ((12), 1) = (1, (123)) \\
+		((12), 1) \cdot ((12), (123)) = (1, (123))
+	\end{gather}
+
+	Quindi la composizione di questi elementi del prodotto diretto è commutativa. In genere all'interno del prodotto diretto la composizione è commutativa perché ho sempre composizioni con l'unità o tra due elementi che sono inversi.
+	
+	Se passo alle loro immagini ho:
+	
+	\begin{gather}
+		((12), (123)) \longmapsto (12) \cdot (123) = (23) \\
+		((12), 1) \longmapsto (12) \cdot 1 = (12)
+	\end{gather}
+
+	E:
+	
+	\begin{gather}
+		(12) \cdot (23) = (123) \\
+		(23) \cdot (12) = (132)
+	\end{gather}
+
+	Quindi tra questi due elementi di $S_3$ il prodotto non è commutativo.
+	
+\end{soluzione}
+
+\section{Sottogruppi di indice 2}
+
+\begin{teorema}
+	\label{thr:sottogruppi_di_indice_2}
+	Si $H$ un sottogruppo di indice 2 di un gruppo $G$. Allora $H$ è normale.
+\end{teorema}
+\begin{dimostrazione}
+	Dal momento che l'indice di $H$ è pari a 2, ogni trasversale sinistro contiene due elementi, quindi ci sono due laterali sinistri: $H$ e $xH$.
+	
+	Questi due insiemi sono disgiunti perché:
+	
+	\begin{equation}
+		h_1x = h_2 \Longrightarrow x = h_1^{-1}h_2 \in H
+	\end{equation}
+
+	Quindi:
+	
+	\begin{equation}
+		G = H \overset{\circ}{\cup} xH
+	\end{equation}
+
+	Ma lo stesso ragionamento lo possiamo fare anche con i laterali destri e ottenere:
+	
+	\begin{equation}
+		G = H \overset{\circ}{\cup} Hx
+	\end{equation}
+
+	Da questo deduciamo che $xH$ e $Hx$ sono lo stesso insieme, quindi $H$ è normale.
+\end{dimostrazione}

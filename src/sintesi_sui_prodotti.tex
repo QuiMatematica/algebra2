@@ -1,0 +1,150 @@
+\chapter{Sintesi sui prodotti}
+
+Sia $G$ un gruppo; $H$ e $K$ due sottogruppi di $G$.
+
+\section{Sottogruppo generato da $H$ e $K$}
+
+$\gen{H, K}$ è il sottogruppo generato da $H$ e $K$, ovvero il più piccolo sottogruppo che contiene $H$ e $K$ (figura~\ref{fig:sottogruppo_generato_da_h_e_k}).
+
+\begin{figure}[tp]
+	\centering
+	\tikz {
+		\node (a) at (2,6) {$G$};
+		\node (f) at (2,4) {$\gen{H, K}$};
+		\node (b) at (0,2) {$H$};
+		\node (d) at (4,2) {$K$};
+		\draw (a) edge[->] (f);
+		\draw (f) edge[->] (b);
+		\draw (f) edge[->] (d);
+	}
+	\caption{Sottogruppo generato da $H$ e $K$.}
+	\label{fig:sottogruppo_generato_da_h_e_k}
+\end{figure} 
+
+\section{Prodotto di sottogruppi}
+
+\begin{equation}
+	HK = \{hk \taleche h \in H \land k \in K\}
+\end{equation}
+
+$HK$ è l'insieme degli elementi di $G$ che sono esprimibili come prodotto di un elemento di $H$ per un elemento di $K$.
+
+\begin{teorema}
+	Se $H$ e $K$ sono finiti, allora:
+	
+	\begin{equation}
+		\ordine{HK} = \dfrac{\ordine{H}\ordine{K}}{\ordine{H \cap K}}
+	\end{equation}
+\end{teorema}
+
+$HK$ non è sempre un sottogruppo.
+
+Per esempio:
+
+\begin{gather}
+	G = S_3 \\
+	H = \gen{(12)} = \{1, (12)\}
+	K = \gen{(13)} = \{1, (13)\} 
+\end{gather}
+
+L'insieme prodotto contiene:
+
+\begin{gather}
+	1 \cdot 1 = 1 \\
+	1 \cdot (13) = (13) \\
+	(12) \cdot 1 = (12) \\
+	(12) \cdot (13) = (132)
+\end{gather}
+
+Quindi $\ordine{HK} = 4$, ma 4 non divide $6 = \ordine{S_3}$ quindi per il teorema di Lagrange~\ref{thr:Laterali_Lagrange} $HK$ non può essere un sottogruppo di $S_3$. Infatti mancano:
+
+\begin{gather}
+	(132)^{-1} = (123) \\
+	(132)\cdot(12) = (23)
+\end{gather}
+
+\begin{teorema}
+	$HK$ è un sottogruppo se e solo se $HK = KH$.
+	
+	In particolare questo si verifica quando uno dei due sottogruppi è normale.
+\end{teorema}
+
+In generale vale:
+
+\begin{equation}
+	HK \subseteq \gen{H, K}
+\end{equation}
+
+Infatti:
+
+\begin{gather}
+	H = \gen{(12)} \\
+	K = \gen{(13)} \\
+	HK \subseteq\, \gen{H, K} \,= S_3
+\end{gather}
+
+\begin{teorema}
+	Se $HK$ è un sottogruppo, allora $HK = \gen{H, K}$.
+\end{teorema}
+
+\section{Prodotto diretto}
+
+\begin{equation}
+	H \times K = \{(h, k) \taleche h \in H \land k \in K\}
+\end{equation}
+
+Il prodotto tra due elementi del prodotto diretto viene effettuata componenti per componente:
+
+\begin{equation}
+	(h, k)(h', k') = (hh', kk')
+\end{equation}
+
+\begin{teorema}
+	G \isomorfo H $\times$ K se e solo se $\begin{cases}
+		G=HK \\
+		H, K \normale G \\
+		H \cap K = 1
+	\end{cases}$.
+\end{teorema}
+
+Per comodità non si utilizza la notazione $(h, k)$ ma si scrivere $hk$.
+
+\section{Ricapitolando}
+
+Il prodotto di gruppi ci dà un'informazione solo sugli elementi, che possono essere scritti come prodotto di un elemento per ciascun fattore.
+
+Il prodotto diretto è un caso particolare del precedente, in cui abbiamo anche un'informazione sull'operazione, che deve essere svolta componente per componente.
+
+Consideriamo, per esempio, il gruppo $D_n$ in cui abbiamo:
+
+\begin{itemize}
+	\item $\gen{\rho}$: il sottogruppo delle rotazioni;
+	\item $\gen{\iota}$: il sottogruppo generato da una riflessione.
+\end{itemize}
+
+Si ha:
+
+\begin{equation}
+	D_n = \gen{\rho}\gen{\iota}
+\end{equation}
+
+Quindi ogni elemento di $D_n$ è prodotto di un elemento di $\gen{\rho}$ e di un elemento di $\gen{\iota}$.
+
+Ma:
+
+\begin{equation}
+	D_n \not\isomorfo \gen{\rho} \times \gen{\iota}
+\end{equation}
+
+Infatti le coppie $(\rho, 1)$ e $(1, \iota)$ commutano:
+
+\begin{gather}
+	(\rho, 1)(1, \iota) = (\rho,\iota) \\
+	(1, \iota)(\rho, 1) = (\rho,\iota) \\
+\end{gather}
+
+Invece gli elementi $\rho$ e $\iota$ non commutano perché:
+
+\begin{equation}
+	\iota\rho\iota = \rho^{-1} \quad\Longleftrightarrow\quad \rho\iota = \iota\rho^{-1}
+\end{equation}
