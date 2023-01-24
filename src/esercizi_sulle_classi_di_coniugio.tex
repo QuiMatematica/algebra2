@@ -394,3 +394,135 @@ Ci sono ancora diversi gradi di libertà perché ci sono diversi elementi non no
 	\caption{Teorema di corrispondenza per $S_4/V$.}
 	\label{fig:corrispondenza_per_S4_su_V}
 \end{figure}
+
+Osserviamo che in generale \textbf{la relazione di normalità non è transitiva}.
+
+Prendiamo, per esempio:
+\begin{equation}
+	H = \gen{(12)(34)} \congruente C_2
+\end{equation}
+
+Prendiamo inoltre il gruppo di Klein $V$ che è abeliano, quindi tutti i suoi sottogruppi sono normali:
+\begin{equation}
+	H \normale V
+\end{equation}
+
+Inoltre abbiamo visto prima che:
+\begin{equation}
+	V \normale S_4
+\end{equation}
+
+Però $H$ non è un sottogruppo normale di $S_4$.
+
+\begin{teorema}
+	\label{th:uguaglianza_di_coniugi}
+	Supponi che $xg_1 x^{-1} = g_2$.
+	Dimostra che $y g_1 y^{-1} = g_2$ se e solo se $y \in x C_G(g_1)$.
+\end{teorema}
+\begin{dimostrazione}
+	Vogliamo che i due coniugi siano uguali:
+	\begin{equation}
+		y g_1 y^{-1} = x g_1 x^{-1}
+	\end{equation}
+	Moltiplico per gli inversi per portare le $x$ al primo membro:
+	\begin{gather}
+		x^{-1} y g_1 y^{-1} x = g_1 \\
+		x^{-1} y \in C_G(g_1) \\
+		y \in x C_G(g_1)
+	\end{gather}
+\end{dimostrazione}
+
+\begin{esercizio}
+	\label{th:non_coniugati_in_a4}
+	Dimostrare che $(123)$ e $(132)$ sono coniugati in $S_4$ ma non sono coniugati in $A_4$.
+\end{esercizio}
+\begin{soluzione}
+	I 3-cicli $(123)$ e $(132)$ sono coniugati in $S_4$ perché hanno la stessa struttura ciclica.
+
+	Determiniamo allora tutti i $\tau \in S_4$ tali che $\tau (123) \tau^{-1} = (132)$ e selezioniamo poi quelli
+	presenti anche in $A_4$.
+
+	Lo scambio $(23)$ ha le caratteristiche desiderate.
+
+	Per il teorema~\ref{th:uguaglianza_di_coniugi} posso trovare tutti gli altri valori $\tau$:
+	\begin{align}
+		\tau \in (23) C_{S_4}(123) &= (23) \gen{(123)} = \\
+		&= (23)\{1, (123), (132)\} = \\
+		&= \{(23), (12), (13)\}
+	\end{align}
+	Abbiamo trovato solo permutazioni dispari.
+	Quindi non esiste una permutazione $\tau$ pari tale che $\tau (123) \tau^{-1} = (132)$.
+
+	Quindi $(123)$ e $(132)$ non sono coniugati in $A_4$: appartengono a classi di coniugio diverse.
+\end{soluzione}
+
+\begin{esercizio}
+	Determinare le classi di coniugio di $A_4$.
+\end{esercizio}
+
+\begin{soluzione}
+	Il gruppo $A_4$ contiene l'identità, i doppi scambi e i 3-cicli:
+	\begin{equation}
+		1 \quad (12)(34) \quad (123)
+	\end{equation}
+
+	In $A_4$ non ho più la proprietà che i coniugati di una permutazioni coincidono con tutte e sole le permutazioni
+	con la stessa struttura ciclica.
+	Quindi non ho uno strumento per contare facilmente i coniugati.
+	Tuttavia conoscendo i centralizzanti di $S_4$ diventa facile trovare i centralizzanti di $A_4$ infatti:
+	\begin{equation}
+		C_{A_4}(\sigma) = C_{S_4}(\sigma) \cap A_4
+	\end{equation}
+
+	Determinati i centralizzanti e i loro ordini posso determinare le cardinalità delle classi di coniugio.
+
+	\textbf{Centralizzante di $(12)(34)$.}
+	
+	Il centralizzante in $S_4$ dei doppi scambi è il gruppo diedrale $D_4$, quindi:
+	\begin{equation}
+		C_{A_4}((12)(34)) = A_4 \cap D_4
+	\end{equation}
+	
+	$D_4$ ha ordine 8 e contiene delle permutazioni dispari.
+	Se seleziono solo le permutazioni pari ottengo un gruppo di Klein $V$ che ha ordine 4.
+	Quindi:
+	\begin{gather}
+		\ordine{C_{A_4}((12)(34))} = \ordine{V} = 4
+	\end{gather}
+
+	Il numero di coniugati di $(12)(34)$ è $12:4 = 3$, che corrisponde al numero di doppi scambi.
+
+	\textbf{Centralizzante di $(123)$.}
+
+	Il centralizzante in $S_4$ di un 3-ciclo è il sottogruppo generato dal 3-ciclo stesso, quindi:
+	\begin{equation}
+		C_{A_4}((123)) = A_4 \cap \gen{(123)} = \gen{(123)}
+	\end{equation}
+
+	Quindi il numero di coniugati è $(123)$ è $12:3 = 4$.
+	Ma i 3-cicli in $A_4$ sono 8.
+	Quindi non è più vero che tutti le permutazioni con la stessa struttura ciclica sono coniugate.
+
+	Infatti nel teorema~\ref{th:non_coniugati_in_a4} abbiamo dimostrato che $(123)$ e $(132)$ non sono coniugate.
+
+	Avremo quindi 4 coniugati per $(123)$ e 4 coniugati per $(132)$ (figura~\ref{fig:classi_coniugio_a4}).
+
+\end{soluzione}
+
+\begin{sidewaystable}
+	\centering
+	\begin{tabular}{ccccc}
+		\toprule
+		Struttura ciclica & Elemento & Numero coniugati & Ordine centralizzante & Centralizzante \\
+		\midrule
+		identità & 1 & 1 & 12 & $A_4$ \\
+		3-cicli & (123) & 4 & 3 & $\gen{(123)} \,\isomorfo C_3$ \\
+		3-cicli & (132) & 4 & 3 & $\gen{(123)} \,\isomorfo C_3$ \\
+		doppi 2-cicli & (12)(34) & 3 & 4 & $\gen{(12)(34),(14)(23)} \,\isomorfo C_2 \times C_2 \isomorfo V$ \\
+		\midrule
+		& & $12 = \ordine{A_4}$ & & \\
+		\bottomrule
+	\end{tabular}
+	\caption{Classi di coniugio e centralizzanti di $A_4$}
+	\label{fig:classi_coniugio_a4}
+\end{sidewaystable}
