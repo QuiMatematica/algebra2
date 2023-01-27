@@ -19,34 +19,30 @@ L'indice dei laterali sinistri è uguale all'indice dei laterali destri.
 Un \textbf{trasversale sinistro} è un insieme $T$ di rappresentanti per le classi laterali sinistre.
 
 I laterali sinistri formano una partizione del gruppo, quindi possiamo scrivere:
-
-\begin{equation}
+\begin{equation*}
 	G = \bigcup^\circ_{t \in T} tH
-\end{equation}
+\end{equation*}
 
 Un trasversale sinistro non è necessariamente un trasversale destro.
 
-Consideriamo per esempio il gruppo $S_3$ (vedi capitolo~\ref{chp:S3}) e il suo sottogruppo:
-
-\begin{equation}
+Consideriamo per esempio il gruppo $S_3$ (vedi capitolo~\ref{ch:S3}) e il suo sottogruppo:
+\begin{equation*}
 	H=\gen{(23)} = \{(1), (23)\}
-\end{equation} 
+\end{equation*}
 
 I laterali sinistri di $H$ in $S_3$ sono:
-
-\begin{gather}
+\begin{gather*}
 	1H = \{(1), (23)\} = (23)H \\
 	(12)H = \{(12), (123)\} = (123)H \\
 	(13)H = \{(13), (132)\} = (132)H
-\end{gather}
+\end{gather*}
 
 Mentre i laterali destri di $H$ in $S_3$ sono:
-
-\begin{gather}
+\begin{gather*}
 	H1 = \{(1), (23)\} = H(23) \\
-	H(12) = \{(12), (132)\} = H(12) \\
+	H(12) = \{(12), (132)\} = H(132) \\
 	H(13) = \{(13), (123)\} = H(123)
-\end{gather}
+\end{gather*}
 
 Quindi l'insieme
 
@@ -131,17 +127,21 @@ Se $N$ è un sottogruppo normale, un laterale destro è anche laterale sinistro,
 	
 	Quindi:
 	
-	\begin{equation}
+	\begin{equation*}
 		\indice{G}{K} = \ordine{TU} = \ordine{T} \cdot \ordine{U} = \indice{G}{H} \cdot \indice{H}{K}
-	\end{equation}
+	\end{equation*}
 
 	Ovvero: \emph{il sottogruppo intermedio fattorizza l'indice}.
 \end{dimostrazione}
 
 \section{Intersezione di sottogruppi}
+\label{sec:laterali_intersezione_sottogruppi}
 
 \begin{esercizio}
-	Dati due sottogruppi $H$ e $K$ di $G$, se conosco $\indice{G}{H}$ e $\indice{G}{K}$, cosa posso dire di $\indice{G}{H \cap K}$ (figura~\ref{fig:Laterali_intersezione_di_sottogruppi})?
+	Dati due sottogruppi $H$ e $K$ di $G$ (figura~\ref{fig:Laterali_intersezione_di_sottogruppi}):
+	\begin{equation*}
+		\indice{G}{H \cap K} \le \indice{G}{H} \cdot \indice{G}{K}
+	\end{equation*}
 \end{esercizio}
 \begin{figure}[tp]
 	\centering
@@ -273,34 +273,35 @@ In generale l'uguaglianza non c'è, vedi per esempio la figura~\ref{fig:Laterali
 	
 	otteniamo il prodotto di sottogruppi:
 	
-	\begin{equation}
+	\begin{equation*}
 		HK = \{1, (12), (13), (123)\}
-	\end{equation}
+	\end{equation*}
 	
-	Questo insieme ha cardinalità 4, che non è un divisore dell'ordine di $S_3$ (che è 6), quindi, per il  teorema di Lagrange \textbf{LINK}, non è un sottogruppo di $S_3$.
+	Questo insieme ha cardinalità 4, che non è un divisore dell'ordine di $S_3$ (che è 6), quindi,
+	per il  teorema di Lagrange~\ref{thr:Laterali_Lagrange}, non è un sottogruppo di $S_3$.
 	
 	Supponiamo ora che $HK \le G$: allora si ha:
 	
-	\begin{equation}
+	\begin{equation*}
 		HK = (HK)^{-1} = K^{-1}H^{-1} = KH
-	\end{equation}
+	\end{equation*}
 	
 	E questo dimostra la prima parte del teorema.
 	
 	Inoltre se $N$ è un sottogruppo normale si ha:
 	
-	\begin{equation}
+	\begin{equation*}
 		nh = hh^{-1}nh = h(h^{-1}nh) = hn^* \quad \text{con } n^* \in N
-	\end{equation}
+	\end{equation*}
 \end{dimostrazione}
 
 \begin{teorema}
 	\label{thr:ordine_prodotto_sottogruppi}
 	Se $H$ e $K$ sono finiti, allora:
 
-	\begin{equation}
+	\begin{equation*}
 		\ordine{HK} = \dfrac{\ordine{H}\ordine{K}}{\ordine{H \cap K}}
-	\end{equation}
+	\end{equation*}
 \end{teorema}
 
 \begin{esercizio}
@@ -313,27 +314,27 @@ In generale l'uguaglianza non c'è, vedi per esempio la figura~\ref{fig:Laterali
 
 	Ovvero $H$ è il complementare di $N$.
 	
-	Esiste una funzione $\gamma: H \times N \longrightarrow G$ biettiva, ma tale funzione non è un isomorfismo.
+	Esiste una funzione $\gamma: H \times N \longrightarrow G$ biiettiva, ma tale funzione non è un isomorfismo.
 \end{esercizio}
 \begin{soluzione}
 	Se $HN = G$ significa che:
 	
-	\begin{equation}
+	\begin{equation*}
 		\forall g \in G \, \exists h \in H, k \in K \taleche g = hn
-	\end{equation}
+	\end{equation*}
 
 	Presi due elementi $h_1, h_2 \in H$ e due elementi $n_1, n_2 \in N$:
 	
-	\begin{equation}
+	\begin{equation*}
 		h_1n_1 = h_2n_2 \Longrightarrow h_2^{-1}h_1 = n_2n_1^{-1}
-	\end{equation}
+	\end{equation*}
 
 	Ma $h_2^{-1}h_1$ è un elemento di $H$ e $n_2n_1^{-1}$ è un elemento di $N$. E dal momento che questi due elementi sono in verità lo stesso elemento, allora tale valore sta anche in $H \cap N$. Ma nell'intersezione c'è solo l'unità, quindi:
 	
-	\begin{gather}
+	\begin{gather*}
 		h_2^{-1}h_1 = 1 \Longrightarrow h_1 = h_2 \\
-		n_2n_1^{-1} = 1 \Longrightarrow n_1 = n_2 
-	\end{gather}
+		n_2 n_1^{-1} = 1 \Longrightarrow n_1 = n_2
+	\end{gather*}
 
 	Questo significa che il prodotto $g = hn$ è unico per ogni elemento $g$.
 	
@@ -346,33 +347,35 @@ In generale l'uguaglianza non c'è, vedi per esempio la figura~\ref{fig:Laterali
 
 	è suriettiva e iniettiva, quindi è biiettiva.
 	
-	Tuttavia non è garantito che $\gamma$ sia un isomorfismo. Infatti $G$ potrebbe non essere abeliano, $H$ e $K$ potrebbero essere abeliani quindi anche il prodotto $H \times K$ sarebbe abeliano.
+	Tuttavia non è garantito che $\gamma$ sia un isomorfismo.
+	Infatti $G$ potrebbe non essere abeliano, $H$ e $K$ potrebbero essere abeliani quindi anche il prodotto $H \times K$ sarebbe abeliano.
 	
 	Per esempio se considero:
-	
-	\begin{gather}
-		G = S_3 \text{ abeliano} \\
+	\begin{gather*}
+		G = S_3 \text{ non abeliano} \\
 		H = \gen{(12)} \text{ ciclico quindi abeliano} \\
 		N = \gen{(123)} \text{ ciclico quindi abeliano}
-	\end{gather}
+	\end{gather*}
 
 	abbiamo che:
-	
-	\begin{gather}
+	\begin{gather*}
 		HN = S_3 \\
 		H \cap N = 1
-	\end{gather}
+	\end{gather*}
 
 	Ma $H \times N$ è abeliano (perché prodotto diretto di gruppi abeliani), mentre $G$ non lo è.
 	
-	Questo significa che la funzione non rispetta l'operazione di composizione. Per esempio:
+	Questo significa che la funzione non rispetta l'operazione di composizione.
+	Per esempio:
 	
 	\begin{gather}
 		((12), (123)) \cdot ((12), 1) = (1, (123)) \\
 		((12), 1) \cdot ((12), (123)) = (1, (123))
 	\end{gather}
 
-	Quindi la composizione di questi elementi del prodotto diretto è commutativa. In genere all'interno del prodotto diretto la composizione è commutativa perché ho sempre composizioni con l'unità o tra due elementi che sono inversi.
+	Quindi la composizione di questi elementi del prodotto diretto è commutativa.
+	In genere all'interno del prodotto diretto la composizione è commutativa perché ho sempre composizioni con l'unità
+	o tra due elementi che sono inversi.
 	
 	Se passo alle loro immagini ho:
 	

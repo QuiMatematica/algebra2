@@ -1,0 +1,35 @@
+\chapter{Esercizi}
+\label{ch:esercizi_settimana_2}
+
+\begin{esercizio}
+    Trovare i gruppi finiti che hanno esattamente due classi di coniugio.
+
+    Ovvero:
+
+    Sia $G$ un gruppo finito e supponiamo che ogni due elementi non identici di $G$ sono coniugati.
+    Allora $\ordine{G} \le 2$.
+\end{esercizio}
+\begin{soluzione}
+    Se il gruppo ha esattamente due classi di coniugio, allora:
+    \begin{equation*}
+        G = C_1 \overset{\circ}{\cup} C_2
+    \end{equation*}
+
+    La prima classe di coniugio la conosco: è quella dell'identità.
+    \begin{gather*}
+        C_1 = \{1\} \\
+        \ordine{G} = 0 \allora \ordine{C_2} = n-1
+    \end{gather*}
+
+    Prendiamo un elemento $x \in C_2$:
+    \begin{gather*}
+        \indice{G}{C_G(x)} = \ordine{C_2} = n-1 \\
+        \indice{G}{C_G(x)} \text{ divide } \ordine{G} = n \\
+        n-1 \divisore n
+    \end{gather*}
+
+    Ma questo succede solo se $n = 2$.
+    \begin{equation*}
+        G \isomorfo C_2
+    \end{equation*}
+\end{soluzione}

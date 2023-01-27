@@ -398,9 +398,9 @@ Ci sono ancora diversi gradi di libertà perché ci sono diversi elementi non no
 Osserviamo che in generale \textbf{la relazione di normalità non è transitiva}.
 
 Prendiamo, per esempio:
-\begin{equation}
-	H = \gen{(12)(34)} \congruente C_2
-\end{equation}
+\begin{equation*}
+	H = \gen{(12)(34)} \isomorfo C_2
+\end{equation*}
 
 Prendiamo inoltre il gruppo di Klein $V$ che è abeliano, quindi tutti i suoi sottogruppi sono normali:
 \begin{equation}
@@ -526,3 +526,102 @@ Però $H$ non è un sottogruppo normale di $S_4$.
 	\caption{Classi di coniugio e centralizzanti di $A_4$}
 	\label{fig:classi_coniugio_a4}
 \end{sidewaystable}
+
+\section{Facciamo finta di essere Galois...}
+\label{sec:coniugio_galois}
+
+Facciamo finta di essere Galois e di voler trovare la formula risolutiva delle equazioni di quinto grado.
+
+Mettiamo in corrispondenza la teoria dei gruppi e le formule risolutive.
+
+\begin{quotation}
+	La formula risolutiva delle equazioni di quinto grado esiste se e solo se $A_5$ non è un gruppo semplice.
+\end{quotation}
+
+C'è però il sospetto che $A_5$ sia un gruppo semplice.
+Dimostriamolo.
+
+Poi Galois dimostrerà che $A_n$ è semplice per ogni $n \ge 5$.
+
+Questo apre la strada allo studio dei gruppi semplici.
+Studio importante perché ogni volta che abbiamo un sottogruppo normale $N \normale G$ abbiamo altri due gruppi: $N$ e $G/N$.
+Questi gruppi potrebbero avere altri sottogruppi \ldots
+Affetto il gruppo fino ad avere solo gruppi semplici.
+
+Se so tutto sui gruppi semplici, posso studiare tutti i gruppi finiti.
+
+La lista dei gruppi semplici si è arricchita.
+C'è anche il gruppo mostro scoperto nel 1984 grazie ai computer.
+E c'è una dimostrazione mostruosa (15000 pagine per 600 articoli) che tutti i gruppi semplici sono \ldots (boh, non si
+capisce dal video).
+
+\begin{teorema}
+	$A_5$ è un gruppo semplice.
+\end{teorema}
+
+\begin{dimostrazione}
+	Ordine di $A_5$:
+	\begin{equation*}
+		\ordine{A_5} = \dfrac{5!}{2} = 60
+	\end{equation*}
+
+	Elenchiamo gli elementi di ordine pari che posso trovare:
+	\begin{itemize}
+		\item l'identità 1: ne abbiamo una sola;
+		\item i doppi scambi del tipo $(12)(34)$: determino quale elemento sta fermo e per ciascuno di questi ho 3
+		possibili doppi scambi;
+		in totale: 15;
+		\item i 3-cicli del tipo $(123)$: determino i due che stanno fermi e per questi ho 2 possibili 3-cicli;
+		in totale: $\binom{5}{2} \cdot 2 = 20$
+		\item i 5-cicli del tipo $(12345)$: $4! = 24$.
+	\end{itemize}
+
+	Se stessimo parlando di $S_5$ diremo che le classi di coniugio hanno tanti elementi tanti quanti le permutazioni
+	di ciascuna struttura ciclica.
+	Ma abbiamo lo stesso problema che abbiamo avuto nel passaggio da $S_4$ a $A_4$.
+
+	Come si comportano le classi di coniugio in $A_5$?
+
+	\textbf{Doppi cicli}
+	\begin{gather*}
+		\ordine{C_{S_5}((12)(34))} = \dfrac{\ordine{S_5}}{\text{num. coniugati}} = \dfrac{120}{15} = 0 \\
+		C_{S_5}((12)(34)) = C_{S_4}((12)(34)) = D_4 \\
+		C_{A_5}((12)(34)) = D_4 \cap A_5 = V \\
+		\ordine{C_{A_5}((12)(34))} = 4
+	\end{gather*}
+	Ora, visto che $60 : 4 = 15$, deduco che tutti i doppi scambi sono coniugati in $A_5$.
+
+	\textbf{3-cicli}
+	\begin{gather*}
+		\ordine{C_{S_5}((123))} = \dfrac{120}{20} = 6 \\
+		C_{S_5}((123)) = \gen{(123)(45)} \isomorfo C_6 \\
+		C_{A_5}((123)) = \gen{(123)(45)} \cap A_5 = \gen{(123)} \\
+		\ordine{C_{A_5}((123))} = 3
+	\end{gather*}
+	Ora, visto che $60 : 3 = 20$, deduco che tutti i 3-cicli sono coniugati in $A_5$.
+
+	\textbf{5-cicli}
+	\begin{gather*}
+		C_{S_5}((12345)) = \gen{(12345)} \\
+		C_{A_5}((12345)) = \gen{(12345)} \cap A_5 = \gen{(12345)}
+		\ordine{C_{A_5}} = 5
+	\end{gather*}
+	Numero di coniugati: $60:5 = 12$.
+
+	Quindi i 24 5-cicli appartengono a 2 classi di coniugio, ciascuna con 12 elementi.
+
+	Quindi le classi di coniugio di $A_5$ hanno cardinalità: 1, 15, 20, 12 e 12.
+
+	Supponiamo ora di avere un $N \normale A_5$.
+
+	\textbf{Un sottogruppo normale è unione di classi di coniugio.}
+
+	Quindi $N$ deve essere unione di classi di coniugio.
+	Ovvero l'ordine di $N$ deve essere pari ad 1 (ordine della
+	classe di coniugio dell'unità) e di qualcuno tra 15, 20, 12 3 12.
+
+	Ma devo anche trovare un divisore di 60.
+	Divisore che non mi è possibile trovare.
+
+	Quindi non ci sono sottogruppi normali se non 1 e $A_5$.
+\end{dimostrazione}

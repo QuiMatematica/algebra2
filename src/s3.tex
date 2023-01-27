@@ -1,7 +1,8 @@
 \chapter{$S_3$}
-\label{chp:S3}
+\label{ch:S3}
 
 \section{Caratteristiche del gruppo}
+\label{sec:s3_caratteristiche}
 
 \begin{center}
 	\begin{tabular}{lll}
@@ -9,12 +10,13 @@
 		Gruppo ciclico & No & Non contiene elementi di ordine 6. \\
 		Ordine & 6 & $P_3 = 3! = 6$\\
 		Esponente & 6 & Il gruppo contiene elementi di ordine 1, 2 e 3. \\
-		Isomorfismi & $C_2 \times C_3$ & $G = \gen{(12), (123)}$ \\
+		Isomorfismi & $C_2 \times C_3$ & $S_3 = \gen{(12), (123)}$ \\
  		&  $D_3$ & 
 	\end{tabular}
 \end{center}
 
 \section{Elementi}
+\label{sec:s3_elementi}
 
 \begin{center}
 	\[
@@ -52,6 +54,7 @@
 \end{center}
 
 \section{Tavola di Cayley}
+\label{sec:s3_caylay}
 
 \begin{center}
 	\[
@@ -68,20 +71,42 @@
 	\]
 \end{center}
 
-\section{Sottogruppi non banali}
+\section{Sottogruppi}
+\label{sec:s3_sottogruppi}
 
 \begin{center}
 	\begin{tabular}{ccccccc}
 		\toprule
-		Generatori & Elementi & Ordine & Indice & Ciclico & Normale & p-Sylow \\
+		Generatori & Sottogruppo & Ordine & Indice & Ciclico & Normale & p-Sylow \\
 		\midrule
+		 & 1 & 1 & 6 & Sì & Sì & No \\
 		$\gen{(12)}$ & $\{(1), (12)\}$ & 2 & 3 & Sì & No & Sì \\
 		$\gen{(13)}$ & $\{(1), (13)\}$ & 2 & 3 & Sì & No & Sì \\
 		$\gen{(23)}$ & $\{(1), (23)\}$ & 2 & 3 & Sì & No & Sì \\
-		$\gen{(123)} = \gen{(132)}$ & $\{(1), (123), (132)\}$ & 3 & 2 & Sì & Sì & Sì \\
+		$\gen{(123)}$ & $\{(1), (123), (132)\}$ & 3 & 2 & Sì & Sì & Sì \\
+		$\gen{(12)(123)}$ & $G$ & 6 & 1 & No & Sì & No \\
 		\bottomrule
 	\end{tabular}
 \end{center}
 
-% sottogruppi
-% centro
+\section{Classi di coniugio e centralizzanti}
+\label{sec:s3_classi_coniugio}
+
+\begin{center}
+	\begin{tabular}{ccc}
+		\toprule
+		Classe & N. elementi & Ordine centralizzante \\
+		\midrule
+		\{1\} & 1 & 6 \\
+		\{(12), (13), (23)\} & 3 & 2 \\
+		\{(123), (132)\} & 2 & 3 \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+
+\begin{gather*}
+	C_{S_3}(1) = G \\
+	C_{S_3}((12)) = \gen{(12)} \\
+	C_{S_3}((123)) = \gen{(123)} \\
+	Z(S_3) = 1
+\end{gather*}

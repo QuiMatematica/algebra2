@@ -83,49 +83,44 @@ Controesempio: $A_4$ ha ordine 12 ($4!/2$) ma non ha alcun sottogruppo di ordine
 	Per comodità chiama $G^* = l(G)$.
 	
 	Abbiamo:
-	
 	\begin{gather}
 		G^* \le \Sym G \\
 		\Alt G \normale \Sym G
 	\end{gather}
 
-	Quindi per l'esercizio~\ref{ex:Laterali_Prodotto_di_sottogruppi} si ha:
-	
-	\begin{equation}
+	Quindi per il teorema~\ref{thr:prodotto_sottogruppi} si ha:
+	\begin{equation*}
 		G^* \Alt G \le \Sym G
-	\end{equation}
+	\end{equation*}
 	
-	Inoltre $\Alt G$ è contenuto in $G^* \Alt G$ ma non possono essere uguali perché il gruppo prodotto contiene $l_g$, mentre  $l_g \not\in \Alt G$. Quindi:
-	
-	\begin{equation}
+	Inoltre $\Alt G$ è contenuto in $G^* \Alt G$ ma non possono essere uguali perché il gruppo prodotto contiene $l_g$, mentre  $l_g \not\in \Alt G$.
+	Quindi:
+	\begin{equation*}
 		\Alt G < G^* \Alt G \le \Sym G
-	\end{equation}
+	\end{equation*}
 
 	Sappiamo che:
-	
-	\begin{equation}
+	\begin{equation*}
 		\indice{\Sym G}{\Alt G} = 2
-	\end{equation}
+	\end{equation*}
 
-	quindi $\indice{\Sym G}{G^* \Alt G}$ deve dividere 2, ma non può essere 2 perché $\Alt G \ne G^* \Alt G$. Quindi:
-	
-	\begin{equation}
+	quindi $\indice{\Sym G}{G^* \Alt G}$ deve dividere 2, ma non può essere 2 perché $\Alt G \ne G^* \Alt G$.
+	Quindi:
+	\begin{equation*}
 		G^* \Alt G = \Sym G
-	\end{equation}
+	\end{equation*}
 
-	Allora, grazie al teorema dei due sottogruppi~\ref{thr:Isomorfismi_due_sottogruppi} (figura~\ref{fig:conseguenza_Cayley}), possiamo calcolare il seguente indice:
-	
-	\begin{equation}
+	Allora, grazie al teorema dei due sottogruppi~\ref{thr:due_sottogruppi} (figura~\ref{fig:conseguenza_Cayley}), possiamo calcolare il seguente indice:
+	\begin{equation*}
 		\indice{G^*}{G^* \cap \Alt G} = \indice{G^* \Alt G}{\Alt G} = \indice{\Sym G}{\Alt G} = 2
-	\end{equation}
+	\end{equation*}
 	
 	Infine:
-	
-	\begin{gather}
+	\begin{gather*}
 		\indice{G^*}{G^* \cap \Alt G} = \dfrac{\ordine{G^*}}{\ordine{G^* \cap \Alt G}} \\
 		\ordine{G^* \cap \Alt G} = \dfrac{\ordine{G^*}}{\indice{G^*}{G^* \cap \Alt G}} =
 		\dfrac{2m}{2} = m
-	\end{gather}
+	\end{gather*}
 	
 	Quindi $l(G)$ (che ne frattempo abbiamo battezzato $G^*$) possiede il sottogruppo $G^* \cap \Alt G$ di ordine $m$. Quindi anche $G$ (che è isomorfo a $l(G)$) possiede un sottogruppo di ordine $m$.
 	
