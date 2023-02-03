@@ -1,0 +1,174 @@
+\chapter{Teorema di Cauchy}
+\label{ch:teorema_cauchy}
+
+Riprendiamo una domanda ricorrente.
+
+\emph{Dato un divisore dell'ordine del gruppo, esiste un sottogruppo con quell'ordine?}
+
+La risposta è: generalmente no.
+
+Prendiamo per esempio il gruppo $A_5$, di ordine 60.
+
+Abbiamo visto con il teorema~\ref{th:a5_semplice} che $A_5$ è un gruppo semplice.
+Quindi non può contenere un sottogruppo di ordine 30, altrimenti avrebbe indice 2 e dovrebbe essere normale.
+
+Inoltre verifichiamo che $A_5$ non contiene sottogruppi di ordine 15, ovvero d'indice 4.
+Ipotizziamo per assurdo che esista un tale gruppo, che chiamiamo $H$:
+\begin{equation*}
+    \indice{A_5}{H} = 4
+\end{equation*}
+
+Se c'è un sottogruppo di indice 4, per il teorema~\ref{thr:Azioni_laterali_indice_finito}, il quoziente sul
+cuore normale $A_5/H_{A_5}$ è isomorfo ad un sottogruppo del gruppo simmetrico di grado l'indice:
+\begin{equation*}
+    \dfrac{A_5}{H_{A_5}} \isomorfo \sigma(A_5) \le S_4
+\end{equation*}
+
+Il gruppo $A_5$ è semplice, quindi il cuore normale $H_{A_5}$ deve essere il sottogruppo identico:
+\begin{equation*}
+    A_5 \isomorfo \sigma(A_5) \le S_4
+\end{equation*}
+
+Questo non può essere perché $\ordine{A_5} = 60$ e $\ordine{S_4} = 24$.
+
+\begin{teorema}[Teorema di Cauchy]
+    \label{thr:cauchy}
+    Se $G$ è un gruppo finito e un primo $p$ divide $\ordine{G}$, allora $G$ contiene un elemento di ordine $p$.
+\end{teorema}
+
+\begin{dimostrazione}
+    Definiamo:
+    \begin{gather*}
+        X = \gen{\sigma} \quad \text{con } \sigma = (12 \dots p) \\
+        \Omega = \{(g_1, g_2, \dots, g_p) \in G^p \taleche g_1 \cdot g_2 \cdot \dots \cdot g_p = 1\}
+    \end{gather*}
+
+    Il prodotto degli elementi delle $p$-tuple di $\Omega$ deve essere considerato ordinato, perché non è detto che $G$
+    sia abeliano.
+
+    Definiamo l'azione di $X$ su $\Omega$;
+    la definiamo solo per il generatore, gli altri elementi ereditano la definizione:
+    \begin{equation*}
+        \sigma \circ (g_1, g_2, \dots, g_p) = (g_p, g_1, \dots, g_{p-1})
+    \end{equation*}
+
+    Dobbiamo assicurarci che il nuovo elemento ottenuto dall'azione di $\sigma$ appartenga comunque a $\Omega$:
+    \begin{align*}
+        g_p \cdot g_1 \cdot \dots \cdot g_{p-1} &= (g_p \cdot g_1 \cdot \dots \cdot g_{p-1}) \cdot (g_p \cdot g_p^{-1}) = \\
+        &= g_p \cdot (g_1 \cdot \dots \cdot g_{p-1} \cdot g_p) \cdot g_p^{-1} = \\
+        &= g_p \cdot 1 \cdot g_p^{-1} = \\
+        &= 1
+    \end{align*}
+
+    Determiniamo quanti elementi ha $\Omega$.
+    Per ottenere una $p$-tupla opportuna posso scegliere come voglio il primo elemento, come pure il secondo, come pure
+    il terzo, \dots, come pure il penultimo, purché l'ultimo sia l'inverso di del prodotto dei precedenti. Quindi:
+    \begin{equation*}
+        \ordine{\Omega} = \ordine{G}^{p-1}
+    \end{equation*}
+
+    $p$ divide $\ordine{G}$, quindi:
+    \begin{equation*}
+        \ordine{G}^{p-1} \equiv 0 \mod p
+    \end{equation*}
+    
+    Consideriamo le orbite:
+    \begin{gather*}
+        \Omega = O_1 \overset{\circ}{\cup} O_2 \overset{\circ}{\cup} \dots \overset{\circ}{\cup} O_t \quad \text{con } O_i \text{ orbita} \\
+        \ordine{\Omega} = \sum_{i} \ordine{O_i} \\
+        \sum_i \ordine{O_i} \equiv 0 \mod p
+    \end{gather*}
+
+    Determiniamo quanti elementi hanno le orbite.
+    Scelgo un generico elemento $\omega_i \in O_i$.
+    Per la formula~\eqref{eq:ordine_orbita}, conseguenza del teorema~\ref{thr:orbite}, sappiamo che:
+    \begin{equation*}
+        \ordine{O_i} = \indice{X}{\Stab_X(\omega_i)}
+    \end{equation*}
+
+    $X$ è di ordine $p$, l'indice deve essere un divisore dell'ordine del gruppo, quindi:
+    \begin{equation*}
+        \ordine{O_i} = \indice{X}{\Stab_X(\omega_i)} \in \{1, p\}
+    \end{equation*}
+
+    Gli addendi di $\sum_i \ordine{O_i}$ hanno ordine 1 o $p$.
+
+    Gli addendi di ordine $p$ sono $\equiv 0 \mod p$.
+
+    Quindi gli addendi che danno un contributo non banale sono quelli di ordine 1.
+
+    Se $\ordine{O_i} = 1$, allora $\omega_i$ è fissato da $X$:
+    \begin{equation*}
+        \ordine{O_i} = 1 \allora \Stab_{X}(\omega_i) = X \allora \sigma \circ \omega_i = \omega_i
+    \end{equation*}
+
+    Le orbite di cardinalità 1 sono tante quante gli elementi di:
+    \begin{gather*}
+        \Delta = \{\omega \in \Sigma \taleche \sigma \circ \omega = \omega\} \\
+        \ordine{\Delta} \equiv 0 \mod p
+    \end{gather*}
+
+    Determiniamo chi sono gli elementi di $\Delta$.
+    Prendiamo un $\omega \in \Delta$:
+    \begin{gather*}
+        \sigma \circ \omega = \omega \quad \text{con } \omega = (g_1, g_2, \dots, g_p) \\
+        \allora \sigma \circ \omega = (g_p, g_1, \dots, g_{p-1}) \\
+        \allora (g_1, g_2, \dots, g_p) = (g_p, g_1, \dots, g_{p-1}) \\
+        \allora g_1 = g_2 = \dots = g_p = g \quad \text{con } g \in G
+    \end{gather*}
+
+    Inoltre il prodotto delle $p$-tuple deve essere 1:
+    \begin{equation*}
+        \omega \in \Sigma \allora g_1 \cdot \dots \cdot g_p = g^p = 1
+    \end{equation*}
+
+    Quindi:
+    \begin{equation*}
+        \Delta = \{(g, \dots, g) \in G^p \taleche g^p = 1\}
+    \end{equation*}
+
+    Posso allora definire un nuovo insieme:
+    \begin{gather*}
+        \Phi = \{g \in G \taleche g^p = 1\} \\
+        \ordine{\Phi} \equiv 0 \mod p
+    \end{gather*}
+
+    Se $g^p = 1$ allora o $g = 1$ o $\ordine{g} = p$.
+
+    L'identità appartiene a $\Phi$, quindi $\Phi$ non è vuoto.
+    Quindi:
+    \begin{equation*}
+        \exists g \in \Phi \text{ con } g \ne 1 \allora \ordine{g} = p
+    \end{equation*}
+
+\end{dimostrazione}
+
+\begin{esercizio}[{\cite[Es. 4 pag. 82]{jacobson}}]
+    Determinare tutti i gruppi $G$ con $\ordine{G} = 6$.
+\end{esercizio}
+
+\begin{soluzione}
+    Per il teorema di Cauchy~\ref{thr:cauchy}, il gruppo $G$ contiene un elemento $a$ di ordine 3 e un elemento $b$ di
+    ordine 2.
+
+    Quindi $G$ ha almeno due sottogruppi: $A = \gen{a}$ normale (perché di indice 2) e $B = \gen{b}$.
+
+    Inoltre $AB \le G$ visto che $A$ è un sottogruppo normale (teorema~\ref{thr:prodotto_sottogruppi}), e poiché
+    hanno indici coprimi $AB = G$ (esercizio~\ref{ex:indici_coprimi}).
+
+    Quindi:
+    \begin{equation*}
+        \forall g \in G : g = a^r b^s
+    \end{equation*}
+
+    con $r$ ridotto modulo 3 e $s$ ridotto modulo 2.
+
+    $A$ è normale, quindi $b a b \in A$, quindi $b a b = a^i$ con $i \in \{0,1,-1\}$.
+
+    $i$ non può essere 0 perché vale solo con $a = 1$.
+    Quindi $i \in {1, -1}$.
+
+    Capiamo allora che abbiamo \textbf{solo due gruppi di ordine 6}.
+
+
+\end{soluzione}
