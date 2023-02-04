@@ -1,12 +1,13 @@
 \chapter{Laterali}
+\label{ch:laterali}
 
 \section{Laterali destri e sinistri}
+\label{sec:laterali}
 
 Dato un sottogruppo $H$ di un gruppo $G$, possiamo definire questa relazione d'equivalenza:
-
-\begin{equation}
+\begin{equation*}
 	g_1 \sim g_2 \Longleftrightarrow \exists h \in H \taleche g_2 = g_1 h
-\end{equation}
+\end{equation*}
 
 Le classi di equivalenza di questa relazione si chiamano \textbf{laterali sinistri} e sono del tipo $xH$: prendo un elemento $x$ di $G$ e lo moltiplico per tutti gli elementi di $H$.
 
@@ -15,6 +16,7 @@ Il numero di classi di equivalenza si chiama \textbf{indice} e si indica con $\i
 L'indice dei laterali sinistri è uguale all'indice dei laterali destri.
 
 \section{Trasversali}
+\label{sec:trasversali}
 
 Un \textbf{trasversale sinistro} è un insieme $T$ di rappresentanti per le classi laterali sinistre.
 
@@ -45,29 +47,26 @@ Mentre i laterali destri di $H$ in $S_3$ sono:
 \end{gather*}
 
 Quindi l'insieme
-
-\begin{equation}
+\begin{equation*}
 	T = \{(1), (13), (123)\}
-\end{equation}
+\end{equation*}
 
 è un trasversale sinistro, ma non un trasversale destro.
 
 \begin{teorema}
 	Se $T$ è un trasversale sinistro, allora $T^{-1}$ è un trasversale destro, dove:
-	
-	\begin{equation}
+	\begin{equation*}
 		T^{-1} = \{t^{-1} \taleche t \in T\}
-	\end{equation}
+	\end{equation*}
 \end{teorema}
 \begin{dimostrazione}
 	Partiamo dall'unione disgiunta dei trasversali sinistri e applichiamo l'inverso:
-	
-	\begin{gather}
+	\begin{gather*}
 		G = \bigcup^\circ_{t \in T} tH \\
 		G^{-1} = \bigcup^\circ_{t \in T} (tH)^{-1} \\
 		G = \bigcup^\circ_{t \in T} H^{-1}t^{-1} \\
 		G = \bigcup^\circ_{t \in T} Ht^{-1}
-	\end{gather}
+	\end{gather*}
 
 	Dove abbiamo potuto considerare che $G = G^{-1}$ e $H = G^{-1}$ in quanto gruppi.
 \end{dimostrazione}
@@ -79,36 +78,34 @@ Abbiamo quindi dimostrato che:
 \end{teorema}
 
 \section{Sottogruppo normale}
+\label{sec:sottogruppo_normale}
 
 Un sottogruppo $N \le G$ è \textbf{normale} se si ha:
-
-\begin{equation}
+\begin{equation*}
 	gNg^{-1} = N \quad \forall g \in G
-\end{equation}
+\end{equation*}
 
 oppure, che è equivalente:
-
-\begin{equation}
+\begin{equation*}
 	gN = Ng \quad \forall g \in G
-\end{equation}
+\end{equation*}
 
 Si indica con:
-
-\begin{equation}
+\begin{equation*}
 	N \normale G
-\end{equation}
+\end{equation*}
 
 Se $N$ è un sottogruppo normale, un laterale destro è anche laterale sinistro, e un trasversale destro è anche trasversale sinistro.
 
 \section{Sottogruppo di sottogruppo}
+\label{sec:sottogruppo di sottogruppo}
 
 \begin{teorema}
 	\label{thr:fattorizzazione_indici}
 	Se $K \le H \le G$, allora
-	
-	\begin{equation}
+	\begin{equation*}
 		\indice{G}{K} = \indice{G}{H} \cdot \indice{H}{K}
-	\end{equation} 
+	\end{equation*}
 \end{teorema}
 \begin{dimostrazione}
 	Chiamo $T$ un trasversale sinistro di $H$ in $G$.
@@ -116,17 +113,15 @@ Se $N$ è un sottogruppo normale, un laterale destro è anche laterale sinistro,
 	Chiamo $U$ un trasversale sinistro di $K$ in $H$.
 	
 	Vogliamo trovare un trasversale sinistro di $K$ in $G$:
-	
-	\begin{gather}
+	\begin{gather*}
 		G = \bigcup^\circ_{t \in T} tH \quad\land\quad H = \bigcup^\circ_{u \in U} uK \\
 		G = \bigcup^\circ_{t \in T} t \biggl(\bigcup^\circ_{u \in U} uK\biggr) \\
 		G = \bigcup^\circ_{t \in T, u \in U} tuK
-	\end{gather}
+	\end{gather*}
 
 	Quindi $TU$ è un trasversale sinistro di $K$ in $G$.
 	
 	Quindi:
-	
 	\begin{equation*}
 		\indice{G}{K} = \ordine{TU} = \ordine{T} \cdot \ordine{U} = \indice{G}{H} \cdot \indice{H}{K}
 	\end{equation*}
@@ -160,31 +155,27 @@ Se $N$ è un sottogruppo normale, un laterale destro è anche laterale sinistro,
 \end{figure}
 \begin{soluzione}
 	Siano $h_1, h_2 \in H$ tali che:
-	
-	\begin{equation}
+	\begin{equation*}
 		h_1(H \cap K) \ne h_2(H \cap K)
-	\end{equation}
+	\end{equation*}
 
 	Ovvero $h_1$ e $h_2$ stanno in laterali dell'intersezione diversi.
-	
-	\begin{gather}
+	\begin{gather*}
 		h_2^{-1}h_1 \not\in H \cap K \\
 		h_2^{-1}h_1 \not\in K \quad \text{perché } h_1, h_2 \in H
 		h_1 K \ne h_2 K
-	\end{gather}
+	\end{gather*}
 
 	Quindi $h_1$ e $h_2$ stanno in laterali di $K$ diversi. Quindi:
-	
-	\begin{equation}
+	\begin{equation*}
 		\indice{H}{H \cap K} \le \indice{G}{K}
-	\end{equation}
+	\end{equation*}
 
 	Quindi, per il teorema~\ref{thr:fattorizzazione_indici}, si ha:
-	
-	\begin{gather}
+	\begin{gather*}
 		\indice{G}{H \cap K} = \indice{G}{H} \cdot \indice{H}{H \cap K} \\
 		\indice{G}{H \cap K} \le \indice{G}{H} \cdot \indice{G}{K}
-	\end{gather}
+	\end{gather*}
 
 	L'indice dell'intersezione è minore o uguale al prodotto degli indici.
 \end{soluzione}

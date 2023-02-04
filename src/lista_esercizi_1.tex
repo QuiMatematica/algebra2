@@ -1,57 +1,57 @@
 \chapter{Lista di esercizi}
+\label{ch:lista_esercizi_!}
 
 \begin{esercizio}
 	\label{ex:ordine_HK}
 	Se $H$ e $K$ sono sottogruppi finiti di un gruppo $G$, allora
-	
-	\begin{equation}
+	\begin{equation*}
 		\ordine{HK} = \dfrac{\ordine{H}\ordine{K}}{\ordine{H \cap K}}
-	\end{equation}
+	\end{equation*}
 \end{esercizio}
 \begin{soluzione}
 	Consideriamo la seguente funzione:
-	
-	\begin{align}
+	\begin{align*}
 		\gamma : H \times K &\longrightarrow HK \\
 		(h, k) &\longmapsto hk
-	\end{align}
+	\end{align*}
 
 	La funzione $\gamma$ è suriettiva per definizione. Raramente è iniettiva.
 	
 	Cosa succede quando abbiamo immagini uguali di coppie diverse?
-	
-	\begin{gather}
+	\begin{gather*}
 		\gamma(h_1, k_1) = \gamma(h_2, k_2) \\
 		h_1k_1 = h_2k_2 \\
 		h_2^{-1}h_1 = k_2k_1^{-1}
-	\end{gather}
+	\end{gather*}
 
-	L'elemento $h_2^{-1}h_1$ appartiene ad $H$, come l'elemento $k_2k_1^{-1}$ appartiene a $K$. Ma abbiamo verificato che questi elementi in verità sono uno stesso elemento che quindi sta sia in $H$ sia in $K$. Quindi sta anche in $H \cap K$. Chiamiamo $x$ tale elemento. Risulta quindi che:
-	
-	\begin{equation}
+	L'elemento $h_2^{-1}h_1$ appartiene ad $H$, come l'elemento $k_2k_1^{-1}$ appartiene a $K$.
+	Ma abbiamo verificato che questi elementi in verità sono uno stesso elemento che quindi sta sia in $H$ sia in $K$.
+	Quindi sta anche in $H \cap K$.
+	Chiamiamo $x$ tale elemento.
+	Risulta quindi che:
+	\begin{equation*}
 		\begin{cases}
 			h_1 = h_2x \\
 			k_1 = x^{-1}k_2
 		\end{cases}
-	\end{equation}
+	\end{equation*}
 
 	Viceversa, prendendo un elemento $x \in H \cap K$ abbiamo che:
-	
-	\begin{equation}
+	\begin{equation*}
 		hk = hx \, x^{-1}k
-	\end{equation}
+	\end{equation*}
 
 	Quindi:
-	
-	\begin{equation}
+	\begin{equation*}
 		\gamma^{-1}(hk) = \{(hx, x^{-1}k) \taleche x \in H \cap K\}
-	\end{equation}
+	\end{equation*}
 
-	Quindi la controimmagine $\gamma^{-1}(hk)$ ha cardinalità $\ordine{H \cap K}$, e questo vale per ogni coppia di elementi $h$ e $k$. Ma possiamo scegliere l'elemento $h$ tra $\ordine{H}$ elementi, e possiamo scegliere l'elemento $k$ tra $\ordine{K}$ elementi. Quindi per il principio di moltiplicazione:
-	
-	\begin{equation}
+	Quindi la controimmagine $\gamma^{-1}(hk)$ ha cardinalità $\ordine{H \cap K}$, e questo vale per ogni coppia di elementi $h$ e $k$.
+	Ma possiamo scegliere l'elemento $h$ tra $\ordine{H}$ elementi, e possiamo scegliere l'elemento $k$ tra $\ordine{K}$ elementi.
+	Quindi per il principio di moltiplicazione:
+	\begin{equation*}
 		\ordine{HK} = \dfrac{\ordine{H \times K}}{\ordine{H \cap K}} = \dfrac{\ordine{H}\ordine{K}}{\ordine{H \cap K}}
-	\end{equation}
+	\end{equation*}
 
 \end{soluzione}
 
@@ -59,26 +59,23 @@
 	\label{ex:indici_coprimi}
 	Sia $G$ un gruppo finito.
 	Se $H$ e $K$ sono sottogruppi di $G$ con indici coprimi, allora:
-	
-	\begin{equation}
+	\begin{equation*}
 		HK = G
-	\end{equation}
+	\end{equation*}
 \end{esercizio}
 \begin{soluzione}
 	Per quanto visto nell'esercizio~\ref{ex:ordine_HK}, si ha:
-	
-	\begin{align}
+	\begin{align*}
 		\ordine{HK} 
 		&= \dfrac{\ordine{H}\ordine{K}}{\ordine{H \cap K}} = \\
 		&= \dfrac{\ordine{H}\ordine{K}}{\ordine{H \cap K}} \cdot \dfrac{\ordine{G}\ordine{G}}{\ordine{G}\ordine{G}} = \\
 		&= \dfrac{\ordine{H}}{\ordine{G}} \cdot \dfrac{\ordine{K}}{\ordine{G}}\cdot\dfrac{\ordine{G}}{\ordine{H \cap K}} \cdot \ordine{G} = \\
 		&= \dfrac{\indice{G}{H \cap K}}{\indice{G}{H}\indice{G}{k}}\ordine{G} = \\
 		&= \ordine{G}
-	\end{align}
+	\end{align*}
 
 	Sappiamo che $HK \subseteq G$, quindi se hanno la stessa cardinalità:
-	
-	\begin{equation}
+	\begin{equation*}
 		HK = G
-	\end{equation}
+	\end{equation*}
 \end{soluzione}

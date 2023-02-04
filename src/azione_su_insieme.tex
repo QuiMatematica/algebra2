@@ -439,37 +439,35 @@ Posso indicare con $G \circ \omega$ l'\textbf{orbita} di $\omega$.
 \end{dimostrazione}
 
 Se esiste una corrispondenza biiettiva significa che $\Lambda$ e $O$ hanno la stessa cardinalità:
-
 \begin{equation}
 	\label{eq:ordine_orbita} \ordine{O} = \ordine{\Lambda} = \indice{G}{\Stab_G(\omega)}
 \end{equation}
 
-Per calcolare quanti elementi ci sono nell'orbita di un elemento $\omega$ basta calcolare lo sbabilizzatore e l'indice.
+Per calcolare quanti elementi ci sono nell'orbita di un elemento $\omega$ basta calcolare lo stabilizzatore e l'indice.
 
 Se $G$ agisce su $G$ \textbf{per coniugio}, come sono fatte le orbite?
 
-Prendiamo un generico elemento $x \in G$. L'orbita è:
-
-\begin{equation}
+Prendiamo un generico elemento $x \in G$.
+L'orbita è:
+\begin{equation*}
 	G \circ x = \{gxg^{-1} \taleche g \in G\}
-\end{equation}
+\end{equation*}
 
-Ovvero è la classe di coniugio di $x$ in $G$. Per calcolare quanti elementi ha questa classe basta:
-
-\begin{equation}
+Ovvero è la classe di coniugio di $x$ in $G$.
+Per calcolare quanti elementi ha questa classe basta:
+\begin{equation*}
 	\ordine{G \circ x} = \indice{G}{\Stab_G(x)} = \indice{G}{C_G(x)}
-\end{equation}
+\end{equation*}
 
 \textbf{L'ordine della classe di coniugio di un elemento è uguale all'indice del centralizzante dello stesso elemento:}
-
 \begin{equation}
 	\label{eq:ordine_classe_coniugio}
 	\ordine{G \circ x} = \indice{G}{C_G(x)}
 \end{equation}
 
 Se invece G agisce \textbf{per coniugio sui sottogruppi}, dato un sottogruppo $H \le G$, quanti sono i coniugati di $H$ in $G$?
-
 \begin{equation}
-	\ordine{G \circ H} = \indice{G}{\Stab_G(H)} = \indice{G}{N_G(x)}
+	\label{eq:numero_coniugati_di_sottogruppo}
+	\ordine{G \circ H} = \indice{G}{\Stab_G(H)} = \indice{G}{N_G(H)}
 \end{equation}
 

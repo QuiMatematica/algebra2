@@ -238,15 +238,15 @@ Ci sono ancora diversi gradi di libertà perché ci sono diversi elementi non no
 	\end{equation}
 
 	Osserviamo ora che $\gen{\sigma}$, ovvero il più piccolo sottogruppo che contiene $\sigma$ ha ordine $n$ quindi:
-	
-	\begin{equation}
+	\begin{equation*}
 		C_{S_n}(\sigma) = \gen{\sigma} \isomorfo C_n
-	\end{equation}
+	\end{equation*}
 
 	Le uniche permutazioni di grado $n$ che commutano con un $n$-ciclo sono le potenze di quel ciclo.
 \end{soluzione}
 
 \begin{esercizio}
+	\label{ex:sottogruppi_normali_s4}
 	Trovare tutti i sottogruppi normali di $S_4$.
 \end{esercizio}
 \begin{soluzione}
@@ -527,6 +527,132 @@ Però $H$ non è un sottogruppo normale di $S_4$.
 	\label{fig:classi_coniugio_a4}
 \end{sidewaystable}
 
+\begin{esercizio}
+	Consideriamo l'insieme delle permutazioni di $S_4$ che tengono ferme 1:
+	\begin{equation*}
+		H = \{\sigma \in S_4 \taleche \sigma(1) = 1\} \isomorfo S_3
+	\end{equation*}
+
+	Determinare i sottogruppi coniugati ad $H$ in $S_4$.
+\end{esercizio}
+
+\begin{figure}[tp]
+	\centering
+	\tikz {
+		\node (a) at (0,4) {$S_4$};
+		\node (b) at (0,2) {$N_{S_4}(H)$};
+		\node (c) at (0,0) {$H$};
+		\draw (a) edge[->] (b);
+		\draw (b) edge[->] (c);
+		\draw[decorate,decoration={brace,raise=60pt}] (0,4) -- (0,0) node[pos=.5,right=63pt,black]{4};
+	}
+	\caption{Indice del normalizzante in $S_4$.}
+	\label{fig:normalizzante_di_H_in_S4}
+\end{figure}
+
+\begin{soluzione}
+	Per la formula~\eqref{eq:numero_coniugati_di_sottogruppo} possiamo determinare il numero di sottogruppi coniugati
+	conoscendo il normalizzante:
+	\begin{equation*}
+		\ordine{S_4 \circ H} = \indice{S_4}{N_{S_4}(H)}
+	\end{equation*}
+
+	Il normalizzante è un sottogruppo di $S_4$ e contiene il sottogruppo $H$.
+	L'ordine di $S_4$ è 24, l'ordine di $H$ è 6, quindi l'indice di $H$ in $S_4$ è 4:
+	\begin{gather*}
+		\ordine{S_4} = 24 \\
+		\ordine{H} = 6 \\
+		\indice{S_4}{H} = 4
+	\end{gather*}
+
+	Il normalizzante $N_{S_4}(H)$ sta in mezzo, quindi il suo indice su $S_4$ è uno dei possibili divisori di 4
+	(figura~\ref{fig:normalizzante_di_H_in_S4}):
+	\begin{equation*}
+		\indice{S_4}{N_{S_4}(H)} \in \{1, 2, 4\}
+	\end{equation*}
+
+	Ipotizziamo che $\indice{S_4}{N_{S_4}(H)} = 1$: abbiamo un modo complicato per dire che $H$ è un sottogruppo normale di
+	$S_4$.
+	Ma $H$ non è un sottogruppo normale di $S_4$ (vedi esercizio~\ref{ex:sottogruppi_normali_s4}) quindi questa ipotesi
+	non è ammessa.
+
+	Ipotizziamo che $\indice{S_4}{N_{S_4}(H)} = 2$: allora $\ordine{N_{S_4}(H)} = 12$.
+	L'unico sottogruppo normale di $S_4$ di ordine 12 è $A_4$, quindi $N_{S_4}(H) = A_4$.
+	Tuttavia il normalizzante contiene $H$ che contiene anche permutazioni dispari (per esempio $(23)$).
+	Quindi anche questa ipotesi non è ammessa.
+
+	Ipotizziamo infine che $\indice{S_4}{N_{S_4}(H)} = 4$: allora $H$ ha 4 coniugati.
+	Determiniamo questi coniugati.
+
+	Proviamo per esempio a coniugare un generico elemento $h \in H$ con $(12)$ e determiniamo il comportamento della
+	permutazione $\sigma = (12)h(12)$ sull'elemento 2:
+	\begin{align*}
+		\sigma(2) &= (12)h(12)(2) = \\
+		&= (12)h(1) = \\
+		&= (12)(1) = \\
+		&= (2)
+	\end{align*}
+
+	Tutte le permutazioni in $(12)H(12)$ tengono ferme il 2.
+	Allora abbiamo capito chi sono i tre sottogruppi coniugati cercati:
+	\begin{gather*}
+		(12)H(12) = \{\sigma \taleche \sigma(2) = 2\} \isomorfo S_3 \\
+		(13)H(13) = \{\sigma \taleche \sigma(3) = 3\} \isomorfo S_3 \\
+		(14)H(14) = \{\sigma \taleche \sigma(4) = 4\} \isomorfo S_3
+	\end{gather*}
+
+\end{soluzione}
+
+Sia $G$ un gruppo finito e $H \le G$.
+$G$ è ricopribile con i coniugati di $H$?
+\begin{equation*}
+	G = \bigcup_{g \in G} gHg^{-1}
+\end{equation*}
+
+Nel caso precedente non vale: se $H$ è il sottogruppo che tiene fermo 1, i coniugati di H sono le permutazioni che tengono
+ferme 2, 3 e 4.
+Ma la permutazione $(1234)$ non appartiene a nessuno di questi coniugati.
+E' un caso?
+Dimostriamo il seguente teorema.
+
+\begin{teorema}
+	\begin{equation*}
+		G = \bigcup_{g \in G} gHg^{-1} \allora H = G
+	\end{equation*}
+\end{teorema}
+\begin{dimostrazione}
+	Determiniamo un limite superiore alla cardinalità di $\bigcup_{g \in G} gHg^{-1}$.
+
+	Il numero di coniugati di $H$ corrisponde all'indice del normalizzante.
+	Quindi all'unione partecipano $\indice{G}{N_G(H)}$ sottogruppi.
+	Ma non so come due coniugati si intersecano.
+
+	A noi interessa il limite superiore e posso considerare che almeno nell'identità si intersecano tutti.
+	Quindi alla peggio ogni volta trovo $\ordine{H} - 1$ elementi:
+	\begin{equation*}
+		\ordine{\bigcup_{g \in G} gHg^{-1}} \le \indice{G}{N_G(H)} \cdot (\ordine{H} - 1) + 1
+	\end{equation*}
+
+	dove $\indice{G}{N_G(H)}$ è il numero di sottoinsiemi da unire; $\ordine{H} - 1$ è il massimo di elementi
+	distinti che ogni sottoinsieme porta, e $1$ è l'identità.
+
+	Ma se $G$ corrisponde all'unione dei coniugati, allora ha lo stesso ordine:
+	\begin{equation*}
+		\ordine{G} \le \indice{G}{N_G(H)} \cdot (\ordine{H} - 1) + 1
+	\end{equation*}
+
+	Non sappiamo come è fatto il normalizzante, ma $N_G(H) \ge H$, quindi il caso peggiore è che $N_G(H) = H$.
+	\begin{gather*}
+		\ordine{G} \le \indice{G}{H} \cdot (\ordine{H} - 1) + 1 \\
+		\ordine{G} \le \dfrac{\ordine{G}}{\ordine{H}} \cdot (\ordine{H} - 1) + 1 \\
+		\ordine{G} \le \ordine{G} - \dfrac{\ordine{G}}{\ordine{H}} + 1 \\
+		0 \le - \dfrac{\ordine{G}}{\ordine{H}} + 1 \\
+		\dfrac{\ordine{G}}{\ordine{H}} \le 1 \\
+		G = H
+	\end{gather*}
+\end{dimostrazione}
+
+
 \section{Facciamo finta di essere Galois...}
 \label{sec:coniugio_galois}
 
@@ -626,3 +752,4 @@ capisce dal video).
 
 	Quindi non ci sono sottogruppi normali se non 1 e $A_5$.
 \end{dimostrazione}
+
