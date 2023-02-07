@@ -1,0 +1,79 @@
+\chapter{Teoremi di Sylow}
+\label{ch:sylow}
+
+\begin{teorema}
+    \label{th:sylow_1}
+    Sia $G$ un gruppo finito di ordine $n$.
+    Sia $p$ un numero primo divisore di $n$, tale che $n = p^a \cdot m$ con $\MCD{m}{p} = 1$.
+    Allora $G$ contiene un sottogruppo di ordine $p^k$.
+\end{teorema}
+\begin{dimostrazione}
+    Dimostriamo il teorema per induzione.
+
+    Se $\ordine{G} = 1$, il risultato è evidente.
+
+    Consideriamo ora che il teorema sia vero per ogni gruppo di ordine $< \ordine{G}$.
+
+    Consideriamo il sottogruppo $Z = Z(G)$ centro di $G$ e distinguiamo due situazioni.
+
+    \bigskip
+    \textbf{Caso 1: $p$ divide $\ordine{Z}$.}
+
+    Per il teorema di Cauchy~\ref{thr:cauchy} esiste un elemento $z \in Z$ con $\ordine{z} = p$.
+
+    Il sottogruppo $N = \gen{z}$ è normale perché sottogruppo del centro: $N \normale G$.
+
+    Possiamo allora lavorare sul gruppo quoziente $G/N$ e abbiamo:
+    \begin{equation*}
+        \ordine{G/N} = \dfrac{\ordine{G}}{\ordine{N}} = \dfrac{p^a \cdot m}{p} = p^{a-1} \cdot m
+    \end{equation*}
+
+    Per induzione il gruppo $G/N$ contiene un sottogruppo $P/N$ di ordine $p^{a-1}$.
+    Quindi:
+    \begin{equation*}
+        \ordine{P} = \ordine{P/N} \cdot \ordine{N} = p^{a-1} \cdot p = p^a
+    \end{equation*}
+    
+    \bigskip
+    \textbf{Caso 2: $p$ non divide $ordine{Z}$.}
+
+    Consideriamo l'equazione delle classi~\ref{eq:equazione_delle_classi}:
+    \begin{equation*}
+        \ordine{G} = \ordine{Z} + \ordine{C_1} + \dots + \ordine{C_t}
+    \end{equation*}
+
+    $p$ divide l'ordine di $G$:
+    \begin{equation*}
+        \ordine{G} \equiv 0 \mod p
+    \end{equation*}
+
+    $p$ non divide l'ordine di $Z$:
+    \begin{equation*}
+        \ordine{Z} \not\equiv 0 \mod p
+    \end{equation*}
+
+    Quindi tra le classi di coniugio $C_i$ ne esiste almeno una che non è divisibile per $p$:
+    \begin{equation*}
+        \exists i \taleche \ordine{C_i} \not\equiv 0 \mod p
+    \end{equation*}
+
+    La classe di coniugio $C_i$ ha tanti elementi quanto l'indice del centralizzanti di un suo elemento $g_i \in C_i$:
+    \begin{equation*}
+        \ordine{C_i} = \indice{G}{C_G(g_i)}
+    \end{equation*}
+
+    $G$ ha ordine $p^a \cdot m$; l'indice di $C_G(g_i)$ è coprimo con $p$. Quindi $C_G(g_i)$ ha ordine $p^a \cdot m^*$,
+    con $m^* < m$.
+
+    Per induzione il gruppo $C_G(g_i)$ (che ha ordine minore del gruppo di $G$) contiene un sottogruppo $P$ di ordine
+    $p^a$, allora $P$ è sottogruppo di $G$.
+    Quindi $P$ è il sottogruppo di ordine $p^a$ che stiamo cercando.
+\end{dimostrazione}
+
+Sia $p^a$ la massima potenza di $p$ che divide $\ordine{G}$.
+Il primo teorema di Sylow dimostra che esistono sottogruppi di $G$ di ordine $p^a$.
+Questi sottogruppi sono detti \textbf{$p$-sottogruppi di Sylow} di $G$.
+Il loro insieme si indica con:
+\begin{equation*}
+    \Syl_p(G)
+\end{equation*}

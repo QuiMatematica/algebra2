@@ -1,87 +1,73 @@
 \chapter{Equazione delle classi}
-
-\section[Equazione delle classi]{Equazione delle classi\footnote{\cite[8 novembre 2021]{lucchini}; \cite[Week 2, 5]{lucchini_week}}}
+\label{ch:equazione_delle_classi}
 
 Consideriamo un insieme $G$ che agisce per coniugio sui propri elementi:
-
-\begin{equation}
+\begin{equation*}
 	g \circ x = gxg^{-1}
-\end{equation}
+\end{equation*}
 
 Consideriamo le diverse orbite dell'azione, che sono anche le classi di coniugio:
-
-\begin{equation}
+\begin{equation*}
 	C_1, C_2, \dots, C_T
-\end{equation}
+\end{equation*}
 
 Le classi formano una partizione dell'insieme $G$, quindi la cardinalità dell'insieme è pari alla somma delle cardinalità delle classi:
-
-\begin{equation}
+\begin{equation*}
 	\ordine{G} = \sum_i \ordine{C_i}
-\end{equation}
+\end{equation*}
 
 Per ogni classe di coniugio posso scegliere un elemento $g_i \in C_i$:
-
-\begin{equation}
+\begin{equation*}
 	\ordine{G} = \sum_i \indice{G}{C_G(g_i)}
-\end{equation}
+\end{equation*}
 
 Quest'ultima è detta \textbf{equazione delle classi}.
 
-	Se prendo un elemento $g \in Z(G)$ allora la sua classe di coniugio $\{g\}$ è formata dal solo elemento $g$, quindi è formata da un solo elemento.
+Se prendo un elemento $g \in Z(G)$ allora la sua classe di coniugio $\{g\}$ è formata dal solo elemento $g$, quindi è formata da un solo elemento.
 
 Quindi abbiamo $r$ classi di coniugio di cardinalità 1, mentre le altre avranno cardinalità maggiore di 1:
-
-\begin{gather}
+\begin{gather*}
 	\ordine{C_1} = \dots = \ordine{C_r} = 1 \\
 	\ordine{C_k} > 0 \quad \forall k > r
-\end{gather}
+\end{gather*}
 
 Quindi:
-
-\begin{equation}
+\begin{equation*}
 	r = \ordine{Z(G)}
-\end{equation}
+\end{equation*}
 
 Passiamo all'equazione delle classi:
+\begin{gather}
+	\ordine{G} = \sum_i \ordine{C_i} \notag \\
+	\label{eq:equazione_delle_classi} \ordine{G} = \ordine{Z(G)} + \sum_{k> r}\ordine{C_k}
+\end{gather}
 
-\begin{align}
-	\ordine{G} &= \sum_i \ordine{C_i} = \\
-	&= \ordine{Z(G)} + \sum_{k> r}\ordine{C_k}
-\end{align}
-
-\begin{teorema}
+\begin{teorema}[{\cite[Teorema 1.11, pag. 76]{jacobson}}]
 	Se $\ordine{G} = p^n$ con $p$ primo e $n > 0$, allora $Z(G) \ne 1$.
-	\footnote{\cite[Teorema 1.11, pag. 76]{jacobson}}
 \end{teorema}
 \begin{dimostrazione}	
 	Per il teorema~\ref{thr:Laterali_Lagrange} di Lagrange:
-	
-	\begin{equation}
+	\begin{equation*}
 		\ordine{C_k} = \indice{G}{C_G(g_k)} \text{ divide } \ordine{G} = p^n
-	\end{equation} 
+	\end{equation*}
 	
 	Quindi $\ordine{C_k}$ è divisibile per $p$, ovvero:
-	
-	\begin{equation}
+	\begin{equation*}
 		\ordine{C_k} \equiv 0 \mod p
-	\end{equation}
+	\end{equation*}
 	
 	Ma anche:
-	
-	\begin{equation}
+	\begin{equation*}
 		\ordine{G} \equiv 0 \mod p
-	\end{equation}
+	\end{equation*}
 	
 	Quindi $\ordine{Z(G)}$ è differenza di due numeri congrui a 0 modulo $p$:
-	
-	\begin{equation}
+	\begin{equation*}
 		\ordine{Z(G)} \equiv 0 \mod p
-	\end{equation}
+	\end{equation*}
 	
 	Ma $Z(G)$ contiene almeno l'unità 1, quindi il suo ordine è diverso da 0. Quindi:
-	
-	\begin{equation}
+	\begin{equation*}
 		\ordine{Z(G))} \ge p
-	\end{equation}
+	\end{equation*}
 \end{dimostrazione}
