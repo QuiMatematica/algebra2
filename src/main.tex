@@ -17,6 +17,7 @@
 
 % per ultimo:
 \usepackage{hyperref}
+\usepackage{mathtools}
 
 \pgfplotsset{compat=1.15}
 \usetikzlibrary{arrows}
@@ -43,6 +44,7 @@
 \newcommand{\insieme}[1]{\ensuremath{ \{ #1 \} }}
 \newcommand{\dividetxt}[0]{\ensuremath{\text{ divide }}}
 \newcommand{\eq}[0]{\ensuremath{\sim}}
+\newcommand{\allora}[0]{\ensuremath{\quad\Longrightarrow\quad}}
 
 \DeclareMathOperator{\mcm}{mcm}
 \DeclareMathOperator{\Sym}{Sym}
@@ -108,12 +110,15 @@ frametitlebackgroundcolor=green!20,
 	\include{azione_su_insieme}
 	\include{equazione_classi}
 	\include{esercizi_sulle_classi_di_coniugio}
-	\include{sintesi_sui_prodotti}
 
 	\part{Settimana terza}
 	\include{lista_esercizi_2}
 	\include{teorema_cauchy}
 	\include{teoremi_di_sylow}
+
+	\part{Sintesi}
+	\include{sintesi_sui_prodotti}
+	\include{sintesi_centro}
 
 	\part{Appendici}
 	\include{s3}

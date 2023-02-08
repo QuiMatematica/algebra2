@@ -1,7 +1,7 @@
 \chapter{Teoremi di Sylow}
 \label{ch:sylow}
 
-\begin{teorema}
+\begin{teorema}[Primo teorema di Sylow]
     \label{th:sylow_1}
     Sia $G$ un gruppo finito di ordine $n$.
     Sia $p$ un numero primo divisore di $n$, tale che $n = p^a \cdot m$ con $\MCD{m}{p} = 1$.
@@ -72,8 +72,95 @@
 
 Sia $p^a$ la massima potenza di $p$ che divide $\ordine{G}$.
 Il primo teorema di Sylow dimostra che esistono sottogruppi di $G$ di ordine $p^a$.
-Questi sottogruppi sono detti \textbf{$p$-sottogruppi di Sylow} di $G$.
+Questi sottogruppi sono detti \textbf{$p$-sottogruppi di Sylow} di $G$, o più semplicemente \textbf{$p$-Sylow}.
 Il loro insieme si indica con:
 \begin{equation*}
     \Syl_p(G)
 \end{equation*}
+
+Sia $p^b$ una qualunque potenza (anche non massima) di $p$ che divide $\ordine{G}$.
+Un sottogruppo di ordine $p^b$ si dice \textbf{$p$-sottogruppo} di $G$.
+
+\begin{lemma}
+    Sia:
+    \begin{enumerate}
+        \item $P \in \Syl_p(G)$;
+        \item $Q$ un $p$-sottogruppo di $G$ con $\ordine{Q} = p^b$;
+        \item $Q \subseteq N_G(P)$.
+    \end{enumerate}
+
+    Allora: $Q \subseteq P$.
+\end{lemma}
+\begin{dimostrazione}
+    Prendiamo un elemento $x \in Q$.
+    Dal momento che $x$ appartiene anche al normalizzante $N_G(P)$ allora:
+    \begin{equation*}
+        xPx^{-1} = P \allora xP = Px \allora QP = PQ \allora QP \le G
+    \end{equation*}
+
+    Inoltre anche il sottogruppo $Q \cap P$ avrà come ordine una potenza di $p$: chiamiamola $p^c$ con $c \le b \le a$.
+
+    Possiamo allora calcolare l'ordine di $QP$:
+    \begin{equation*}
+        \ordine{QP} = \dfrac{\ordine{Q} \cdot \ordine{P}}{\ordine{Q \cap P}} = \dfrac{p^b \cdot p^a}{p^c} = p^{a+(b-c)}
+    \end{equation*}
+
+    Per il teorema di Lagrange l'ordine di $QP$ deve dividere l'ordine di $G$:
+    \begin{equation*}
+        p^{a + (b-c)} \divisore p^a \cdot m \allora b = c \allora \ordine{QP} = \ordine{P}
+    \end{equation*}
+
+    Ma $P \subset QP$, quindi:
+    \begin{equation*}
+        P = QP \allora Q \subseteq P
+    \end{equation*}
+
+    Siccome $P$ è massimale nella sua proprietà di essere un $p$-sottogruppo, quando aggiungo $Q$ non ingrandisco $P$.
+\end{dimostrazione}
+
+\begin{teorema}[Secondo teorema di Sylow]
+    Ogni due $p$-Sylow di $G$ sono coniugati in $G$:
+    \begin{equation*}
+        P_1, P_2 \in \Syl_p(G) \allora \exists a \in G \taleche P_1 = a P_2 a^{-a}
+    \end{equation*}
+
+    Il numero $n_p(G)$ dei $p$-Sylow di un gruppo $G$ è tale che:
+    \begin{gather*}
+        n_p(G) \text{ divide } \indice{G}{P} \quad \text{con } P \in \Syl_p(G) \\
+        n_p(G) \equiv 1 \mod p
+    \end{gather*}
+
+    Ogni $p$-sottogruppo è contenuto in un $p$-Sylow:
+    \begin{equation*}
+        P \in \Syl_p(G) \land \ordine{Q} = p^b \allora \exists g \in G \taleche Q \subseteq gPg^{-1}
+    \end{equation*}
+\end{teorema}
+\begin{dimostrazione}
+    Chiamo $\Sigma = \Syl_p(G)$.
+
+    Faccio agire $G$ per coniugio su $Sigma$.
+    Siano $\Sigma_1$, \dots, $\Sigma_t$ le $G$-orbite.
+    Abbiamo smembrato $\Sigma$ come unione disgiunta di orbite:
+    \begin{equation*}
+        \Sigma = \Sigma_1 \overset{\circ}{\cup} \dots \overset{\circ}{\cup} \Sigma_t
+    \end{equation*}
+
+    Mi concentro su $\Sigma_1$;
+    prendo un suo elemento $P \in \Sigma_1$.
+    Faccio agire $P$ su $\Sigma_1$ per coniugio.
+    Non è detto che $\Sigma_1$ sia l'orbita per $P$, quindi $\Sigma_1$ può smembrarsi in più $P$-orbite:
+    \begin{equation*}
+        \Sigma_1 = \Omega_1 \overset{\circ}{\cup} \dots \overset{\circ}{\cup} \Omega_u
+    \end{equation*}
+
+    Calcoliamo il numero di elementi in $\Omega_1$;
+    sia $Q_i \in \Omega_i$:
+    \begin{equation*}
+        \ordine{\Omega_i} = \indice{P}{P \cap N_G(Q_i)} = \indice{P}{N_P(Q_i)}
+    \end{equation*}
+
+    $P$ è un $p$-sottogruppo, quindi:
+    \begin{equation*}
+        \indice{P}{N_P(Q_i)} = p^{b_i}
+    \end{equation*}
+\end{dimostrazione}
