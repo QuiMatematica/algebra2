@@ -138,29 +138,80 @@ Un sottogruppo di ordine $p^b$ si dice \textbf{$p$-sottogruppo} di $G$.
 \begin{dimostrazione}
     Chiamo $\Sigma = \Syl_p(G)$.
 
-    Faccio agire $G$ per coniugio su $Sigma$.
+    Faccio agire $G$ per coniugio di sottogruppi su $\Sigma$.
     Siano $\Sigma_1$, \dots, $\Sigma_t$ le $G$-orbite.
-    Abbiamo smembrato $\Sigma$ come unione disgiunta di orbite:
+    Abbiamo decomposto $\Sigma$ come unione disgiunta di orbite:
     \begin{equation*}
         \Sigma = \Sigma_1 \overset{\circ}{\cup} \dots \overset{\circ}{\cup} \Sigma_t
     \end{equation*}
 
-    Mi concentro su $\Sigma_1$;
-    prendo un suo elemento $P \in \Sigma_1$.
+    Mi concentro su $\Sigma_1$ e prendo un suo elemento $P \in \Sigma_1$.
+    Dal momento che $\Sigma$ è l'insieme dei $p$-Sylow, $P$ è un $p$-Sylow di $G$.
+
     Faccio agire $P$ su $\Sigma_1$ per coniugio.
-    Non è detto che $\Sigma_1$ sia l'orbita per $P$, quindi $\Sigma_1$ può smembrarsi in più $P$-orbite:
+    $\Sigma_1$ si decompone nelle $P$-orbite:
     \begin{equation*}
         \Sigma_1 = \Omega_1 \overset{\circ}{\cup} \dots \overset{\circ}{\cup} \Omega_u
     \end{equation*}
 
-    Calcoliamo il numero di elementi in $\Omega_1$;
-    sia $Q_i \in \Omega_i$:
+    Ogni $P$-orbita ha cardinalità un divisore di $\ordine{P} = p^a$, perché è uguale all'indice $\indice{P}{N_P(Q)}$
+    dove $Q$ è un qualunque elemento dell'orbita.
+    Quindi le $P$-orbite hanno cardinalità 1 o una potenza di $p$.
+
+    Se coniughiamo $P$ con un qualunque elemento di $P$, otteniamo ancora $P$.
+    Quindi esiste una $P$-orbita che contiene un solo elemento, e questa $P$-orbita è $\{P\}$.
+
+    L'orbita $\{P\}$ è l'unica di cardinalità 1.
+    Se ne esistesse un'altra, detto $Q$ un elemento di tale orbita, avremmo che l'indice del normalizzatore di $Q$
+    sarebbe uguale ad 1, quindi $P = N_P(Q)$.
+    In particolare $P \subseteq N_P(Q)$.
+    $Q$ è un $p$-Sylow, quindi per il lemma (a lettere invertite) $P \subseteq Q$.
+    Quindi abbiamo $Q \normale N_P(Q) = P$ e $P \subseteq Q$ quindi tutto annichilisce in un unico sottogruppo:
+    $P = Q = N_P(Q)$.
+    Ovvero ritroviamo l'orbita $\{P\}$.
+
+    Quinti tutte le orbite hanno cardinalità potenza di $p$ diversa da 1, tranne una: quella che contiene $P$.
+    Quindi:
     \begin{equation*}
-        \ordine{\Omega_i} = \indice{P}{P \cap N_G(Q_i)} = \indice{P}{N_P(Q_i)}
+        \ordine{\Sigma_1} \equiv 1 \mod p
     \end{equation*}
 
-    $P$ è un $p$-sottogruppo, quindi:
+    Se $\Sigma_1$ coincidesse con $\Sigma$, avrei finito.
+
+    Ipotizziamo per assurdo che $\Sigma_1 \ne \Sigma$.
+    Allora prendo un $Q \in \Sigma - \Sigma_1$.
+    Decompongo $\Sigma_1$ tramite le $Q$-orbite:
     \begin{equation*}
-        \indice{P}{N_P(Q_i)} = p^{b_i}
+        \Sigma_1 = \Lambda_1 \overset{\circ}{\cup} \dots \overset{\circ}{\cup} \Lambda_v
     \end{equation*}
+
+    Anche $Q$ è un $p$-Sylow, quindi le orbite hanno cardinalità una potenza di $p$.
+    Per quanto visto sopra, anche tra queste orbite deve essercene una di cardinalità 1.
+    Questa orbita contiene quindi un $p$-Sylow che chiamiamo $R$ e si ha che $\indice{Q}{N_Q(R)} = 1$,
+    per cui $Q = N_Q(R)$, in particolare $Q \subseteq N_Q(R)$.
+    Quindi per il lemma $Q \subseteq R$, ovvero $Q$ dovrebbe appartenere a $\Sigma_1$, il che contraddice l'ipotesi
+    per assurdo.
+
+    Abbiamo verificato, quindi, che $\Sigma = \Sigma_1$.
+
+    L'azione di $G$ su $\Sigma = \Syl_p(G)$ genera quindi un'unica orbita, pertanto i $p$-Sylow sono sottogruppi
+    coniugati.
+
+    La cardinalità dell'orbita è un divisore di $\ordine{G}$, quindi:
+    \begin{equation*}
+        \ordine{\Syl_p(G)} \text{ divide } \ordine{G}
+    \end{equation*}
+
+    Inoltre la cardinalità di $\Sigma = \Syl_p(G)$ è uguale alla cardinalità di $\Sigma_1$, quindi:
+    \begin{equation*}
+        \ordine{\Syl_p(G)} \equiv 1 \mod p
+    \end{equation*}
+
+    Per dimostrare l'ultima parte, facciamo agire il $p$-sottogruppo $Q$ per coniugio di sottogruppi su $\Syl_p(G)$.
+
+    Anche le $H$-orbite devono avere cardinalità una potenza di $p$.
+    Ma $\ordine{Syl_p(G)} \equiv 1 \mod p$.
+    Pertanto esiste un'unica orbita $O = \{R\}$ fatta da un unico elemento $R$.
+    Quindi $\indice{Q}{N_Q(R)} = 1$, ovvero $Q \subseteq N_G(R)$, quindi per il lemma $Q \subseteq R$.
+    $R$ è un $p$-Sylow, quindi $Q$ appartiene a un $p$-Sylow che è coniugato a qualunque altro $p$-Sylow.
 \end{dimostrazione}
