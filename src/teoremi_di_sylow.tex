@@ -62,7 +62,8 @@
         \ordine{C_i} = \indice{G}{C_G(g_i)}
     \end{equation*}
 
-    $G$ ha ordine $p^a \cdot m$; l'indice di $C_G(g_i)$ è coprimo con $p$. Quindi $C_G(g_i)$ ha ordine $p^a \cdot m^*$,
+    $G$ ha ordine $p^a \cdot m$; l'indice di $C_G(g_i)$ è coprimo con $p$.
+    Quindi $C_G(g_i)$ ha ordine $p^a \cdot m^*$,
     con $m^* < m$.
 
     Per induzione il gruppo $C_G(g_i)$ (che ha ordine minore del gruppo di $G$) contiene un sottogruppo $P$ di ordine
@@ -162,7 +163,7 @@ Un sottogruppo di ordine $p^b$ si dice \textbf{$p$-sottogruppo} di $G$.
     Quindi esiste una $P$-orbita che contiene un solo elemento, e questa $P$-orbita è $\{P\}$.
 
     L'orbita $\{P\}$ è l'unica di cardinalità 1.
-    Se ne esistesse un'altra, detto $Q$ un elemento di tale orbita, avremmo che l'indice del normalizzatore di $Q$
+    Se ne esistesse un'altra, detto $Q$ un elemento di tale orbita, avremmo che l'indice del normalizzante di $Q$
     sarebbe uguale ad 1, quindi $P = N_P(Q)$.
     In particolare $P \subseteq N_P(Q)$.
     $Q$ è un $p$-Sylow, quindi per il lemma (a lettere invertite) $P \subseteq Q$.
@@ -197,9 +198,9 @@ Un sottogruppo di ordine $p^b$ si dice \textbf{$p$-sottogruppo} di $G$.
     L'azione di $G$ su $\Sigma = \Syl_p(G)$ genera quindi un'unica orbita, pertanto i $p$-Sylow sono sottogruppi
     coniugati.
 
-    La cardinalità dell'orbita è un divisore di $\ordine{G}$, quindi:
+    La cardinalità dell'orbita è uguale all'indice del normalizzante, il quale è un divisore dell'indice del sottogruppo:
     \begin{equation*}
-        \ordine{\Syl_p(G)} \text{ divide } \ordine{G}
+        \ordine{\Syl_p(G)} \text{ divide } \indice{G}{P}
     \end{equation*}
 
     Inoltre la cardinalità di $\Sigma = \Syl_p(G)$ è uguale alla cardinalità di $\Sigma_1$, quindi:
@@ -215,3 +216,77 @@ Un sottogruppo di ordine $p^b$ si dice \textbf{$p$-sottogruppo} di $G$.
     Quindi $\indice{Q}{N_Q(R)} = 1$, ovvero $Q \subseteq N_G(R)$, quindi per il lemma $Q \subseteq R$.
     $R$ è un $p$-Sylow, quindi $Q$ appartiene a un $p$-Sylow che è coniugato a qualunque altro $p$-Sylow.
 \end{dimostrazione}
+
+\begin{esercizio}[{\cite[es. 2 pag. 82]{jacobson}}]
+    Dimostra che non esistono gruppi semplici di ordine 148.
+\end{esercizio}
+\begin{soluzione}
+    Il numero 148 si scompone in $2^2 \cdot 37$.
+
+    Determiniamo quanti possono essere i 37-Sylow.
+    Per il secondo teorema di Sylow il numero di 37-Sylow deve essere congruo ad 1 modulo 37 e deve dividere l'indice
+    di $P$, che è 4.
+    \begin{gather*}
+        n_{37}(G) \equiv 1 \mod 37 \\
+        n_{37}(G) \divisore 4
+    \end{gather*}
+
+    L'unico numero che rispetta entrambi le condizione è 1.
+    Quindi avremo un unico 37-Sylow.
+    Se è unico, quando lo coniugo con un qualunque elemento di $G$, ottengo sempre lo stesso sottogruppo, quindi il
+    sottogruppo è normale.
+    E il gruppo $G$ non è semplice.
+\end{soluzione}
+
+\begin{esercizio}[{\cite[es. 2 pag. 82]{jacobson}}]
+    Dimostra che non esistono gruppi semplici di ordine 56.
+\end{esercizio}
+\begin{soluzione}
+    Il numero 56 si scompone in $7 \cdot 2^3$.
+
+    Verifichiamo quanti possono essere i 7-Sylow:
+    \begin{gather*}
+        n_7(G) \equiv 1 \mod 7 \\
+        n_7(G) \divisore 8
+    \end{gather*}
+
+    Quindi il numero di 7-Sylow può essere 1 o 8.
+
+    Se abbiamo un solo 7-Sylow, tale sottogruppo è normale. Quindi il gruppo $G$ non è semplice.
+
+    Se $G$ contiene 8 7-Sylow, ciascuno di questi sottogruppi ha ordine 7, quindi per i corollario~\ref{cor:gruppo_ordine_primo} sono ciclici.
+    Inoltre, per il teorema~\ref{thr:generatori_gruppi_ciclici_finiti} questi sottogruppi contengono l'identità e
+    6 elementi di ordine 7.
+
+    Se interseco due di questi 7-Sylow ottengo un sottogruppo il cui ordine deve dividere l'ordine dei 7-Sylow.
+    Quindi l'ordine dell'intersezione è 1: non può essere 7 altrimenti i due 7-Sylow sarebbero lo stesso.
+
+    Quindi i 6 elementi di ordine 7 di ciascun 7-Sylow sono distinti, ovvero il gruppo $G$ contiene $8 \cdot 6 = 48$
+    elementi di ordine 7.
+    Quindi in $G$ ci sono $56-48 = 8$ elementi che non hanno ordine 7.
+
+    I 2-Sylow del gruppo di ordine 56 deve avere 8 elementi di ordine potenza 2.
+    Ma abbiamo appena visto che il gruppo contiene 8 elementi di ordine diverso da 7.
+    Quindi questi 8 elementi appartengono al 2-Sylow.
+    Abbiamo quindi un unico 2-Sylow, che è normale.
+
+    In sintesi: se non è normale il 7-Sylow, è normale il 2-Sylow.
+\end{soluzione}
+
+\begin{esercizio}[{\cite[es. 3 pag. 82]{jacobson}}]
+    Dimostra che non esiste un gruppo semplice di ordine $pq$, con $p$ e $q$ primi.
+\end{esercizio}
+\begin{soluzione}
+    Abbiamo due casi.
+
+    \bigskip
+    \textbf{Caso 1: $p = q$.}
+    Per il teorema~\ref{thr:ordine_potenza_di_primo}, il gruppo $G$ contiene un centro che non è banale:
+    \begin{equation*}
+        1 \ne Z(G) \normale G
+    \end{equation*}
+
+    \emph{Secondo la registrazione del 15/10/2021, il centro ha ordine $p$, pertanto è un sottogruppo non banale normale.}
+    \emph{Ma credo che il centro possa anche essere di ordine $p^2$, quando il gruppo $G$ è abeliano.}
+    \emph{In questo caso come faccio a dimostrare che il sottogruppo di ordine $p$ è normale?}
+\end{soluzione}
