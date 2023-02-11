@@ -217,6 +217,14 @@ Un sottogruppo di ordine $p^b$ si dice \textbf{$p$-sottogruppo} di $G$.
     $R$ è un $p$-Sylow, quindi $Q$ appartiene a un $p$-Sylow che è coniugato a qualunque altro $p$-Sylow.
 \end{dimostrazione}
 
+\begin{corollario}
+    Se un $p$-Sylow è unico, è un sottogruppo normale.
+\end{corollario}
+\begin{dimostrazione}
+    Se ho un unico $p$-Sylow, quando lo coniugo con un qualunque elemento di $G$, ottengo sempre lo stesso sottogruppo, quindi il
+    sottogruppo è normale.
+\end{dimostrazione}
+
 \begin{esercizio}[{\cite[es. 2 pag. 82]{jacobson}}]
     Dimostra che non esistono gruppi semplici di ordine 148.
 \end{esercizio}
@@ -233,8 +241,7 @@ Un sottogruppo di ordine $p^b$ si dice \textbf{$p$-sottogruppo} di $G$.
 
     L'unico numero che rispetta entrambi le condizione è 1.
     Quindi avremo un unico 37-Sylow.
-    Se è unico, quando lo coniugo con un qualunque elemento di $G$, ottengo sempre lo stesso sottogruppo, quindi il
-    sottogruppo è normale.
+    Per il corollario al secondo teorema di Sylow, il sottogruppo è normale.
     E il gruppo $G$ non è semplice.
 \end{soluzione}
 
@@ -252,7 +259,8 @@ Un sottogruppo di ordine $p^b$ si dice \textbf{$p$-sottogruppo} di $G$.
 
     Quindi il numero di 7-Sylow può essere 1 o 8.
 
-    Se abbiamo un solo 7-Sylow, tale sottogruppo è normale. Quindi il gruppo $G$ non è semplice.
+    Per il corollario al secondo teorema di Sylow, se abbiamo un solo 7-Sylow, tale sottogruppo è normale.
+    Quindi il gruppo $G$ non è semplice.
 
     Se $G$ contiene 8 7-Sylow, ciascuno di questi sottogruppi ha ordine 7, quindi per i corollario~\ref{cor:gruppo_ordine_primo} sono ciclici.
     Inoltre, per il teorema~\ref{thr:generatori_gruppi_ciclici_finiti} questi sottogruppi contengono l'identità e
@@ -268,7 +276,7 @@ Un sottogruppo di ordine $p^b$ si dice \textbf{$p$-sottogruppo} di $G$.
     I 2-Sylow del gruppo di ordine 56 deve avere 8 elementi di ordine potenza 2.
     Ma abbiamo appena visto che il gruppo contiene 8 elementi di ordine diverso da 7.
     Quindi questi 8 elementi appartengono al 2-Sylow.
-    Abbiamo quindi un unico 2-Sylow, che è normale.
+    Abbiamo quindi un unico 2-Sylow, che, per il corollario al secondo teorema di Sylow, è normale.
 
     In sintesi: se non è normale il 7-Sylow, è normale il 2-Sylow.
 \end{soluzione}
@@ -281,6 +289,7 @@ Un sottogruppo di ordine $p^b$ si dice \textbf{$p$-sottogruppo} di $G$.
 
     \bigskip
     \textbf{Caso 1: $p = q$.}
+
     Per il teorema~\ref{thr:ordine_potenza_di_primo}, il gruppo $G$ contiene un centro che non è banale:
     \begin{equation*}
         1 \ne Z(G) \normale G
@@ -289,4 +298,128 @@ Un sottogruppo di ordine $p^b$ si dice \textbf{$p$-sottogruppo} di $G$.
     \emph{Secondo la registrazione del 15/10/2021, il centro ha ordine $p$, pertanto è un sottogruppo non banale normale.}
     \emph{Ma credo che il centro possa anche essere di ordine $p^2$, quando il gruppo $G$ è abeliano.}
     \emph{In questo caso come faccio a dimostrare che il sottogruppo di ordine $p$ è normale?}
+
+    \emph{Nelle schede settimanali c'è un'altra spiegazione.}
+    \emph{IL gruppo $G$ risulta essere abeliano, per cui ogni sottogruppo (in particolare quello di ordine $p$) è normale.}
+    \emph{Ma in questo caso mi sfugge come mai $G$ sia necessariamente abeliano.}
+
+    \bigskip
+    \textbf{Caso 2: $p \ne q$.}
+
+    Fissiamo l'ordine tra i due primi e poniamo $p > q$.
+    Per il secondo teorema di Sylow abbiamo:
+    \begin{gather*}
+        n_p(G) \equiv 1 \mod p \\
+        n_p(G) \divisore q
+    \end{gather*}
+
+    L'unico numero che rispetta le due condizioni è 1:
+    \begin{equation*}
+        n_p(G) = 1
+    \end{equation*}
+
+    Quindi, per il corollario al secondo teorema di Sylow, il $p$-Sylow è normale e il gruppo $G$ non è semplice.
+\end{soluzione}
+
+\begin{esercizio}
+    Trovare tutti i sottogruppi di $S_4$.
+\end{esercizio}
+\begin{soluzione}
+    Per il teorema di Lagrange~\ref{thr:Laterali_Lagrange}, i sottogruppi possono avere ordine 1, 2, 3, 4, 8, 12 e 24.
+
+    \bigskip
+    \textbf{Sottogruppi di ordine 1.}
+
+    L'unico sottogruppo di ordine 1 è il gruppo identico 1.
+
+    \bigskip
+    \textbf{Sottogruppi di ordine 24.}
+
+    L'unico sottogruppo di ordine 24 è il gruppo stesso $S_4$.
+
+    \bigskip
+    \textbf{Sottogruppi di ordine 12.}
+
+    I sottogruppi di ordine 12 hanno indice 2, pertanto sono normali.
+    Abbiamo già verificato nell'esercizio~\ref{ex:sottogruppi_normali_s4} che l'unico sottogruppo normale di ordine 12 è $A_4$.
+
+    \bigskip
+    \textbf{Sottogruppi di ordine 2.}
+
+    I sottogruppi di ordine 2 sono ciclici.
+    Ci basta contare gli elementi di $S_4$ di ordine 2.
+
+    Abbiamo 6 elementi del tipo $(ab)$ e 3 elementi del tipo $(ab)(cd)$.
+    Quindi in totale abbiamo 9 sottogruppi ciclici di ordine 2.
+
+    \bigskip
+    \textbf{Sottogruppi di ordine 3.}
+
+    I sottogruppi di ordine 3 sono ciclici.
+    Abbiamo 8 3-cicli, ma uno è inverso dell'altro, quindi abbiamo 4 copie.
+
+    Abbiamo 4 sottogruppi ciclici di ordine 3.
+
+    4 è compatibile con il secondo teorema di Sylow, perché:
+    \begin{gather*}
+        n_3(S_4) \equiv 1 \mod 3 \sse 4 \equiv 1 \mod 3 \\
+        n_3(S_4) \divisore \ordine(S_4) \sse 4 \divisore 24
+    \end{gather*}
+
+    \bigskip
+    \textbf{Sottogruppi di ordine 4.}
+
+    I sottogruppi di ordine 4 sono abeliani.
+
+    Conosciamo già il gruppo di Klein $V$.
+
+    Poi abbiamo i sottogruppi ciclici generati da un 4-ciclo.
+    Abbiamo $3! = 6$ 4-cicli;
+    li accoppiamo per inversi.
+    Abbiamo 3 sottogruppi ciclici di ordine 4 isomorfi a $C_4$.
+
+    Ipotizziamo di avere altri sottogruppi di ordine 4: $\ordine{H} = 4$ con $H$ non ciclico e $H \ne V$.
+
+    $H$ deve contenere elementi di ordine 2 che non siano doppi scambi: $(ij) \in H$ (\emph{perché?}).
+
+    I sottogruppi di ordine 4 sono abeliani, quindi $H$ deve essere abeliano.
+    Quindi gli elementi di $H$ devono commutare con $(ij)$.
+    Quindi $H$ deve essere contenuto nel centralizzante di $(ij)$:
+    \begin{equation*}
+        H \le C_{S_4}((ij))
+    \end{equation*}
+
+    Quindi $H$ è il prodotto diretto di $(ij)$ con lo scambio complementare.
+    Abbiamo allora 3 sottogruppi isomorfi a $C_2 \times C_2$:
+    \begin{equation*}
+        \gen{(12),(34)}, \quad \gen{(13),(24)}, \quad \gen{(14),(23)}
+    \end{equation*}
+
+    \bigskip
+    \textbf{Sottogruppi di ordine 6.}
+
+    Cerchiamo i sottogruppi $H$ di ordine 6.
+
+    Per il primo teorema di Sylow esiste un 3-Sylow $P$ di $H$, ed ha indice 2.
+    Quindi $P$ è normale n $H$.
+    Quindi $N$ è contenuto nel normalizzante di $P$:
+    \begin{equation*}
+        H \subseteq N_{S_4}(P)
+    \end{equation*}
+
+    Determiniamo quanto è grande il normalizzante $N_{S_4}(P)$.
+
+    $P$ è un 3-Sylow anche di $S_4$.
+    Abbiamo già determinato che $S_4$ ha quattro 3-Sylow.
+    \begin{equation*}
+        \indice{S_4}{N_{S_4}(P)} = n_3(S_4) = 4
+    \end{equation*}
+
+    Quindi il normalizzante $N_{S_4}(P)$ ha ordine 6.
+
+    Quindi $H$ coincide con il normalizzante.
+
+    Allora per determinare i sottogruppi di ordine 6 parto dai sottogruppi di ordine 3 e che faccio i centralizzanti.
+
+    Ottengo 4 sottogruppi di ordine 6: sono 4 sottogruppi isomorfi a $S_3$.
 \end{soluzione}
