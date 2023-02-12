@@ -33,3 +33,45 @@
         G \isomorfo C_2
     \end{equation*}
 \end{soluzione}
+
+\begin{esercizio}
+    Sia $G$ un gruppo finito.
+    Determinare la probabilità che due elementi (anche uguali) commutino.
+\end{esercizio}
+\begin{soluzione}
+    Visto che $G$ è finito possiamo applicare la definizione classica di probabilità.
+
+    Il casi favorevoli sono dati dall'insieme $\{(g_1, g_2) \taleche g_1 g_2 = g_2 g_1\}$.
+
+    Il numero di casi totali è dato da $\ordine{G}^2$.
+
+    Determiniamo il numero di coppie che commutano.
+
+    Il primo elemento lo posso scegliere come voglio.
+    Il secondo elemento deve coniugare con il primo, quindi deve appartenere al centralizzante del primo elemento.
+    \begin{equation*}
+        \text{casi favorevoli } = \sum_{g \in G} \ordine{C_G(g)}
+    \end{equation*}
+
+    Raggruppiamo gli elementi nelle classi di coniugio, perché hanno i centralizzanti della stessa cardinalità.
+
+    Chiamo $C_1, \dots, C_k$ le classi di coniugio, e per ciascuna prendo un rappresentante $g_i = C_i$:
+    \begin{equation*}
+        \ordine{C_1} = \indice{G}{C_G(g_i)} = \indice{G}{C_G(x)} \,\,\forall x \in C_1
+    \end{equation*}
+
+    Quindi:
+    \begin{equation*}
+        \text{casi favorevoli } = \sum_{1 \le i \le k} \ordine{C_G(g)}\ordine{C_i}
+    \end{equation*}
+
+    Possiamo ora calcolare la probabilità:
+    \begin{align*}
+        P(G) &= \dfrac{ \sum_{1 \le i \le k} \ordine{C_G(g)}\ordine{C_i} }{ \ordine{G}^2 } = \\
+        &= \dfrac{ \sum_i \ordine{C_G(g_i)} \cdot \dfrac{\ordine{G}}{\ordine{C_G(g_i)}}}{\ordine{G}^2 } = \\
+        &= \dfrac{k}{\ordine{G}}
+    \end{align*}
+
+    Per esempio la probabilità è 1 quando il gruppo è commutativo, ovvero tutte le classi di coniugio sono fatte da
+    un unico elemento e il numero delle classi è uguale all'ordine del gruppo.
+\end{soluzione}
