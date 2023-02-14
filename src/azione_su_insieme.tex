@@ -303,16 +303,15 @@ Viene definito \emph{cuore} perché è contenuto in $H$, infatti posso prendere 
 
 Dimostriamo ora un'estensione del teorema \textbf{RIFERIMENTO}.
 
-\begin{esercizio}
-	Sia dato un gruppo finito $G$ con $p$ il più piccolo divisore dell'ordine $\ordine{G}$. Se $H \le G$ e $\indice{G}{H} = p$, allora $H$ è normale.
-	\footnote{\cite[Week 2, Exercise 8]{lucchini_week}}
+\begin{esercizio}[{\cite[Week 2, Exercise 8]{lucchini_week}}]
+	Sia dato un gruppo finito $G$ con $p$ il più piccolo divisore dell'ordine $\ordine{G}$.
+	Se $H \le G$ e $\indice{G}{H} = p$, allora $H$ è normale.
 \end{esercizio}
 \begin{soluzione}
 	Per il teorema~\ref{thr:Azioni_laterali_indice_finito} sappiamo che:
-	
-	\begin{equation}
+	\begin{equation*}
 		\indice{G}{H_G} \text{ divide } p!
-	\end{equation}
+	\end{equation*}
 
 	Quindi:
 	\footnote{
@@ -333,27 +332,40 @@ Dimostriamo ora un'estensione del teorema \textbf{RIFERIMENTO}.
 		Quindi $\indice{H}{H_G}$ divide $(p-1)!$.
 	}
 	
-	\begin{equation}
+	\begin{equation*}
 		\indice{H}{H_G} \text{ divide } \dfrac{p!}{p} \Longrightarrow \indice{H}{H_G} \text{ divide } (p-1)!
-	\end{equation}
+	\end{equation*}
 
 	Per il teorema~\ref{thr:Laterali_Lagrange} di Lagrange:
-	
-	\begin{equation}
+	\begin{equation*}
 		\indice{H}{H_G} \dividetxt \ordine{G}
-	\end{equation}
+	\end{equation*}
 
-	In $(p-1)!$ tutti i divisori sono più piccoli di $p$, il quale è il più piccolo divisore primo di $\ordine{G}$. Quindi $(p-1)!$ e $\ordine{G}$ sono coprimi, quindi il loro MCD è 1. Quindi:
-	
-	\begin{equation}
+	In $(p-1)!$ tutti i divisori sono più piccoli di $p$, il quale è il più piccolo divisore primo di $\ordine{G}$.
+	Quindi $(p-1)!$ e $\ordine{G}$ sono coprimi, quindi il loro MCD è 1.
+	Quindi:
+	\begin{equation*}
 		\indice{H}{H_G} = 1 \Longrightarrow H = H_G
-	\end{equation} 
+	\end{equation*}
 
 	Quindi $H$ è normale.
 
 \end{soluzione}
 
-\section[Orbita di un elemento di un insieme]{Orbita di un elemento di un insieme\footnote{\cite[8 novembre 2021]{lucchini}}}
+\begin{esercizio}[{\cite[Week 2, Exercise 8]{lucchini_week}}]
+	Dimostrare che ogni gruppo di ordine $p^2$, con $p$ primo, è abeliano
+\end{esercizio}
+\begin{dimostrazione}
+	Per il teorema~\ref{}, $Z(G) \ne 1$.
+	Se $Z(G) = G$, allora $G$ è abeliano.
+	Quindi dobbiamo escludere che $\ordine{Z(G)} = p$.
+
+	Ipotizziamo per assurdo che $\ordine{Z(G)} = p$.
+	Il gruppo quoziente $G/Z(G)$ è ciclico.
+\end{dimostrazione}
+
+\section{Orbita di un elemento di un insieme}
+\label{sec:orbita_di_un_elemento_di_un_insieme}
 
 Considero un gruppo $G$ che agisce su un insieme $\Omega$. Definisco la seguente relazione tra gli elementi di $\Omega$:
 

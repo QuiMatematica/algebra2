@@ -1,13 +1,32 @@
 \chapter{Laterali di un sottogruppo}
+\label{ch:laterali_sottogruppo}
 
 \begin{teorema}[Teorema di Lagrange]
 	\label{thr:Laterali_Lagrange}
-	L'ordine di un sottogruppo $H$ di un gruppo finito $G$ è un fattore dell'ordine di $G$. Più precisamente:
-	
-	\begin{equation}
+	L'ordine di un sottogruppo $H$ di un gruppo finito $G$ è un fattore dell'ordine di $G$.
+	Più precisamente:
+	\begin{equation*}
 		\ordine{G} = \ordine{H} \cdot \indice{G}{H}
-	\end{equation}
+	\end{equation*}
 \end{teorema}
 \begin{dimostrazione}
 	Vedi \cite[pag. 52]{jacobson}.
+\end{dimostrazione}
+
+\begin{corollario}
+	\label{cor:sottogruppi_ordini_coprimi}
+	Siano $H$ e $K$ due sottogruppi di un gruppo $G$, i cui ordini sono coprimi.
+	Allora l'intersezione dei due sottogruppi contiene solo l'identità:
+	\begin{equation*}
+		\MCD{\ordine{H}}{\ordine{K}} = 1 \allora \ordine{H \cap K} = 1
+	\end{equation*}
+\end{corollario}
+\begin{dimostrazione}
+	L'intersezione di due sottogruppi è un sottogruppo di entrambi i sottogruppi.
+	Quindi, per il teorema di Lagrange:
+	\begin{gather*}
+		\ordine{H \cap K} \dividetxt \ordine{H} \\
+		\ordine{H \cap K} \dividetxt \ordine{K}
+	\end{gather*}
+	Ma gli ordini dei sottogruppi $H$ e $K$ sono coprimi, quindi l'unico divisore in comune è l'1.
 \end{dimostrazione}

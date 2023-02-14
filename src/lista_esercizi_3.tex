@@ -1,0 +1,30 @@
+\chapter{Esercizi}
+\label{ch:esercizi_settimana_4}
+
+\begin{esercizio}
+    Sia $G$ un gruppo di ordine 45.
+    Dimostrare che $G$ è abeliano.
+\end{esercizio}
+\begin{soluzione}
+    \begin{equation*}
+        P \in \Syl_5(G) \allora \ordine{P} = 5
+    \end{equation*}
+
+    $P$ è abeliano e ciclico (vedi~\ref{cor:gruppo_ordine_primo}).
+
+    \begin{equation*}
+        Q \in \Syl_3(G) \allora \ordine{Q} = 9
+    \end{equation*}
+
+    $Q$ è abeliano, perché tutti i gruppi di ordine $p^2$ sono abeliani.
+
+    $P$ e $Q$ hanno ordine coprimo, quindi la loro intersezione contiene solo l'identità
+    (vedi~\ref{cor:sottogruppi_ordini_coprimi}).
+
+    \begin{equation*}
+        \ordine{PQ} = \dfrac{\ordine{P} \cdot \ordine{Q}}{\ordine{P \cap Q}} = \dfrac{5 \cdot 9}{1} = 45 \allora G = PQ
+    \end{equation*}
+
+    Ma non posso concludere che $G$ sia abeliano, in quanto non ho certezza che gli elementi in $P$ commutino con tutti
+    gli elementi in $Q$.
+\end{soluzione}
