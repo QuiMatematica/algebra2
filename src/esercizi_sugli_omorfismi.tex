@@ -28,22 +28,28 @@
 	Quindi $G$ è abeliano.
 \end{soluzione}
 
-\begin{esercizio}
-	Determina $\Aut G$ per un gruppo ciclico infinito e per un gruppo ciclico finito.
-	\footnote{Cfr. \cite[pag. 63, es. n. 4]{jacobson}}
-\end{esercizio}
-\begin{soluzione}
+\begin{teorema}[{\cite[Week 2, Point 3]{lucchini_week}; cfr~\cite[pag. 63, es. n. 4]{jacobson}}]
+	\label{thr:automorfismi_gruppi_ciclici}
+	Se $G$ è un gruppo ciclico infinito:
+	\begin{equation*}
+		\Aut G = \gen{\iota} \isomorfo C_2
+	\end{equation*}
+
+	Se $G$ è un gruppo ciclico finito:
+	\begin{equation*}
+		\ordine{\Aut G} = \varphi(m)
+	\end{equation*}
+\end{teorema}
+\begin{dimostrazione}
 	Dato che $G = \gen{g}$ è un gruppo ciclico, ogni endomorfismo $\alpha \in \End G$ trasforma il generatore $g$ in un qualche altro elemento di $G$, elemento che è una potenza del generatore:
-	
-	\begin{equation}
+	\begin{equation*}
 		\alpha: g \longmapsto g^k
-	\end{equation}
+	\end{equation*}
 
 	Affinché un tale endomorfismo sia un automorfismo è necessario che l'elemento immagine $g^k$ sia a sua volta generatore del gruppo, ovvero:
-	
-	\begin{equation}
+	\begin{equation*}
 		\gen{g^k} = \gen{g}
-	\end{equation}
+	\end{equation*}
 
 	Studiamo ora i due casi distinti.
 	
@@ -52,17 +58,15 @@
 	Quindi abbiamo due soli automorfismi per i gruppi ciclici infiniti: l'automorfismo identico e l'automorfismo $\iota$ (vedi esercizio~\ref{ex:automorfismo_iota}) che inverte tutti gli elementi di $G$.
 	
 	Quindi:
-	
-	\begin{equation}
+	\begin{equation*}
 		\Aut G = \gen{\iota} \isomorfo C_2
-	\end{equation}
+	\end{equation*}
 
 	Se invece $G$ è un gruppo \textbf{ciclico finito di ordine $m$}, posso considerare solo i valori di $k$ tali che $0 \le k < m$. Il numero di generatori del gruppo è pari a $\varphi(m)$ (vedi teorema~\ref{thr:generatori_gruppi_ciclici_finiti}). Quindi:
-	
-	\begin{equation}
+	\begin{equation*}
 		\ordine{\Aut G} = \varphi(m)
-	\end{equation}
-\end{soluzione}
+	\end{equation*}
+\end{dimostrazione}
 
 \begin{esercizio}
 	\label{ex:automorfismi_interni}

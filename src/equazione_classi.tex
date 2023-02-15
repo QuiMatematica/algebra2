@@ -72,3 +72,42 @@ Passiamo all'equazione delle classi:
 		\ordine{Z(G))} \ge p
 	\end{equation*}
 \end{dimostrazione}
+
+\begin{esercizio}[{\cite[Week 2, Exercise 8]{lucchini_week}}]
+	Dimostrare che ogni gruppo di ordine $p^2$, con $p$ primo, è abeliano
+\end{esercizio}
+\begin{dimostrazione}
+	Per il teorema~\ref{thr:ordine_potenza_di_primo}, $Z(G) \ne 1$.
+	Se $Z(G) = G$, allora $G$ è abeliano.
+	Quindi dobbiamo escludere che $\ordine{Z(G)} = p$.
+
+	Ipotizziamo per assurdo che $\ordine{Z(G)} = p$.
+	Il gruppo quoziente $G/Z(G)$ è ciclico, quindi può essere definito come:
+	\begin{equation*}
+		G/Z(G) = \gen{a Z(G)}
+	\end{equation*}
+
+	Questo significa che ogni elemento di $G$ può essere scritto come:
+	\begin{equation*}
+		g = a^i z \quad \text{con } i \in \Z, z \in Z(G).
+	\end{equation*}
+
+	Prendiamo ora due qualunque elementi di $G$:
+	\begin{gather*}
+		g_1 = a^{i_i} z_1 \\
+		g_2 = a^{i_2} z_2
+	\end{gather*}
+
+	Si ha:
+	\begin{align*}
+		g_1 g_2 &= a^{i_1} z_1 a^{i_2} z_2 = && \text{sostituzione} \\
+		&= a^{i_1} a^{i_2} z_1 z_2 = && \text{perché $z_1, z_2 \in Z(G)$} \\
+		&= a^{i_1 + i_2} z_1 z_2 = && \text{proprietà delle potenze} \\
+		&= a^{i_2} a^{i_1} z_1 z_2 = && \text{proprietà delle potenze} \\
+		&= a^{i_2} z_2 a^{i_1} z_1 = && \text{perché $z_1, z_2 \in Z(G)$} \\
+		&= g_2 g_1 && \text{sostituzione}
+	\end{align*}
+
+	Quindi tutti gli elementi di $G$ commutano, $G = Z(G)$ e $G$ è abeliano.
+\end{dimostrazione}
+

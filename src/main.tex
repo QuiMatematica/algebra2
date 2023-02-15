@@ -67,19 +67,15 @@
 \mdtheorem[style=theoremstyle]{lemma}{Lemma}[chapter]
 \mdtheorem[style=theoremstyle]{esercizio}{Esercizio}[chapter]
 
-\newmdenv[linecolor=green,
-	linewidth=2pt,
-	frametitlerule=true,
-	frametitle={Dimostrazione},
-	frametitlebackgroundcolor=green!20,
-]{dimostrazione}
+\newenvironment{dimostrazione}
+    {\par\medskip
+   \noindent\textbf{Dimostrazione.}\par}
+    {\begin{center}$\square\quad\square\quad\square$\end{center}\bigskip}
 
-\newmdenv[linecolor=green,
-linewidth=2pt,
-frametitlerule=true,
-frametitle={Soluzione},
-frametitlebackgroundcolor=green!20,
-]{soluzione}
+\newenvironment{soluzione}
+    {\par\medskip
+   \noindent\textbf{Soluzione.}\par}
+    {\begin{center}$\square\quad\square\quad\square$\end{center}\bigskip}
 
 \definecolor{figura}{rgb}{0.6,0.2,0}
 

@@ -27,4 +27,48 @@
 
     Ma non posso concludere che $G$ sia abeliano, in quanto non ho certezza che gli elementi in $P$ commutino con tutti
     gli elementi in $Q$.
+    Ci serve qualche altra idea.
+
+    Per il secondo teorema di Sylow sappiamo che:
+    \begin{gather*}
+        \begin{cases}
+            n_5(G) \equiv 1 \mod 5 \\
+            n_5(G) \divisore 9
+        \end{cases}
+        \allora n_5(G) = 1
+    \end{gather*}
+
+    Quindi $P$ è l'unico 5-Sylow di $G$, quindi $P$ è un sottogruppo normale.
+
+    Possiamo ora far agire $G$ per coniugio su se stesso.
+    Ma, dal momento che $P$ è un sottogruppo normale, se coniugo un elemento $x \in P$ con un qualunque elemento $g \in G$,
+    il coniugato $g x g^{-1}$ sta ancora in $P$.
+    Quindi posso far agire $G$ per coniugio su $P$.
+    Esiste quindi un omomorfismo $\rho$ tale che:
+    \begin{align*}
+        \rho: G &\longrightarrow \Aut(P) \\
+         &\longmapsto (x \overset{\rho_g}{\longmapsto} gxg^{-1})
+    \end{align*}
+
+    Il nucleo di questo omomorfismo è dato dal centralizzante di $P$ in $G$:
+    \begin{equation*}
+        \ker \rho = C_G(P) = \{g \taleche gx = xg \,\forall x \in P\}
+    \end{equation*}
+
+    $P$ è un sottogruppo ciclico di ordine 5, quindi $P \isomorfo C_5$.
+    Quindi anche gli automorfismo di $P$ sono isomorfi agli automorfismi di $C_5$.
+    Per il teorema~\ref{thr:automorfismi_gruppi_ciclici}:
+    \begin{equation*}
+        \ordine{\Aut P} = \ordine{\Aut C_5} = \phi(5) = 4
+    \end{equation*}
+
+    Inoltre, per il corollario~\ref{crl:Omomorfismi_fondamentale_1} al teorema fondamentale degli omomorfismi,
+    il gruppo quoziente $G/C_G(P)$ è isomorfo al sottogruppo di $\Aut P$ immagine di $\rho$;
+    quindi l'ordine del gruppo quoziente $G/C_G(P)$ deve essere un divisore di 4.
+
+    Lo stesso $G/C_G(P)$ è un gruppo quoziente di $G$, quindi il suo ordine deve dividere l'ordine di $G$, che è 45.
+
+    Ma 4 e 45 sono coprimi, quindi l'ordine del gruppo quoziente $G/C_G(P)$ è 1, quindi $G = C_G(P)$.
+
+
 \end{soluzione}
