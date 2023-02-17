@@ -73,3 +73,142 @@
     Quindi tutti gli elementi di $G$ commutano con $P$, in particolare tutti gli elementi di $Q$ commutano con $P$.
     Tenendo conto del fatto che anche $Q$ è abeliano, possiamo concludere che $G$ è abeliano.
 \end{soluzione}
+
+\begin{esercizio}
+    Siano dati $\alpha = (123)$ e $\beta = (147)(258)(369)$, con $\alpha, \beta \in S_9$.
+
+    Studiare il gruppo $G = \gen{\alpha, \beta} \le S_9$, in particolare studiare l'ordine, l'esponente, il centro
+    e il numero di classi di coniugio.
+\end{esercizio}
+\begin{soluzione}
+    \textbf{Ordine:}
+    Definisco:
+    \begin{align*}
+        \alpha_1 &= \alpha = (123) \\
+        \alpha_2 &= \beta \alpha_1 \beta^{-1} = (456) \\
+        \alpha_3 &= \beta \alpha_2 \beta^{-1} = (789) \\
+        \alpha_4 &= \beta \alpha_3 \beta^{-1} = (123) = \alpha
+    \end{align*}
+
+    Consideriamo il sottogruppo:
+    \begin{equation*}
+        A = \gen{\alpha_1, \alpha_2, \alpha_3}
+    \end{equation*}
+
+    $A$ è normale in $G$: basta far vedere che i generatori di $G$ lo normalizzano.
+    Se infatti ci sono i generatori di $G$ $\alpha$ e $\beta$ nel normalizzante di $A$, allora c'è tutto $G$.
+
+    $\alpha$ è nel normalizzante, perché $\alpha = \alpha_1 \in A \le N_G(A)$.
+
+    $\beta$ è nel normalizzante, perché quando coniugo con $\beta$, giro tra loro i generatori di $A$.
+
+    Quindi:
+    \begin{equation*}
+        A \normale N_G(A) = G
+    \end{equation*}
+
+    Visto che $A$ è normale, allora:
+    \begin{equation*}
+        G = A\gen{\beta}
+    \end{equation*}
+
+    I generatori di $A$ sono dei cicli disgiunti, quindi $\alpha_1, \alpha_2, \alpha_3$ commutano tra di loro.
+    Quindi:
+    \begin{gather*}
+        A \isomorfo C_3 \times C_3 \times C_3 \\
+        A = \{\alpha_1^{n_1}\alpha_2^{n_2}\alpha_3^{n_3} \taleche 0 \le n_i \le 2\} \\
+        \ordine{A} = 27
+    \end{gather*}
+
+    $\beta \not\in A$ in quando non è del tipo di ciclo degli elementi di $A$.
+    Quindi:
+    \begin{equation*}
+        \ordine{A \cap \gen{\beta}} = 1
+    \end{equation*}
+
+    Possiamo ora calcolare l'ordine di $G$:
+    \begin{equation*}
+        \ordine{G} = \dfrac{\ordine{A} \cdot \ordine{\gen{\beta}}}{\ordine{A \cap \gen{\beta}}} = \dfrac{27 \cdot 3}{1} = 81
+    \end{equation*}
+
+    \bigskip
+    \textbf{Centro:}
+
+    Possiamo calcolare il centro di $G$ intersecando il centralizzante di $\alpha$ e il centralizzante di $\beta$:
+    \begin{equation*}
+        Z(G) = C_G(\alpha) \cap C_G(\beta)
+    \end{equation*}
+
+    Il $C_G(\alpha)$ contiene $A$, in quando $\alpha \in A$ e $A$ è abeliano.
+    L'indice di $A$ è $\indice{G}{A} = 3$, quindi $C_G(\alpha)$ o è $A$ o è $G$.
+
+    Se fosse $C_G(\alpha) = G$ allora $\alpha \in Z(G)$ ma non è vero perché $\alpha$ non commuta con $\beta$.
+
+    Quindi il $C_G(\alpha) = A$.
+
+    Determiniamo ora quale elementi di $A$ commutano con $\beta$.
+    Prendiamo il generico elemento $a = \alpha_1^{n_1}\alpha_2^{n_2}\alpha_3^{n_3} \in A$ e vediamo quando commuta con
+    $\beta$:
+    \begin{gather*}
+        a \beta = \beta a \sse a = \beta a \beta^{-1} \\
+        a = \alpha_1^{n_1}\alpha_2^{n_2}\alpha_3^{n_3} = \beta a \beta^{-1} = \alpha_2^{n_1}\alpha_3^{n_2}\alpha_1^{n_3} \\
+        \allora n_1 = n_2 = n_3
+    \end{gather*}
+
+    Quindi:
+    \begin{equation*}
+        Z(G) = \gen{\alpha_1\alpha_2\alpha_3}
+    \end{equation*}
+
+    Ovvero il centro è un gruppo ciclico di ordine 3.
+
+    \bigskip
+    \textbf{Esponente:}
+
+    Il sottogruppo $A$ contiene elementi di ordine 1 e di ordine 3, quindi $\exp(A) = 3$.
+
+    Dal momento che $\indice{G}{A} = 3$ sappiamo che $G/A \isomorfo C_3$.
+    Quindi se prendiamo un generico elemento $g \in G$ abbiamo:
+    \begin{equation*}
+        g^3 \in A \allora (g^3)^3 = 1
+    \end{equation*}
+
+    Ogni elemento elevato alla 9 è l'identità.
+    Quindi l'esponente è 3 o 9.
+
+    Verifichiamo se ci sono elementi di ordine 9.
+    Prendiamo per esempio l'elemento $(\alpha\beta)^3$:
+    \begin{align*}
+    (\alpha\beta)^3 &= \alpha\beta \alpha\beta \alpha\beta = \\
+        &= \alpha\beta \alpha\beta (\beta \beta^{-1}) \alpha\beta = \\
+        &= \alpha\beta \alpha\beta^2(\beta^{-1} \alpha\beta) = \\
+        &= \alpha\beta (\beta^2\beta^{-2}) \alpha \beta^2(\beta^{-1} \alpha\beta) = \\
+        &= \alpha\beta^3(\beta^{-2} \alpha \beta^2)(\beta^{-1} \alpha\beta) = \\
+        &= \alpha_1 1 \alpha_3 \alpha_2 = \\
+        &\ne 1
+    \end{align*}
+
+    Quindi $(\alpha\beta)^3$ ha ordine 3, ovvero $\alpha\beta$ ha ordine 9.
+
+    L'esponente $\exp(G) = 9$.
+
+    \bigskip
+    \textbf{Classi di coniugio:}
+
+    Prendiamo un generico $a \in A$.
+    Dal momento che $A \le C_G(a)$ allora l'ordine del centralizzante di $a$ è 27 o 81.
+
+    Il centralizzante $C_G(a)$ ha ordine 81 quando a commuta con tutti gli elementi di $G$, ovvero $a \in Z(G)$.
+    Questo succede esattamente 3 volte perché $Z(G) = \gen{\alpha_1\alpha_2\alpha_3}$.
+
+    In tutti gli altri casi il centralizzante $C_G(a)$ ha ordine 27.
+    Quindi questi elementi $a$ hanno 3 coniugati, 3 come l'indice del centralizzante.
+
+    Ora, $A$ contiene 27 elementi.
+
+    3 elementi di $A$ sono in $Z(G)$, quindi abbiamo 3 classi di coniugio di cardinalità 1.
+
+    Gli altri 24 elementi di $A$ hanno ciascuno 3 coniugati.
+    \textbf{Le classi di coniugio di $A$ non escono da $A$, perché $A$ è normale.}
+    Quindi abbiamo 8 classi di cardinalità 3.
+\end{soluzione}
