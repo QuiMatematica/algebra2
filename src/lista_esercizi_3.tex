@@ -211,4 +211,93 @@
     Gli altri 24 elementi di $A$ hanno ciascuno 3 coniugati.
     \textbf{Le classi di coniugio di $A$ non escono da $A$, perché $A$ è normale.}
     Quindi abbiamo 8 classi di cardinalità 3.
+
+    Ci sono 54 elementi appartenenti a $G - A$.
+    Questo elementi sono del tipo $a\beta, a\beta^{-1}$ con $a \in A$.
+
+    Determiniamo il centralizzante $C_G(a\beta)$.
+    Tale centralizzante contiene l'elemento $a\beta$ perché \textbf{ogni elemento centralizza se stesso}.
+
+    Se moltiplico il sottogruppo $A$ per il sottogruppo $\gen{a\beta}$ ottengo l'intero gruppo $G$:
+    \begin{equation*}
+        G = A\gen{a\beta}
+    \end{equation*}
+
+    Per cui un generico elemento $g \in G$ lo posso scrivere come:
+    \begin{equation*}
+        g = a^* (a\beta)^i \quad \text{con } a^* \in A, i \in \Z
+    \end{equation*}
+
+    Quindi abbiamo che:
+    \begin{equation*}
+        g \in C_G(a\beta) \sse a^* \in C_G(a\beta)
+    \end{equation*}
+
+    Infatti:
+    \begin{align*}
+        g \in C_G(a\beta) &\sse g a \beta = a \beta g \\
+        &\sse a^* (a\beta)^i a \beta = a \beta a^* (a\beta)^i \\
+        &\sse a^* a\beta = a\beta a^* \\
+        &\sse a^* \in C_G(a \beta)
+    \end{align*}
+
+    Quindi abbiamo anche che:
+    \begin{equation*}
+        C_G(a\beta) = \gen{a\beta}C_A(a\beta)
+    \end{equation*}
+
+    Infatti:
+    \begin{align*}
+        C_G(a\beta) &= \{g \taleche ga\beta = a \beta g\} \\
+        &= \{a^* (a\beta)^i \taleche a^* (a\beta)^i a \beta = a\beta a^* (a\beta)^i \} \\
+        &= \{a^* (a\beta)^i \taleche a^* a \beta = a\beta a^* \} \\
+        &= \gen{a\beta} \{a^* \taleche a^* a\beta = a\beta a^* \} \\
+        &= \gen{a\beta} C_A(a\beta)
+    \end{align*}
+
+    $a \in C_A(a\beta)$ perché commuta com tutto quello che sta in $A$, visto che A è abeliano.
+    Quindi possiamo semplificare e dire:
+    \begin{equation*}
+        C_G(a\beta) = \gen{a\beta} C_A(\beta)
+    \end{equation*}
+
+    Ma il centralizzatore $C_A(\beta)$ l'abbiamo calcolato prima: coincide con il centro di $G$:
+    \begin{equation*}
+        C_G(a\beta) = \gen{a\beta} Z(G)
+    \end{equation*}
+
+    Per cui potremo calcolare la cardinalità dei centralizzanti come:
+    \begin{equation*}
+        \ordine{C_G(a\beta)} = \dfrac{\ordine{a\beta} \cdot \ordine{Z(G)}}{\ordine{\gen{a\beta} \cap Z(G)}}
+    \end{equation*}
+
+    Tuttavia di queste cardinalità conosco solo quella del centro $Z(G)$.
+    Non conosco l'ordine di $a\beta$: a volte ha ordine 3, a volte ha ordine 9;
+    infatti se moltiplico $\alpha\beta$ ottengo un elemento di ordine 9, mentre se moltiplico
+    $\alpha_1\alpha_2\alpha3 \cdot \beta$ ottengo un elemento di ordine 3.
+
+    Consideriamo il caso in cui $\ordine{a\beta} = 3$.
+    Il sottogruppo $a\beta$ e il sottogruppo $Z(G)$ sono entrambi di ordine 3, e non coincidono,
+    perché $Z(G) = \gen{\alpha_1\alpha_2\alpha_3}$ con $\alpha_1\alpha_2\alpha_3 \in A$, mentre $a\beta \not\in A$.
+    Quindi la loro intersezione contiene solo l'identità.
+    Per cui:
+    \begin{equation*}
+        \ordine{C_G(a\beta)} = \dfrac{\ordine{a\beta} \cdot \ordine{Z(G)}}{\ordine{\gen{a\beta} \cap Z(G)}} =
+        \dfrac{3 \cdot 3}{1} = 9
+    \end{equation*}
+
+    Consideriamo il caso in cui $\ordine{a\beta} = 9$.
+    Abbiamo visto che un generico elemento di $G$ elevato alla terza appartiene ad $A$: $(a\beta)^3 \in A$.
+    Inoltre ogni elemento di $A$ ha ordine 3: $\ordine{(a\beta)^3 = 3}$.
+    Inoltre $(a\beta)^3$ commuta con $a\beta$ perché ogni elemento commuta con le proprie potenze.
+    Ma allora $(a\beta)^3$ è un elemento di $A$ che commuta con $a\beta$.
+    Quindi $(a\beta)^3 \in Z(G)$ e ci sono 3 elementi di $\gen{a\beta}$ appartenenti anche a $Z(G)$.
+    Per cui:
+    \begin{equation*}
+        \ordine{C_G(a\beta)} = \dfrac{\ordine{a\beta} \cdot \ordine{Z(G)}}{\ordine{\gen{a\beta} \cap Z(G)}} =
+        \dfrac{9 \cdot 3}{3} = 9
+    \end{equation*}
+
+    Sia che $a\beta$ abbia ordine 3, sia che abbia ordine 9, ha sempre 9 coniugati.
+    Quindi ho 6 classi di coniugio formate da 9 elementi.
 \end{soluzione}
