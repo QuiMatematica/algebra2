@@ -74,7 +74,7 @@
     Tenendo conto del fatto che anche $Q$ è abeliano, possiamo concludere che $G$ è abeliano.
 \end{soluzione}
 
-\begin{esercizio}
+\begin{esercizio}[{\cite[Week 4, ex. 10]{lucchini_week}}]
     Siano dati $\alpha = (123)$ e $\beta = (147)(258)(369)$, con $\alpha, \beta \in S_9$.
 
     Studiare il gruppo $G = \gen{\alpha, \beta} \le S_9$, in particolare studiare l'ordine, l'esponente, il centro
@@ -300,4 +300,94 @@
 
     Sia che $a\beta$ abbia ordine 3, sia che abbia ordine 9, ha sempre 9 coniugati.
     Quindi ho 6 classi di coniugio formate da 9 elementi.
+
+    Riassumendo:
+
+    - abbiamo 3 classi da 1 elemento;
+
+    - abbiamo 8 classi da 3 elementi;
+
+    - abbiamo 6 classi da 9 elementi;
+
+    In totale: 81 elementi.
+\end{soluzione}
+
+\begin{esercizio}[{\cite[Week 3, ex. 12]{lucchini_week}}]
+    Dimostrare che se $\ordine{G} = 15$ allora $G$ è ciclico.
+\end{esercizio}
+\begin{soluzione}
+    Nell'esercizio~\ref{ex:gruppo_ordine_pq} abbiamo dimostrato che nei gruppi di ordine $pq$, con $p > q$,
+    il $p-Sylow$ è normale.
+
+    Nel nostro caso $\ordine{G} = 15 = 3 \cdot 5$, quindi il 5-Sylow è normale.
+
+    I gruppi di ordine primo sono ciclici, quindi possiamo chiamare $\gen{a}$ il 5-Sylow e $\gen{b}$ un 3-Sylow.
+
+    Vogliamo determinare cos'è $bab^{-1}$.
+    Dal momento che $\gen{a} \normale G$ abbiamo che $bab^{-1} \in \gen{a}$, quindi:
+    \begin{equation*}
+        bab^{-1} = a^t
+    \end{equation*}
+
+    Sappiamo che $\ordine{b} = 3$, quindi $b^3 = 1$.
+    Per cui:
+    \begin{gather*}
+        bbb a b^{-1}b^{-1}b^{-1} = a \\
+        bb a^t b^{-1}b^{-1} = a \\
+        b a^{t^2} b^{-1} = a \\
+        a^{t^3} = a \\
+        t^3 \equiv 1 \mod 5 \\
+        t \equiv 1 \mod 5 \\
+        bab^{-1} = a \\
+        ba = ab
+    \end{gather*}
+
+    Abbiamo quindi due elementi di $G$ di ordine primo che commutano.
+    Quindi l'ordine del loro prodotto è il prodotto degli ordini, quindi $G$ contiene un elemento di ordine 15.
+    Ovvero G è ciclico.
+\end{soluzione}
+
+\begin{esercizio}
+    Sia $G = AB$, $A, B \normale G$, $A \cap B = 1$, $A, B$ abeliani.
+    Allora $G$ è abeliano.
+\end{esercizio}
+\begin{soluzione}
+    Considero $a \in A, b \in B$.
+    Per la normalità dei due sottogruppi abbiamo che:
+    \begin{gather*}
+        (aba^{-1})b^{-1} \in B \\
+        a(ba^{-1}b^{-1}) \in A \\
+        aba^{-1}b^{-1} \in A \cap B = 1 \\
+        aba^{-1}b^{-1} = 1 \\
+        ab = ba
+    \end{gather*}
+
+    Quindi tutti gli elementi di $A$ commutano con tutti gli elementi di $B$.
+    Quindi $G$ è abeliano.
+\end{soluzione}
+
+\begin{esercizio}
+    Sia $\ordine{G} = pq$, con $q < p$ e $q \not\divisore p-1$.
+    Allora $G$ è ciclico.
+\end{esercizio}
+\begin{soluzione}
+    Nell'esercizio~\ref{ex:gruppo_ordine_pq} abbiamo dimostrato che nei gruppi di ordine $pq$, con $p > q$,
+    il $p-Sylow$ è normale.
+
+    Per quanto riguarda i $q$-Sylow abbiamo che:
+    \begin{gather*}
+        n_q(G) \equiv 1 \mod q \\
+        n_q(G) \divisore p
+    \end{gather*}
+
+    Quindi $n_q(G) \in \{1, p\}$.
+
+    Se fosse $n_q(G) = p$ allora $p \equiv q \mod q$, ovvero $q \divisore p-1$ che è proibito per ipotesi.
+
+    Quindi $n_q(G) = 1$ e il $q$-Sylow è normale.
+
+    Per l'esercizio precedente tutti gli elementi del $p$-Sylow commutano con tutti gli elementi del $q$-Sylow, in
+    particolare i generatori.
+    Quindi esiste un elemento di ordine $pq$ che è il generatore di $G$.
+    Quindi $G$ è ciclico.
 \end{soluzione}
